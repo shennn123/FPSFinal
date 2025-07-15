@@ -73,8 +73,6 @@ public class PlayerController : MonoBehaviour
         moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
 
         charCon.Move(moveInput * Time.deltaTime);
-
-        anim.SetFloat("MoveSpeed", moveInput.magnitude);
     }
 
     private void HandleMouseLook()
@@ -131,9 +129,7 @@ public class PlayerController : MonoBehaviour
     private void HandleAnimation()
     {
         Vector3 flatMove = new Vector3(charCon.velocity.x, 0, charCon.velocity.z);
-        anim.SetFloat("moveSpeed", flatMove.magnitude);
-
-        anim.SetBool("Ismove", flatMove.magnitude > 0.1f);
+        anim.SetFloat("MoveSpeed", flatMove.magnitude);
     }
 
     private void OnTriggerEnter(Collider other)
