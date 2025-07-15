@@ -1,30 +1,31 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class FlickerLight : MonoBehaviour
 {
+
     public float MinLightIntensity = 0.5f;
     public float MaxLightIntensity = 2.3f;
+
     public float AccelerateTime = 0.15f;
 
     private float _targetIntensity = 1.0f;
     private float _lastIntensity = 1.0f;
+
     private float _timePassed = 0.0f;
+
     private Light _lt;
     private const double Tolerance = 0.0001;
-
-    public bool IsFlickering = false; 
 
     private void Start()
     {
         _lt = GetComponent<Light>();
         _lastIntensity = _lt.intensity;
-        _targetIntensity = Random.Range(MinLightIntensity, MaxLightIntensity);
+        FixedUpdate();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!IsFlickering) return;
-
         _timePassed += Time.deltaTime;
         _lt.intensity = Mathf.Lerp(_lastIntensity, _targetIntensity, _timePassed / AccelerateTime);
 
@@ -34,13 +35,5 @@ public class FlickerLight : MonoBehaviour
             _targetIntensity = Random.Range(MinLightIntensity, MaxLightIntensity);
             _timePassed = 0.0f;
         }
-    }
-
-
-    public void StartFlicker() => IsFlickering = true;
-    public void StopFlicker()
-    {
-        IsFlickering = false;
-        _lt.intensity = _lastIntensity; 
     }
 }
