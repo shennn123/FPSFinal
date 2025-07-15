@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleShooting();
         HandleAnimation();
+
+        
     }
 
     private void HandleMovement()
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
         moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
 
         charCon.Move(moveInput * Time.deltaTime);
+
+        anim.SetFloat("MoveSpeed", moveInput.magnitude);
     }
 
     private void HandleMouseLook()
