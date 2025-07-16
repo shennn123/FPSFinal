@@ -102,11 +102,11 @@ Material:
     - _UseColorMap: 1
     - _UseEmissiveMap: 0
     - _UseMetallicMap: 1
-    - _UseNormalMap: 1
+    - _UseNormalMap: 0
     - _UseRoughnessMap: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+    - _Color: {r: 0.78616345, g: 0.30902645, b: 0.30902645, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 0.1, g: 0.1, b: 0, a: 0}
