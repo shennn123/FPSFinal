@@ -73,6 +73,21 @@ public class PlayerController : MonoBehaviour
         moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
 
         charCon.Move(moveInput * Time.deltaTime);
+
+        float flatSpeed = new Vector3(charCon.velocity.x, 0f, charCon.velocity.z).magnitude;
+
+        PlayerMoveState moveState = PlayerMoveState.Idle;
+
+        if (flatSpeed > 1.5f && flatSpeed < 11f)
+        {
+            moveState = PlayerMoveState.Walk;
+        }
+        else if (flatSpeed > 11f)
+        {
+            moveState = PlayerMoveState.Run;
+        }
+
+        CrosshairController.instance?.SetSpreadState(moveState);
     }
 
     private void HandleMouseLook()
@@ -124,6 +139,7 @@ public class PlayerController : MonoBehaviour
         AmmoController.instance.currentAmmo--;
         Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
         activeGun.fireCounter = activeGun.firerate;
+        CrosshairController.instance?.TriggerFireKick();
     }
 
     private void HandleAnimation()
