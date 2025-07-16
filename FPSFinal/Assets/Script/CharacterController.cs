@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
     [Header("Gun Aiming")]
     public Transform gunHolder; // 挂在摄像机下面或者角色上都行
 
+    private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // 放在类里
+
+    public Gun[] allGuns; // 0 是步枪，1 是手枪
+    private int currentGunIndex = 0;
+
     void Awake() => instance = this;
 
     void Start()
@@ -46,7 +51,15 @@ public class PlayerController : MonoBehaviour
         HandleShooting();
         HandleAnimation();
 
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SwitchGun(0); // 步枪
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SwitchGun(1); // 手枪
+        }
+
     }
 
     private void HandleMovement()
@@ -82,16 +95,21 @@ public class PlayerController : MonoBehaviour
 
         PlayerMoveState moveState = PlayerMoveState.Idle;
 
-        if (flatSpeed > 1.5f && flatSpeed < 11f)
+        if (flatSpeed > 1.5f && flatSpeed < 6f)
         {
             moveState = PlayerMoveState.Walk;
         }
-        else if (flatSpeed > 11f)
+        else if (flatSpeed >= 6f)
         {
             moveState = PlayerMoveState.Run;
         }
 
-        CrosshairController.instance?.SetSpreadState(moveState);
+        // 只有状态真的变化才调用
+        if (moveState != lastMoveState)
+        {
+            CrosshairController.instance?.SetSpreadState(moveState);
+            lastMoveState = moveState;
+        }
     }
 
     private void HandleMouseLook()
@@ -173,4 +191,22 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    void SwitchGun(int gunIndex)
+{
+    if (gunIndex < 0 || gunIndex >= allGuns.Length) return;
+
+    if (gunIndex == currentGunIndex) return; // 已是当前武器，跳过
+
+    // 关闭当前武器
+    if (activeGun != null)
+    {
+        activeGun.gameObject.SetActive(false);
+    }
+
+    // 启用新武器
+    activeGun = allGuns[gunIndex];
+    activeGun.gameObject.SetActive(true);
+    currentGunIndex = gunIndex;
+}
 }
