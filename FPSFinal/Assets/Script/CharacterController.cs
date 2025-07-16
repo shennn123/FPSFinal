@@ -50,19 +50,12 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleShooting();
         HandleAnimation();
-
         DetectPickup();
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SwitchGun(0); // ≤Ω«π
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SwitchGun(1); //  ÷«π
-        }
-
+        if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchGun(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchGun(1);
     }
+
 
     void DetectPickup()
     {
@@ -149,24 +142,17 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0) && activeGun.canAutoFire)
         {
+
             if (activeGun.fireCounter <= 0f && AmmoController.instance.currentAmmo > 0)
             {
                 FireShot();
             }
-        }
 
+
+        }
         if (Input.GetMouseButtonDown(0) && !activeGun.canAutoFire)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 500f))
-            {
-                FirePoint.LookAt(hit.point);
-            }
-            else
-            {
-                FirePoint.LookAt(camTrans.position + camTrans.forward * 30f);
-            }
-
+               if (activeGun == null || AmmoController.instance == null) return;
             if (AmmoController.instance.currentAmmo > 0)
             {
                 FireShot();
@@ -176,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        if (!GunAnimatorController.instance.isReloading)
+        if (!AKAnimationController.instance.isReloading)
         {
             AmmoController.instance.currentAmmo--;
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
