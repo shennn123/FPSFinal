@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GunAnimatorController : MonoBehaviour
 {
+    public static GunAnimatorController instance;
     [Header("Animators")]
     public Animator handAnimator;  // 控制手部
     public Animator gunAnimator;   // 控制枪械
@@ -15,7 +16,19 @@ public class GunAnimatorController : MonoBehaviour
     public float fireRate = 0.2f; // 每0.2秒发一枪
     private float fireCooldown = 0f;
 
-    private bool isReloading = false;
+    public bool isReloading = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Update()
     {

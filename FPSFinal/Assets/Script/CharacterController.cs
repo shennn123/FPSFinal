@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     public Transform FirePoint;
 
     private Animator anim;
+    public Animator GunAnim;
+
+    [Header("Gun Aiming")]
+    public Transform gunHolder; // 挂在摄像机下面或者角色上都行
 
     void Awake() => instance = this;
 
@@ -94,15 +98,18 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseSensitivity;
 
-        // 水平旋转角色
-        transform.Rotate(Vector3.up * mouseInput.x);
+        transform.Rotate(Vector3.up * mouseInput.x); // 左右转身体
 
-        // 垂直旋转摄像机（限制角度）
         verticalRotation -= mouseInput.y;
-        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f);
-        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-    }
+        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); // 限制上下角度
 
+        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // 摄像机抬头低头
+
+        if (gunHolder != null)
+        {
+            gunHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // 枪也跟着抬头低头
+        }
+    }
     private void HandleShooting()
     {
         if (activeGun == null || AmmoController.instance == null) return;
@@ -136,16 +143,20 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        AmmoController.instance.currentAmmo--;
-        Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
-        activeGun.fireCounter = activeGun.firerate;
-        CrosshairController.instance?.TriggerFireKick();
+        if (!GunAnimatorController.instance.isReloading)
+        {
+            AmmoController.instance.currentAmmo--;
+            Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
+            activeGun.fireCounter = activeGun.firerate;
+            CrosshairController.instance?.TriggerFireKick();
+        }
     }
 
     private void HandleAnimation()
     {
         Vector3 flatMove = new Vector3(charCon.velocity.x, 0, charCon.velocity.z);
         anim.SetFloat("MoveSpeed", flatMove.magnitude);
+        GunAnim.SetFloat("MoveSpeed", flatMove.magnitude);
     }
 
     private void OnTriggerEnter(Collider other)
