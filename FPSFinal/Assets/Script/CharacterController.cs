@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
         HandleShooting();
         HandleAnimation();
 
+        DetectPickup();
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwitchGun(0); // 步枪
@@ -60,6 +62,19 @@ public class PlayerController : MonoBehaviour
             SwitchGun(1); // 手枪
         }
 
+    }
+
+    void DetectPickup()
+    {
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, 3f)) // 3米范围内
+        {
+            WeaponPickup pickup = hit.collider.GetComponent<WeaponPickup>();
+            if (pickup != null && Input.GetKeyDown(KeyCode.F))
+            {
+                pickup.OnPickUp();
+            }
+        }
     }
 
     private void HandleMovement()
