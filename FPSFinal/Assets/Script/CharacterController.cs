@@ -27,13 +27,15 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public Animator GunAnim;
 
+    public float currentSpeed = 0;
+
     [Header("Gun Aiming")]
     public Transform gunHolder; // 挂在摄像机下面或者角色上都行
-    public Transform gunHolder1; // 备用枪挂点
 
     private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // 放在类里
     
     public Gun[] guns; // 0 是步枪，1 是手枪
+    public GameObject[] gunPrefabs; // 每种枪对应的 Prefab（用于掉落）
     public int currentGunIndex = 0;
 
     void Awake() => instance = this;
@@ -51,7 +53,6 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleShooting();
         HandleAnimation();
-
         if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchGun(0);
         else if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchGun(1);
     }
@@ -159,9 +160,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleAnimation()
+    public void HandleAnimation()
     {
         Vector3 flatMove = new Vector3(charCon.velocity.x, 0, charCon.velocity.z);
+        currentSpeed = flatMove.magnitude;
         anim.SetFloat("MoveSpeed", flatMove.magnitude);
         GunAnim.SetFloat("MoveSpeed", flatMove.magnitude);
     }
@@ -181,14 +183,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SwitchGun(int gunIndex)
+    void SyncGunAnimatorState(Animator newAnimator)
+    {
+        if (newAnimator == null) return;
+
+        bool isRunning = false; // 你要根据自己已有变量替换这里
+        bool isWalking = false; // 你要根据自己已有变量替换这里
+        bool isFiring = false;
+
+        newAnimator.SetBool("isRunning", isRunning);
+        newAnimator.SetBool("isWalking", isWalking);
+        newAnimator.SetBool("isFiring", isFiring);
+
+    }
+
+
+    public void SwitchGun(int gunIndex)
 {
     if (gunIndex < 0 || gunIndex >= guns.Length) return;
 
     if (gunIndex == currentGunIndex) return; // 已是当前武器，跳过
 
-    // 关闭当前武器
-    if (activeGun != null)
+     SyncGunAnimatorState(GunAnim);
+        // 关闭当前武器
+        if (activeGun != null)
     {
         activeGun.gameObject.SetActive(false);
     }
@@ -197,5 +215,5 @@ public class PlayerController : MonoBehaviour
     activeGun = guns[gunIndex];
     activeGun.gameObject.SetActive(true);
     currentGunIndex = gunIndex;
-}
+    }
 }
