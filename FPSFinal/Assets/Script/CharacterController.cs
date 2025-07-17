@@ -29,9 +29,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Gun Aiming")]
     public Transform gunHolder; // 挂在摄像机下面或者角色上都行
+    public Transform gunHolder1; // 备用枪挂点
 
     private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // 放在类里
-    public Transform gunHolder1; // 备用枪挂点
+    
     public Gun[] guns; // 0 是步枪，1 是手枪
     public int currentGunIndex = 0;
 
