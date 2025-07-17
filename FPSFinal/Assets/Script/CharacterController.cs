@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour
     public Transform gunHolder; // 挂在摄像机下面或者角色上都行
 
     private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // 放在类里
-
-    public Gun[] allGuns; // 0 是步枪，1 是手枪
-    private int currentGunIndex = 0;
+    public Transform gunHolder1; // 备用枪挂点
+    public Gun[] guns; // 0 是步枪，1 是手枪
+    public int currentGunIndex = 0;
 
     void Awake() => instance = this;
 
@@ -50,25 +50,12 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleShooting();
         HandleAnimation();
-        DetectPickup();
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchGun(0);
         else if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchGun(1);
     }
 
 
-    void DetectPickup()
-    {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, 3f)) // 3米范围内
-        {
-            WeaponPickup pickup = hit.collider.GetComponent<WeaponPickup>();
-            if (pickup != null && Input.GetKeyDown(KeyCode.F))
-            {
-                pickup.OnPickUp();
-            }
-        }
-    }
 
     private void HandleMovement()
     {
@@ -195,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
     void SwitchGun(int gunIndex)
 {
-    if (gunIndex < 0 || gunIndex >= allGuns.Length) return;
+    if (gunIndex < 0 || gunIndex >= guns.Length) return;
 
     if (gunIndex == currentGunIndex) return; // 已是当前武器，跳过
 
@@ -206,7 +193,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 启用新武器
-    activeGun = allGuns[gunIndex];
+    activeGun = guns[gunIndex];
     activeGun.gameObject.SetActive(true);
     currentGunIndex = gunIndex;
 }
