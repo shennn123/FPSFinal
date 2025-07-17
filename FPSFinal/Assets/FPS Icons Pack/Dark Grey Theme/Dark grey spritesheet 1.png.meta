@@ -1,0 +1,1434 @@
+fileFormatVersion: 2
+guid: 2f84b5c8ce2b18549a175522847db7d6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 45240
+  packageName: FPS Icons Pack
+  packageVersion: 1.0
+  assetPath: Assets/FPS Icons Pack/Dark Grey Theme/Dark grey spritesheet 1.png
+  uploadId: 79695
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: DGT Bullet 1
+  - first:
+      213: 21300002
+    second: DGT Bullet 2
+  - first:
+      213: 21300004
+    second: DGT Bullet 3
+  - first:
+      213: 21300006
+    second: DGT Bullet 4
+  - first:
+      213: 21300008
+    second: DGT Bullet 5
+  - first:
+      213: 21300010
+    second: DGT Bullet 6
+  - first:
+      213: 21300012
+    second: DGT Bullet 7
+  - first:
+      213: 21300014
+    second: DGT Bullet 8
+  - first:
+      213: 21300016
+    second: DGT Bullet 9
+  - first:
+      213: 21300018
+    second: DGT Bullet 10
+  - first:
+      213: 21300020
+    second: DGT Handgrenade 1
+  - first:
+      213: 21300022
+    second: DGT Handgrenade 2
+  - first:
+      213: 21300024
+    second: DGT Tank 1
+  - first:
+      213: 21300026
+    second: DGT Handgrenade 3
+  - first:
+      213: 21300028
+    second: DGT Handgrenade 4
+  - first:
+      213: 21300030
+    second: DGT Handgrenade 5
+  - first:
+      213: 21300032
+    second: DGT Handgrenade 6
+  - first:
+      213: 21300034
+    second: DGT Handgrenade 7
+  - first:
+      213: 21300036
+    second: DGT Handgrenade 8
+  - first:
+      213: 21300038
+    second: DGT Handgrenade 9
+  - first:
+      213: 21300040
+    second: DGT Tank 2
+  - first:
+      213: 21300042
+    second: DGT Jet 1
+  - first:
+      213: 21300044
+    second: DGT Jet 2
+  - first:
+      213: 21300046
+    second: DGT Explosive
+  - first:
+      213: 21300048
+    second: DGT Explosive remote
+  - first:
+      213: 21300050
+    second: DGT Healthpack
+  - first:
+      213: 21300052
+    second: DGT Health
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DGT Bullet 1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 3449
+        width: 178
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 89, y: 173}
+        - {x: 75, y: 203}
+        - {x: -57, y: 203}
+        - {x: -89, y: 189}
+        - {x: -89, y: -203}
+        - {x: 89, y: -203}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 2
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 3449
+        width: 186
+        height: 414
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 93, y: 141}
+        - {x: 79, y: 207}
+        - {x: -77, y: 207}
+        - {x: -93, y: 149}
+        - {x: -93, y: -207}
+        - {x: 93, y: -207}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 3
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 3449
+        width: 180
+        height: 516
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 90, y: 201}
+        - {x: 77, y: 258}
+        - {x: -83, y: 258}
+        - {x: -90, y: 213}
+        - {x: -90, y: -258}
+        - {x: 90, y: -258}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 4
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 3449
+        width: 182
+        height: 566
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 91, y: 225}
+        - {x: 77, y: 283}
+        - {x: -91, y: 283}
+        - {x: -91, y: -283}
+        - {x: 91, y: -283}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 5
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 3449
+        width: 212
+        height: 572
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 106, y: 286}
+        - {x: -105, y: 286}
+        - {x: -105, y: -286}
+        - {x: 106, y: -286}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 6
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 2421
+        width: 164
+        height: 987
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 82, y: 231}
+        - {x: 39, y: 493.5}
+        - {x: -21, y: 493.5}
+        - {x: -65, y: 343}
+        - {x: -81, y: 259}
+        - {x: -81, y: -493}
+        - {x: 82, y: -493}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 7
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 2421
+        width: 108
+        height: 632
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 54, y: 87}
+        - {x: 35, y: 307}
+        - {x: 23, y: 316}
+        - {x: -25, y: 316}
+        - {x: -53, y: 191}
+        - {x: -53, y: -316}
+        - {x: 54, y: -316}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 8
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 2421
+        width: 238
+        height: 488
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 119, y: -1}
+        - {x: 113, y: 243}
+        - {x: 113, y: 244}
+        - {x: -119, y: 244}
+        - {x: -119, y: -244}
+        - {x: 119, y: -244}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 9
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 2421
+        width: 234
+        height: 522
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 117, y: -9}
+        - {x: 115, y: 259}
+        - {x: 111, y: 261}
+        - {x: -109, y: 261}
+        - {x: -117, y: -69}
+        - {x: -117, y: -261}
+        - {x: 117, y: -261}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Bullet 10
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 2419
+        width: 196
+        height: 612
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 98, y: -21}
+        - {x: 93, y: 306}
+        - {x: -95, y: 306}
+        - {x: -98, y: -29}
+        - {x: -98, y: -305}
+        - {x: 98, y: -305}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 1
+      rect:
+        serializedVersion: 2
+        x: 3595
+        y: 3396
+        width: 450
+        height: 641
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 95, y: -246}
+        - {x: 111, y: -210}
+        - {x: 123, y: -154}
+        - {x: 131, y: -78}
+        - {x: 111, y: -2}
+        - {x: 99, y: 34}
+        - {x: 135, y: -62}
+        - {x: 111, y: -298}
+        - {x: 123, y: -320.5}
+        - {x: 179, y: -320.5}
+        - {x: 225, y: -222}
+        - {x: 225, y: 320.5}
+        - {x: -77, y: 320.5}
+        - {x: -165, y: 286}
+        - {x: -225, y: 158}
+        - {x: -225, y: -226}
+        - {x: -169, y: -320.5}
+        - {x: 15, y: -320.5}
+      - - {x: 147, y: 150}
+        - {x: 147, y: 162}
+        - {x: 139, y: 174}
+        - {x: 139, y: 182}
+        - {x: 103, y: 258}
+        - {x: 95, y: 266}
+        - {x: 91, y: 274}
+        - {x: 103, y: 278}
+        - {x: 135, y: 278}
+        - {x: 139, y: 274}
+        - {x: 147, y: 274}
+        - {x: 159, y: 266}
+        - {x: 175, y: 250}
+        - {x: 187, y: 230}
+        - {x: 187, y: 190}
+        - {x: 175, y: 170}
+        - {x: 151, y: 146}
+      - - {x: -121, y: -14}
+        - {x: -126.33331, y: -11.333313}
+        - {x: -117, y: -2}
+        - {x: -109, y: -10}
+        - {x: -117, y: -10}
+        - {x: -121, y: -18}
+      - - {x: 19, y: -14}
+        - {x: 10, y: -11}
+        - {x: 19, y: -2}
+        - {x: 29, y: -12}
+        - {x: 23, y: -18}
+      - - {x: -125, y: -122}
+        - {x: -137, y: -114}
+        - {x: -129, y: -106}
+        - {x: -117, y: -118}
+        - {x: -125, y: -126}
+      - - {x: 27, y: -122}
+        - {x: 19, y: -118}
+        - {x: 31, y: -106}
+        - {x: 31, y: -110}
+        - {x: 39, y: -114}
+        - {x: 27, y: -126}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 2
+      rect:
+        serializedVersion: 2
+        x: 3074
+        y: 3372
+        width: 464
+        height: 563
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 232, y: -234}
+        - {x: 232, y: 250}
+        - {x: 204, y: 281.5}
+        - {x: -64, y: 281.5}
+        - {x: -92, y: 278}
+        - {x: -232, y: 30}
+        - {x: -232, y: -242}
+        - {x: -168, y: -281.5}
+        - {x: 192, y: -281.5}
+      - - {x: 160, y: 146}
+        - {x: 152, y: 170}
+        - {x: 144, y: 182}
+        - {x: 140, y: 202}
+        - {x: 132, y: 214}
+        - {x: 124, y: 242}
+        - {x: 152, y: 238}
+        - {x: 164, y: 234}
+        - {x: 184, y: 214}
+        - {x: 192, y: 202}
+        - {x: 192, y: 170}
+        - {x: 188, y: 166}
+        - {x: 184, y: 150}
+        - {x: 164, y: 134}
+        - {x: 164, y: 130}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Tank 1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 1831
+        width: 1063
+        height: 499
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 531.5, y: -201}
+        - {x: 531.5, y: 19}
+        - {x: 517, y: 107}
+        - {x: 269, y: 249.5}
+        - {x: -183, y: 249.5}
+        - {x: -447, y: 207}
+        - {x: -439, y: 127}
+        - {x: -531, y: 7}
+        - {x: -531, y: -209}
+        - {x: -519, y: -249}
+        - {x: 489, y: -249}
+      - - {x: -91, y: 39}
+        - {x: -83, y: 47}
+        - {x: -73, y: 37}
+        - {x: -79, y: 31}
+        - {x: -79, y: 27}
+        - {x: -87, y: 27}
+        - {x: -87, y: 35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 3
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 3374
+        width: 462
+        height: 564
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 231, y: -250}
+        - {x: 231, y: 282}
+        - {x: -83, y: 282}
+        - {x: -231, y: 150}
+        - {x: -231, y: -186}
+        - {x: -207, y: -214}
+        - {x: -147, y: -282}
+        - {x: 113, y: -282}
+      - - {x: 125, y: 242}
+        - {x: 153, y: 242}
+        - {x: 157, y: 238}
+        - {x: 165, y: 238}
+        - {x: 185, y: 218}
+        - {x: 193, y: 206}
+        - {x: 193, y: 166}
+        - {x: 185, y: 154}
+        - {x: 165, y: 134}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 4
+      rect:
+        serializedVersion: 2
+        x: 3572
+        y: 2485
+        width: 425
+        height: 776
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 212.5, y: -9}
+        - {x: 212.5, y: 388}
+        - {x: -190, y: 388}
+        - {x: -212.5, y: 251}
+        - {x: -212.5, y: -229}
+        - {x: -174, y: -217}
+        - {x: -158, y: -381}
+        - {x: -158, y: -388}
+        - {x: 122, y: -388}
+      - - {x: 114, y: 191}
+        - {x: 98, y: 207}
+        - {x: 62, y: 207}
+        - {x: 62, y: 299}
+        - {x: 74, y: 311}
+        - {x: 74, y: 343}
+        - {x: 114, y: 343}
+        - {x: 118, y: 339}
+        - {x: 126, y: 339}
+        - {x: 138, y: 331}
+        - {x: 154, y: 315}
+        - {x: 170, y: 287}
+        - {x: 170, y: 243}
+        - {x: 166, y: 239}
+        - {x: 162, y: 223}
+        - {x: 146, y: 203}
+        - {x: 142, y: 203}
+        - {x: 126, y: 191}
+        - {x: 114, y: 187}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 5
+      rect:
+        serializedVersion: 2
+        x: 3055
+        y: 2482
+        width: 435
+        height: 778
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 139, y: -384}
+        - {x: 217.5, y: -144}
+        - {x: 217.5, y: 389}
+        - {x: -137, y: 389}
+        - {x: -213, y: 344}
+        - {x: -213, y: -252}
+        - {x: -185, y: -388}
+        - {x: 127, y: -388}
+      - - {x: 123, y: 196}
+        - {x: 107, y: 212}
+        - {x: 67, y: 212}
+        - {x: 67, y: 304}
+        - {x: 79, y: 316}
+        - {x: 79, y: 348}
+        - {x: 107, y: 352}
+        - {x: 111, y: 348}
+        - {x: 143, y: 340}
+        - {x: 163, y: 320}
+        - {x: 175, y: 292}
+        - {x: 179, y: 288}
+        - {x: 179, y: 252}
+        - {x: 175, y: 248}
+        - {x: 155, y: 212}
+        - {x: 123, y: 192}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 6
+      rect:
+        serializedVersion: 2
+        x: 2508
+        y: 2478
+        width: 431
+        height: 763
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 212, y: -374}
+        - {x: 212, y: 314}
+        - {x: 188, y: 374}
+        - {x: 180, y: 381.5}
+        - {x: -168, y: 381.5}
+        - {x: -215.5, y: 350}
+        - {x: -215.5, y: -6}
+        - {x: -180, y: -186}
+        - {x: -68, y: -170}
+        - {x: -56, y: -158}
+        - {x: -48, y: -146}
+        - {x: -80, y: -250}
+        - {x: -92, y: -381.5}
+        - {x: 208, y: -381.5}
+      - - {x: -156, y: 198}
+        - {x: -156, y: 202}
+        - {x: -168, y: 230}
+        - {x: -172, y: 270}
+        - {x: -168, y: 274}
+        - {x: -168, y: 286}
+        - {x: -148, y: 310}
+        - {x: -132, y: 326}
+        - {x: -112, y: 338}
+        - {x: -76, y: 342}
+        - {x: -72, y: 338}
+        - {x: -52, y: 338}
+        - {x: -60, y: 302}
+        - {x: -76, y: 282}
+        - {x: -124, y: 266}
+        - {x: -144, y: 250}
+        - {x: -140.24615, y: 186.18463}
+      - - {x: -80, y: 162}
+        - {x: -84, y: 166}
+        - {x: -84, y: 214}
+        - {x: -80, y: 214}
+        - {x: -84, y: 210}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 7
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 2476
+        width: 425
+        height: 766
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 212.5, y: 256}
+        - {x: 183, y: 383}
+        - {x: -185, y: 383}
+        - {x: -212.5, y: 340}
+        - {x: -212.5, y: 56}
+        - {x: -133, y: -192}
+        - {x: -49, y: -176}
+        - {x: -49, y: -144}
+        - {x: -41, y: -264}
+        - {x: -77, y: -252}
+        - {x: -89, y: -383}
+        - {x: 212.5, y: -383}
+      - - {x: -153, y: 196}
+        - {x: -165, y: 216}
+        - {x: -165, y: 224}
+        - {x: -169, y: 228}
+        - {x: -169, y: 272}
+        - {x: -165, y: 276}
+        - {x: -165, y: 284}
+        - {x: -157, y: 296}
+        - {x: -141, y: 316}
+        - {x: -105, y: 336}
+        - {x: -57, y: 336}
+        - {x: -49, y: 332}
+        - {x: -53, y: 328}
+        - {x: -57, y: 288}
+        - {x: -61, y: 280}
+        - {x: -69, y: 280}
+        - {x: -73, y: 276}
+        - {x: -81, y: 276}
+        - {x: -97, y: 268}
+        - {x: -121, y: 264}
+        - {x: -141, y: 248}
+        - {x: -141, y: 184}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 8
+      rect:
+        serializedVersion: 2
+        x: 3433
+        y: 1668
+        width: 624
+        height: 760
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 107, y: -296}
+        - {x: 171, y: -92}
+        - {x: 171, y: -36}
+        - {x: 179, y: -48}
+        - {x: 151, y: -352}
+        - {x: 167, y: -360}
+        - {x: 183, y: -364}
+        - {x: 312, y: -252}
+        - {x: 312, y: 380}
+        - {x: -269, y: 380}
+        - {x: -312, y: 92}
+        - {x: -312, y: -284}
+        - {x: -189, y: -380}
+        - {x: 47, y: -380}
+      - - {x: 207, y: 156}
+        - {x: 207, y: 164}
+        - {x: 203, y: 168}
+        - {x: 203, y: 176}
+        - {x: 199, y: 180}
+        - {x: 199, y: 188}
+        - {x: 195, y: 192}
+        - {x: 195, y: 200}
+        - {x: 191, y: 204}
+        - {x: 183, y: 236}
+        - {x: 175, y: 248}
+        - {x: 175, y: 256}
+        - {x: 135, y: 332}
+        - {x: 143, y: 336}
+        - {x: 155, y: 336}
+        - {x: 159, y: 340}
+        - {x: 183, y: 340}
+        - {x: 187, y: 336}
+        - {x: 199, y: 336}
+        - {x: 203, y: 332}
+        - {x: 211, y: 332}
+        - {x: 223, y: 324}
+        - {x: 247, y: 304}
+        - {x: 267, y: 268}
+        - {x: 267, y: 220}
+        - {x: 263, y: 216}
+        - {x: 259, y: 196}
+        - {x: 251, y: 188}
+        - {x: 251, y: 184}
+        - {x: 227, y: 164}
+        - {x: 211, y: 152}
+      - - {x: 111, y: 168}
+        - {x: 83, y: 208}
+        - {x: 88.599976, y: 213.59998}
+        - {x: 95, y: 204}
+        - {x: 95, y: 200}
+        - {x: 103, y: 188}
+        - {x: 117.54547, y: 164.7273}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Handgrenade 9
+      rect:
+        serializedVersion: 2
+        x: 2722
+        y: 1665
+        width: 610
+        height: 765
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: -200, y: -382.5}
+        - {x: 44, y: -382.5}
+        - {x: 136, y: -231}
+        - {x: 156, y: -119}
+        - {x: 156, y: -67}
+        - {x: -78, y: -67}
+        - {x: 148, y: -63}
+        - {x: 165.4737, y: -63}
+        - {x: 172, y: -187}
+        - {x: 152, y: -347}
+        - {x: 160, y: -359}
+        - {x: 200, y: -359}
+        - {x: 305, y: 69}
+        - {x: 305, y: 325}
+        - {x: 244, y: 382.5}
+        - {x: -172, y: 382.5}
+        - {x: -304, y: 169}
+        - {x: -304, y: -179}
+      - - {x: 204, y: 161}
+        - {x: 204, y: 173}
+        - {x: 200, y: 177}
+        - {x: 200, y: 185}
+        - {x: 192, y: 201}
+        - {x: 192, y: 209}
+        - {x: 180, y: 233}
+        - {x: 180, y: 241}
+        - {x: 136, y: 329}
+        - {x: 136, y: 333}
+        - {x: 140, y: 333}
+        - {x: 144, y: 337}
+        - {x: 196, y: 337}
+        - {x: 200, y: 333}
+        - {x: 208, y: 333}
+        - {x: 220, y: 325}
+        - {x: 244, y: 305}
+        - {x: 264, y: 269}
+        - {x: 268, y: 233}
+        - {x: 264, y: 229}
+        - {x: 264, y: 213}
+        - {x: 248, y: 185}
+        - {x: 228, y: 165}
+        - {x: 208, y: 153}
+      - - {x: 112, y: 165}
+        - {x: 80, y: 205}
+        - {x: 86.400024, y: 211.40002}
+        - {x: 88, y: 205}
+        - {x: 100, y: 185}
+        - {x: 108, y: 177}
+        - {x: 116, y: 163.66669}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Tank 2
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1248
+        width: 1063
+        height: 497
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 531.5, y: 74}
+        - {x: 249, y: 248.5}
+        - {x: -303, y: 248.5}
+        - {x: -531, y: 222}
+        - {x: -531, y: -248.5}
+        - {x: 531.5, y: -248.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Jet 1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 537
+        width: 866
+        height: 652
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 423, y: -171}
+        - {x: 433, y: -87}
+        - {x: 433, y: 173}
+        - {x: 283, y: 301}
+        - {x: -309, y: 326}
+        - {x: -429, y: 326}
+        - {x: -429, y: 309}
+        - {x: -169, y: -159}
+        - {x: -17, y: -326}
+        - {x: 187, y: -326}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Jet 2
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 55
+        width: 1333
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 345, y: -27}
+        - {x: 665, y: 101}
+        - {x: 665, y: 160.5}
+        - {x: -666.5, y: 160.5}
+        - {x: -666.5, y: -139}
+        - {x: -651, y: -155}
+        - {x: -595, y: -159}
+        - {x: -399, y: -159}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Explosive
+      rect:
+        serializedVersion: 2
+        x: 3209
+        y: 858
+        width: 833
+        height: 625
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 416.5, y: 216}
+        - {x: 107, y: 312.5}
+        - {x: -313, y: 312.5}
+        - {x: -416.5, y: 224}
+        - {x: -416.5, y: -312}
+        - {x: 416.5, y: -312}
+      - - {x: -125, y: 268}
+        - {x: -129, y: 268}
+        - {x: -130.81818, y: 271.63635}
+        - {x: -109, y: 268}
+        - {x: -85, y: 252}
+        - {x: -53, y: 216}
+      - - {x: -253, y: 216}
+        - {x: -241, y: 232}
+        - {x: -233, y: 244}
+        - {x: -157, y: 232}
+        - {x: -137.79999, y: 216}
+      - - {x: 39, y: -32}
+        - {x: 39, y: 140}
+        - {x: 347, y: 140}
+        - {x: 347, y: -32}
+      - - {x: 43, y: -144}
+        - {x: 43, y: -92}
+        - {x: 51, y: -88}
+        - {x: 47, y: -92}
+        - {x: 47, y: -104}
+        - {x: 55, y: -112}
+        - {x: 55, y: -144}
+        - {x: 59, y: -148}
+      - - {x: 163, y: -92}
+        - {x: 171, y: -88}
+        - {x: 163, y: -96}
+      - - {x: 223, y: -92}
+        - {x: 223, y: -96}
+        - {x: 215, y: -88}
+      - - {x: 347, y: -92}
+        - {x: 347, y: -96}
+        - {x: 339, y: -88}
+      - - {x: 95, y: -144}
+        - {x: 95, y: -92}
+        - {x: 107, y: -92}
+        - {x: 107, y: -144}
+        - {x: 91, y: -148}
+      - - {x: 283, y: -92}
+        - {x: 291, y: -92}
+        - {x: 283, y: -104}
+        - {x: 295, y: -116}
+        - {x: 283, y: -128}
+      - - {x: 43, y: -192}
+        - {x: 63, y: -188}
+        - {x: 43, y: -220}
+      - - {x: 283, y: -192}
+        - {x: 295, y: -188}
+        - {x: 283, y: -204}
+      - - {x: 163, y: -192}
+        - {x: 167, y: -192}
+        - {x: 163, y: -200}
+      - - {x: 339, y: -204}
+        - {x: 343, y: -200}
+        - {x: 343, y: -192}
+        - {x: 347, y: -192}
+        - {x: 347, y: -212}
+      - - {x: 219, y: -204}
+        - {x: 223, y: -200}
+        - {x: 223, y: -212}
+      - - {x: 103, y: -236}
+        - {x: 107, y: -232}
+        - {x: 107, y: -236}
+      - - {x: 175, y: -120}
+        - {x: 163, y: -132}
+        - {x: 163, y: -108}
+      - - {x: 215, y: -124}
+        - {x: 223, y: -116}
+        - {x: 223, y: -132}
+      - - {x: 340.14288, y: -146.2857}
+        - {x: 347, y: -136}
+        - {x: 347, y: -144}
+      - - {x: 295, y: -148}
+        - {x: 283, y: -144}
+        - {x: 283, y: -136}
+      - - {x: 291, y: -240}
+        - {x: 283, y: -236}
+        - {x: 283, y: -228}
+      - - {x: 47.799988, y: -236.79999}
+        - {x: 43, y: -236}
+        - {x: 43, y: -232}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Explosive remote
+      rect:
+        serializedVersion: 2
+        x: 2831
+        y: 861
+        width: 330
+        height: 698
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 165, y: -229}
+        - {x: 165, y: 251}
+        - {x: -21, y: 349}
+        - {x: -165, y: 349}
+        - {x: -165, y: -349}
+        - {x: 151, y: -349}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Healthpack
+      rect:
+        serializedVersion: 2
+        x: 3401
+        y: 97
+        width: 616
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 308, y: 308}
+        - {x: -308, y: 308}
+        - {x: -308, y: -308}
+        - {x: 308, y: -308}
+      - - {x: -29, y: -161}
+        - {x: -29, y: -45}
+        - {x: -41, y: -33}
+        - {x: -161, y: -33}
+        - {x: -41, y: 31}
+        - {x: -29, y: 43}
+        - {x: -29, y: 159}
+        - {x: 31, y: 159}
+        - {x: 15, y: 35}
+        - {x: 43, y: 31}
+        - {x: 143, y: -29}
+        - {x: 43, y: -33}
+        - {x: 31, y: -45}
+        - {x: 31, y: -161}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DGT Health
+      rect:
+        serializedVersion: 2
+        x: 2857
+        y: 181
+        width: 446
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 223, y: -57}
+        - {x: 223, y: 55}
+        - {x: 53, y: 224}
+        - {x: -51, y: 224}
+        - {x: -223, y: 55}
+        - {x: -223, y: -57}
+        - {x: -55, y: -224}
+        - {x: 57, y: -224}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 43e00951b9a678c4886116d13e863650
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 0c2ae78f78208b1478580f5545d08fec, type: 3}
+      name: white
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DGT Bullet 1: 21300000
+      DGT Bullet 10: 21300018
+      DGT Bullet 2: 21300002
+      DGT Bullet 3: 21300004
+      DGT Bullet 4: 21300006
+      DGT Bullet 5: 21300008
+      DGT Bullet 6: 21300010
+      DGT Bullet 7: 21300012
+      DGT Bullet 8: 21300014
+      DGT Bullet 9: 21300016
+      DGT Explosive: 21300046
+      DGT Explosive remote: 21300048
+      DGT Handgrenade 1: 21300020
+      DGT Handgrenade 2: 21300022
+      DGT Handgrenade 3: 21300026
+      DGT Handgrenade 4: 21300028
+      DGT Handgrenade 5: 21300030
+      DGT Handgrenade 6: 21300032
+      DGT Handgrenade 7: 21300034
+      DGT Handgrenade 8: 21300036
+      DGT Handgrenade 9: 21300038
+      DGT Health: 21300052
+      DGT Healthpack: 21300050
+      DGT Jet 1: 21300042
+      DGT Jet 2: 21300044
+      DGT Tank 1: 21300024
+      DGT Tank 2: 21300040
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
