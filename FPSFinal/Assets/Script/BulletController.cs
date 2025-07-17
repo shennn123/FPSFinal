@@ -34,25 +34,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /*
-        if(other.CompareTag("Target") && dmageEnemy) // Check if the bullet collides with an object tagged as "Enemy"
-        {
-            other.gameObject.GetComponent<EnemyHealthController>().DamageEnemy(Damage); // Call the DamageEnemy method on the enemy's health controller  
-            //Destroy(other.transform.parent.gameObject); // Destroy the enemy object
-        }
-        if (other.CompareTag("Head") && dmageEnemy) // Check if the bullet collides with an object tagged as "Enemy"
-        {
-            
-            other.gameObject.GetComponent<EnemyHealthController>().DamageEnemy(Damage+1); // Call the DamageEnemy method on the enemy's health controller  
-            //Destroy(other.transform.parent.gameObject); // Destroy the enemy object
-        }
-
-        if (other.gameObject.CompareTag("Player") && dmagePlayer) // Check if the bullet collides with the player
-        {
-            PlayerHealthController.instance.DamagePlayer(Damage); // Call the DamagePlayer method on the player's health controller 
-            Debug.Log(1); // Call the DamagePlayer method on the player's health controller
-        }
-        */
+       
         IDamageable damageable = other.GetComponent<IDamageable>(); // Get the IDamageable component from the collided object
         if (damageable != null) // Check if the collided object has an IDamageable component
         {

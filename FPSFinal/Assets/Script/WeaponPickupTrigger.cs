@@ -12,19 +12,22 @@ public class WeaponPickupTrigger : MonoBehaviour
 
             PlayerController pc = PlayerController.instance;
 
-            // 方法一：用玩家的移动输入向量判断
-            if (pc.currentSpeed > 0.1f)
+            if (pc.currentGunIndex == 0 && gunIndexInAllGuns != 0)
             {
-                Debug.Log("不能在移动时捡枪！");
+                Debug.Log("当前手上是步枪，不能捡手枪！");
                 return;
             }
-
+            else if (pc.currentGunIndex == 1 && gunIndexInAllGuns != 1)
+            {
+                Debug.Log("当前手上是手枪，不能捡步枪！");
+                return;
+            }
             // 获取当前手上的枪和地上的枪
             GameObject currentGun = pc.guns[pc.currentGunIndex].gameObject;
             GameObject groundGun = pc.guns[gunIndexInAllGuns].gameObject;
 
             // 设置掉落位置稍微上浮
-            Vector3 dropPos = transform.parent.position+ Vector3.up * 1.3f;
+            Vector3 dropPos = transform.parent.position + Vector3.up * 1.3f;
 
             GameObject droppedGun = Instantiate(pc.gunPrefabs[pc.currentGunIndex], dropPos, Quaternion.identity);
 
@@ -51,7 +54,12 @@ public class WeaponPickupTrigger : MonoBehaviour
             pc.activeGun.gameObject.SetActive(true);
 
             //移除原 trigger 对象（地上旧枪）
-            Destroy(transform.parent.gameObject);
+            Transform topParent = transform;
+            while (topParent.parent != null)
+            {
+                topParent = topParent.parent;
+            }
+            Destroy(topParent.gameObject);
         }
 
     }

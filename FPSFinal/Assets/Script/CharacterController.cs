@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public Transform gunHolder; // 挂在摄像机下面或者角色上都行
 
     private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // 放在类里
-    
+
     public Gun[] guns; // 0 是步枪，1 是手枪
     public GameObject[] gunPrefabs; // 每种枪对应的 Prefab（用于掉落）
     public int currentGunIndex = 0;
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && !activeGun.canAutoFire)
         {
-               if (activeGun == null || AmmoController.instance == null) return;
+            if (activeGun == null || AmmoController.instance == null) return;
             if (AmmoController.instance.currentAmmo > 0)
             {
                 FireShot();
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        if (!AKAnimationController.instance.isReloading)
+        if (!AKAnimationController.instance.isReloading && !PistolAnimatorController.instance.isReloading)
         {
             AmmoController.instance.currentAmmo--;
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
@@ -199,21 +199,22 @@ public class PlayerController : MonoBehaviour
 
 
     public void SwitchGun(int gunIndex)
-{
-    if (gunIndex < 0 || gunIndex >= guns.Length) return;
+    {
+        if (gunIndex < 0 || gunIndex >= guns.Length) return;
 
-    if (gunIndex == currentGunIndex) return; // 已是当前武器，跳过
+        if (gunIndex == currentGunIndex) return; // 已是当前武器，跳过
 
-     SyncGunAnimatorState(GunAnim);
+        SyncGunAnimatorState(GunAnim);
         // 关闭当前武器
         if (activeGun != null)
-    {
-        activeGun.gameObject.SetActive(false);
+        {
+            activeGun.gameObject.SetActive(false);
+        }
+
+        // 启用新武器
+        activeGun = guns[gunIndex];
+        activeGun.gameObject.SetActive(true);
+        currentGunIndex = gunIndex;
     }
 
-    // 启用新武器
-    activeGun = guns[gunIndex];
-    activeGun.gameObject.SetActive(true);
-    currentGunIndex = gunIndex;
-    }
 }
