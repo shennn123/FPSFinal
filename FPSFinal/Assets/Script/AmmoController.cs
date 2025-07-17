@@ -21,12 +21,12 @@ public class AmmoController : MonoBehaviour
     void Start()
     {
         currentAmmo = MaxAmmo; // Initialize current ammo to maximum ammo
-        UIController.instance.ammoText.text = "Ammo: " + currentAmmo + "/" + MaxAmmo; // Set the initial health text
+        //UIController.instance.ammoText.text = "Ammo: " + currentAmmo + "/" + MaxAmmo; // Set the initial health text
     }
 
     // Update is called once per frame
     void Update()
     {
-        UIController.instance.ammoText.text = "Ammo: " + currentAmmo + "/" + MaxAmmo; // Set the initial health text
+       // UIController.instance.ammoText.text = "Ammo: " + currentAmmo + "/" + MaxAmmo; // Set the initial health text
     }
 }

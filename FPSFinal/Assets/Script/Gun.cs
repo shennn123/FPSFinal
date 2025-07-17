@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+
     public GameObject bulletPrefab; // Prefab for the bullet
 
     public bool canAutoFire = false; // Whether the gun can auto-fire

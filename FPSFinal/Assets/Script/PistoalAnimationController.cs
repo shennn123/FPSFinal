@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GunAnimatorController : MonoBehaviour
+public class PistolAnimatorController : MonoBehaviour
 {
-    public static GunAnimatorController instance;
+    public static PistolAnimatorController instance;
     [Header("Animators")]
     public Animator handAnimator;  // 控制手部
     public Animator gunAnimator;   // 控制枪械
@@ -14,7 +14,7 @@ public class GunAnimatorController : MonoBehaviour
 
     [Header("Fire Settings")]
     public float fireRate = 0.2f; // 每0.2秒发一枪
-    private float fireCooldown = 0f;
+    private float fireCooldown = 0.3f;
 
     public bool isReloading = false;
 
@@ -38,16 +38,10 @@ public class GunAnimatorController : MonoBehaviour
             StartReload();
         }
 
-        // 开火：长按左键
-        if (Input.GetMouseButton(0) && !isReloading)
+        // 单点射击：只在点击瞬间触发
+        if (Input.GetMouseButtonDown(0) && !isReloading)
         {
             TryFire();
-        }
-
-        // 松开鼠标左键时停止射击动画
-        if (Input.GetMouseButtonUp(0))
-        {
-            StopFire();
         }
 
         // 冷却计时
@@ -57,14 +51,15 @@ public class GunAnimatorController : MonoBehaviour
         }
     }
 
+
     private void StartReload()
     {
         isReloading = true;
 
         if (handAnimator && gunAnimator)
         {
-            handAnimator.SetTrigger("Reload");
-            gunAnimator.SetTrigger("Reload");
+            handAnimator.SetTrigger("IsReloading");
+            gunAnimator.SetTrigger("IsReloading");
         }
 
         if (reloadSound != null && audioSource != null)
@@ -72,7 +67,7 @@ public class GunAnimatorController : MonoBehaviour
             audioSource.PlayOneShot(reloadSound);
         }
 
-        Invoke(nameof(ResetReload), 2.3f); // 与换弹动画时长一致
+        Invoke(nameof(ResetReload), 2.35f); // 与换弹动画时长一致
     }
 
     private void ResetReload()
@@ -93,22 +88,13 @@ public class GunAnimatorController : MonoBehaviour
     {
         if (handAnimator && gunAnimator)
         {
-            handAnimator.SetBool("IsFiring", true);
-            gunAnimator.SetBool("IsFiring", true);
+            handAnimator.SetTrigger("IsFire");
+            gunAnimator.SetTrigger("IsFire");
         }
 
         if (fireSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(fireSound);
-        }
-    }
-
-    private void StopFire()
-    {
-        if (handAnimator && gunAnimator)
-        {
-            handAnimator.SetBool("IsFiring", false);
-            gunAnimator.SetBool("IsFiring", false);
         }
     }
 }
