@@ -34,7 +34,7 @@ public class AmmoController : MonoBehaviour
     {
         if (currentAmmo < MaxAmmo)
         {
-            currentAmmo = MaxAmmo; // Reload to maximum ammo
+            currentAmmo = 30; // Reload to maximum ammo
             //UIController.instance.ammoText.text = "Ammo: " + currentAmmo + "/" + MaxAmmo; // Update the ammo text
             Debug.Log("Reloaded to max ammo: " + currentAmmo);
         }
