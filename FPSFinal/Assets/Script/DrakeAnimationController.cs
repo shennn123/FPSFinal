@@ -88,8 +88,8 @@ public class DrakeAnimationController : MonoBehaviour
     {
         if (handAnimator && gunAnimator)
         {
-            handAnimator.SetTrigger("IsFiring");
-            gunAnimator.SetTrigger("IsFiring");
+            handAnimator.SetTrigger("Fire");
+            gunAnimator.SetTrigger("Fire");
         }
 
         if (fireSound != null && audioSource != null)

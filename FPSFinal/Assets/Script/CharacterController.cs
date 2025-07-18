@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // 放在类里
 
-    public Gun[] guns; // 0 是步枪，1 是手枪
+    public Gun[] guns; 
     public GameObject[] gunPrefabs; // 每种枪对应的 Prefab（用于掉落）
     public int currentGunIndex = 0;
 
@@ -54,7 +54,10 @@ public class PlayerController : MonoBehaviour
         HandleShooting();
         HandleAnimation();
         if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchGun(0);
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchGun(1);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchGun(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchGun(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchGun(3);
+
     }
 
 
@@ -151,7 +154,7 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        if (!AKAnimationController.instance.isReloading && !PistolAnimatorController.instance.isReloading && !DrakeAnimationController.instance.isReloading)
+        if (!AKAnimationController.instance.isReloading && !PistolAnimatorController.instance.isReloading && !DrakeAnimationController.instance.isReloading && !MP5AnimationController.instance.isReloading)
         {
             AmmoController.instance.currentAmmo--;
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
@@ -183,7 +186,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SyncGunAnimatorState(Animator newAnimator)
+    /*void SyncGunAnimatorState(Animator newAnimator)
     {
         if (newAnimator == null) return;
 
@@ -196,7 +199,7 @@ public class PlayerController : MonoBehaviour
         newAnimator.SetBool("isFiring", isFiring);
 
     }
-
+    */
 
     public void SwitchGun(int gunIndex)
     {
@@ -204,7 +207,8 @@ public class PlayerController : MonoBehaviour
 
         if (gunIndex == currentGunIndex) return; // 已是当前武器，跳过
 
-        SyncGunAnimatorState(GunAnim);
+        //SyncGunAnimatorState(GunAnim);
+
         // 关闭当前武器
         if (activeGun != null)
         {

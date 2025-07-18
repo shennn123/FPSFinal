@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cf4069ff9a3624ea7b0d53653d5171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunIndexInAllGuns: 3
+  gunIndexInAllGuns: 2
   isPrimaryWeapon: 1
 --- !u!135 &8179768727530969928
 SphereCollider:

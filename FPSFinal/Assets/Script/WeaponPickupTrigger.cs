@@ -44,8 +44,6 @@ public class WeaponPickupTrigger : MonoBehaviour
 
             GameObject droppedGun = Instantiate(pc.gunPrefabs[pc.currentGunIndex], dropPos, dropRot);
 
-            droppedGun.transform.SetParent(null); // 确保不是角色子物体
-
             // 激活掉落枪 
             droppedGun.SetActive(true);
 
