@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        if (!AKAnimationController.instance.isReloading && !PistolAnimatorController.instance.isReloading)
+        if (!AKAnimationController.instance.isReloading && !PistolAnimatorController.instance.isReloading && !DrakeAnimationController.instance.isReloading)
         {
             AmmoController.instance.currentAmmo--;
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
