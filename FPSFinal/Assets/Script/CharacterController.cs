@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
     public GameObject[] gunPrefabs; // 每种枪对应的 Prefab（用于掉落）
     public int currentGunIndex = 0;
 
+    public bool gun1Unlocked = true;  // 默认第一把解锁
+    public bool gun2Unlocked = false;
+    public bool gun3Unlocked = false;
+    public bool gun4Unlocked = false;
+
     void Awake() => instance = this;
 
     void Start()
@@ -58,10 +63,10 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleShooting();
         HandleAnimation();
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchGun(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchGun(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchGun(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchGun(3);
+        if (Input.GetKeyDown(KeyCode.Alpha1) && gun1Unlocked) SwitchGun(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2) && gun2Unlocked) SwitchGun(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3) && gun3Unlocked) SwitchGun(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4) && gun4Unlocked) SwitchGun(3);
 
     }
 
