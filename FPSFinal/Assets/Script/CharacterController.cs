@@ -1,4 +1,7 @@
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier = 2.5f;
     public float jumpPower = 8f;
     public int maxJumpCount = 2;
+
+    private bool isReloading = false; // ÊÇ·ñÕýÔÚ»»µ¯ 
 
     private int jumpCount = 0;
     private Vector3 moveInput;
@@ -130,13 +135,13 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleShooting()
     {
-        if (activeGun == null || AmmoController.instance == null) return;
 
         if (Input.GetMouseButton(0) && activeGun.canAutoFire)
         {
 
             if (activeGun.fireCounter <= 0f && AmmoController.instance.currentAmmo > 0)
             {
+                Debug.Log("Firing shot");
                 FireShot();
             }
 
@@ -144,9 +149,10 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && !activeGun.canAutoFire)
         {
-            if (activeGun == null || AmmoController.instance == null) return;
+
             if (AmmoController.instance.currentAmmo > 0)
             {
+                Debug.Log("Firing shot");
                 FireShot();
             }
         }
@@ -154,8 +160,9 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        if (!AKAnimationController.instance.isReloading && !PistolAnimatorController.instance.isReloading && !DrakeAnimationController.instance.isReloading && !MP5AnimationController.instance.isReloading)
+        if (activeGun != null && !activeGun.isReloading && AmmoController.instance.currentAmmo>0)
         {
+            Debug.Log("Firing shot22");
             AmmoController.instance.currentAmmo--;
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
             activeGun.fireCounter = activeGun.firerate;

@@ -92,8 +92,7 @@ public class MP5AnimationController : MonoBehaviour
     private void TriggerFire()
     {
         if (handAnimator && gunAnimator)
-        {
-            handAnimator.SetBool("IsFiring1", true);
+        {   handAnimator.SetBool("IsFiring1", true);
             gunAnimator.SetBool("IsFiring1", true);
         }
 
