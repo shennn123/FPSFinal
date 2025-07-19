@@ -34,25 +34,33 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed = 0;
 
     [Header("Gun Aiming")]
-    public Transform gunHolder; // ¹ÒÔÚÉãÏñ»úÏÂÃæ»òÕß½ÇÉ«ÉÏ¶¼ĞĞ
+    public Transform gunHolder; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½É«ï¿½Ï¶ï¿½ï¿½ï¿½
 
-    private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // ·ÅÔÚÀàÀï
+    private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     public Gun[] guns; 
     public int currentGunIndex = 0;
 
-    public bool gun1Unlocked = true;  // Ä¬ÈÏµÚÒ»°Ñ½âËø
+    public bool gun1Unlocked = true;  // Ä¬ï¿½Ïµï¿½Ò»ï¿½Ñ½ï¿½ï¿½ï¿½
     public bool gun2Unlocked = false;
     public bool gun3Unlocked = false;
     public bool gun4Unlocked = false;
 
     void Awake() => instance = this;
 
+    [Header("UI Reference")]
+    public TMPro.TextMeshProUGUI ammoText;
+    public int MaxAmmo = 60;
+    [Header("Weapon UI")]
+    public Image weaponIcon; // æ˜¾ç¤ºå½“å‰æ­¦å™¨å›¾æ ‡çš„Imageç»„ä»¶
+    public Sprite[] weaponSprites; // 4ç§æ­¦å™¨çš„å›¾æ ‡ï¼ˆæŒ‰é¡ºåºå¯¹åº”ï¼‰
+
     void Start()
     {
         charCon = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
+        UpdateWeaponUI();
     }
 
     void Update()
@@ -112,7 +120,7 @@ public class PlayerController : MonoBehaviour
             moveState = PlayerMoveState.Run;
         }
 
-        // Ö»ÓĞ×´Ì¬ÕæµÄ±ä»¯²Åµ÷ÓÃ
+        // Ö»ï¿½ï¿½×´Ì¬ï¿½ï¿½Ä±ä»¯ï¿½Åµï¿½ï¿½ï¿½
         if (moveState != lastMoveState)
         {
             CrosshairController.instance?.SetSpreadState(moveState);
@@ -124,16 +132,16 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseSensitivity;
 
-        transform.Rotate(Vector3.up * mouseInput.x); // ×óÓÒ×ªÉíÌå
+        transform.Rotate(Vector3.up * mouseInput.x); // ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½
 
         verticalRotation -= mouseInput.y;
-        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); // ÏŞÖÆÉÏÏÂ½Ç¶È
+        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½Ç¶ï¿½
 
-        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // ÉãÏñ»úÌ§Í·µÍÍ·
+        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // ï¿½ï¿½ï¿½ï¿½ï¿½Ì§Í·ï¿½ï¿½Í·
 
         if (gunHolder != null)
         {
-            gunHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // Ç¹Ò²¸ú×ÅÌ§Í·µÍÍ·
+            gunHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // Ç¹Ò²ï¿½ï¿½ï¿½ï¿½Ì§Í·ï¿½ï¿½Í·
         }
     }
     private void HandleShooting()
@@ -167,15 +175,34 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Firing shot");
 
-            activeGun.currentAmmo--; // µ±Ç°Ç¹¿Ûµ¯
+            activeGun.currentAmmo--; // ï¿½ï¿½Ç°Ç¹ï¿½Ûµï¿½
+
+            // æ·»åŠ UIæ›´æ–°è°ƒç”¨
+            UpdateAmmoUI();
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
             activeGun.fireCounter = activeGun.firerate;
 
             CrosshairController.instance?.TriggerFireKick();
+
         }
     }
-
-
+    public void UpdateAmmoUI()
+    {
+        // ç¡®ä¿UIå¼•ç”¨ä¸ä¸ºç©º
+        if (ammoText != null)
+        {
+            // æ›´æ–°å¼¹è¯UIæ–‡æœ¬ï¼ˆæ ¼å¼ï¼š"å½“å‰å¼¹è¯/æœ€å¤§å®¹é‡"ï¼‰
+            ammoText.text = $"{PlayerController.instance.activeGun.currentAmmo}/{MaxAmmo}";
+        }
+    }
+    private void UpdateWeaponUI()
+    {
+        // ç›´æ¥æ›¿æ¢ä¸ºå½“å‰æ­¦å™¨çš„å›¾æ ‡
+        if (weaponIcon != null && weaponSprites.Length > currentGunIndex)
+        {
+            weaponIcon.sprite = weaponSprites[currentGunIndex];
+        }
+    }
     public void HandleAnimation()
     {
         Vector3 flatMove = new Vector3(charCon.velocity.x, 0, charCon.velocity.z);
@@ -203,8 +230,8 @@ public class PlayerController : MonoBehaviour
     {
         if (newAnimator == null) return;
 
-        bool isRunning = false; // ÄãÒª¸ù¾İ×Ô¼ºÒÑÓĞ±äÁ¿Ìæ»»ÕâÀï
-        bool isWalking = false; // ÄãÒª¸ù¾İ×Ô¼ºÒÑÓĞ±äÁ¿Ìæ»»ÕâÀï
+        bool isRunning = false; // ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½æ»»ï¿½ï¿½ï¿½ï¿½
+        bool isWalking = false; // ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½æ»»ï¿½ï¿½ï¿½ï¿½
         bool isFiring = false;
 
         newAnimator.SetBool("isRunning", isRunning);
@@ -218,20 +245,21 @@ public class PlayerController : MonoBehaviour
     {
         if (gunIndex < 0 || gunIndex >= guns.Length) return;
 
-        if (gunIndex == currentGunIndex) return; // ÒÑÊÇµ±Ç°ÎäÆ÷£¬Ìø¹ı
+        if (gunIndex == currentGunIndex) return; // ï¿½ï¿½ï¿½Çµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         //SyncGunAnimatorState(GunAnim);
 
-        // ¹Ø±Õµ±Ç°ÎäÆ÷
+        // ï¿½Ø±Õµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
         if (activeGun != null)
         {
             activeGun.gameObject.SetActive(false);
         }
 
-        // ÆôÓÃĞÂÎäÆ÷
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         activeGun = guns[gunIndex];
         activeGun.gameObject.SetActive(true);
         currentGunIndex = gunIndex;
+        UpdateWeaponUI();
     }
-
+    
 }
