@@ -30,17 +30,5 @@ public class AmmoController : MonoBehaviour
         // UIController.instance.ammoText.text = "Ammo: " + currentAmmo + "/" + MaxAmmo; // Set the initial health text
     }
 
-    public void Reload()
-    {
-        if (currentAmmo < MaxAmmo)
-        {
-            currentAmmo = 30; // Reload to maximum ammo
-            //UIController.instance.ammoText.text = "Ammo: " + currentAmmo + "/" + MaxAmmo; // Update the ammo text
-            Debug.Log("Reloaded to max ammo: " + currentAmmo);
-        }
-        else
-        {
-            Debug.Log("Already at max ammo: " + currentAmmo);
-        }
-    }
+  
 }

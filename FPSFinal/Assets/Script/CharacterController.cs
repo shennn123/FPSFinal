@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleShooting();
         HandleAnimation();
+        UpdateAmmoUI();
         if (Input.GetKeyDown(KeyCode.Alpha1) && gun1Unlocked) SwitchGun(0);
         if (Input.GetKeyDown(KeyCode.Alpha2) && gun2Unlocked) SwitchGun(1);
         if (Input.GetKeyDown(KeyCode.Alpha3) && gun3Unlocked) SwitchGun(2);
@@ -150,7 +151,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && activeGun.canAutoFire )
         {
 
-            if (activeGun.fireCounter <= 0f && AmmoController.instance.currentAmmo > 0)
+            if (activeGun.fireCounter <= 0f && activeGun.currentAmmo > 0)
             {
                 Debug.Log("Firing shot");
                 FireShot();
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        if (Input.GetMouseButtonDown(0) && !activeGun.canAutoFire)
+        if (Input.GetMouseButtonDown(0) && !activeGun.canAutoFire && activeGun.currentAmmo > 0)
         {
 
             if (AmmoController.instance.currentAmmo > 0)
@@ -175,10 +176,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Firing shot");
 
-            activeGun.currentAmmo--; // ��ǰǹ�۵�
-
-            // 添加UI更新调用
-            UpdateAmmoUI();
+            activeGun.currentAmmo--; 
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
             activeGun.fireCounter = activeGun.firerate;
 
