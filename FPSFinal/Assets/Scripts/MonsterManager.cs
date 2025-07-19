@@ -5,7 +5,7 @@ using UnityEngine;
 //对怪物的状态进行全局管理
 public class MonsterManager : MonoBehaviour
 {
-    //定义一个 静态变量 用来实现 单例模式，确保整个游戏中只有一个 MonsterManager 可以被访问
+    //定义一个 静态变量 用来实现 单例模式，记得挂在空物体上
     public static MonsterManager Instance;
 
     //定义一个 Dictionary（字典）来存储所有怪物数据

@@ -22,6 +22,7 @@ public class MonsterHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        controller.SetState("GetHit");
         
         //同步这个怪物的最新血量到全局的 MonsterManager
         MonsterManager.Instance.UpdateMonsterHealth(controller.monsterId, currentHealth);

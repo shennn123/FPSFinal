@@ -6,6 +6,9 @@ public class MonsterController : MonoBehaviour
     //用于在 MonsterManager 中唯一标识每只怪物，便于全局访问、修改和管理。
     public int monsterId;
 
+    // 用来记录当前动画状态以解决重复触发trigger
+    private string currentState = "";
+
     //引用模块
     private MonsterAI ai;
     private MonsterHealth health;
@@ -22,7 +25,9 @@ public class MonsterController : MonoBehaviour
         ai = GetComponent<MonsterAI>();
         health = GetComponent<MonsterHealth>();
         attack = GetComponent<MonsterAttack>();
-        animator = GetComponent<Animator>();
+        
+        //动画机在子物体上
+        animator = GetComponentInChildren<Animator>();
 
         //将怪物数据注册到 MonsterManager（单例），便于统一管理多个怪物。
         MonsterData data = new MonsterData(gameObject, health.maxHealth, "Idle");
@@ -44,20 +49,26 @@ public class MonsterController : MonoBehaviour
     {
         MonsterManager.Instance.UpdateMonsterState(monsterId, newState);
 
-        Debug.Log("Set state: " + newState);
-
         // 播放对应动画
         if (animator != null)
-        {
-            // 清除所有触发器，防止状态冲突
-            animator.ResetTrigger("Idle");
-            animator.ResetTrigger("Chasing");
-            animator.ResetTrigger("Attacking");
-            animator.ResetTrigger("Dead");
+        {    
+            if (newState != currentState && animator != null)
+            {
+                // 清除旧的触发器，防止冲突
+                animator.ResetTrigger("Idle");
+                animator.ResetTrigger("Chasing");
+                animator.ResetTrigger("Attacking");
+                animator.ResetTrigger("GetHit");
+                animator.ResetTrigger("Dead");
 
-            // 设置当前状态触发器
-            animator.SetTrigger(newState);
-            
+                // 触发新的动画状态
+                animator.SetTrigger(newState);
+
+                // 更新当前状态
+                currentState = newState;
+
+                Debug.Log("Set animation state: " + newState);
+            }
         }
     }
 

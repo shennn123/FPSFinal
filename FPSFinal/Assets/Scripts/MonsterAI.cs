@@ -7,7 +7,7 @@ public class MonsterAI : MonoBehaviour
 {
     //定义行为的范围
     public float chaseRange = 10f;
-    public float attackRange = 2f;
+    public float attackRange = 3f;
 
     //记录玩家的位置（用于导航和攻击）
     private Transform player;
@@ -47,8 +47,6 @@ public class MonsterAI : MonoBehaviour
             agent.ResetPath();
             controller.SetState("Idle");
         }
-
-        // 可加动画同步
     }
 }
 
