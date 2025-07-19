@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float jumpPower = 8f;
     public int maxJumpCount = 2;
 
-    private bool isReloading = false; // ÊÇ·ñÕıÔÚ»»µ¯ 
+    private bool isReloading = false; // ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ 
 
     private int jumpCount = 0;
     private Vector3 moveInput;
@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public Transform camTrans;
     public float mouseSensitivity = 2f;
     private float verticalRotation = 0f;
+
+    [Header("Weapon UI")]
+    public Image weaponIcon; // æ˜¾ç¤ºå½“å‰æ­¦å™¨å›¾æ ‡çš„Imageç»„ä»¶
+    public Sprite[] weaponSprites; // 4ç§æ­¦å™¨çš„å›¾æ ‡ï¼ˆæŒ‰é¡ºåºå¯¹åº”ï¼‰
 
     [Header("Gun")]
     public Gun activeGun;
@@ -35,12 +39,12 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed = 0;
 
     [Header("Gun Aiming")]
-    public Transform gunHolder; // ¹ÒÔÚÉãÏñ»úÏÂÃæ»òÕß½ÇÉ«ÉÏ¶¼ĞĞ
+    public Transform gunHolder; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½É«ï¿½Ï¶ï¿½ï¿½ï¿½
 
-    private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // ·ÅÔÚÀàÀï
+    private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    public Gun[] guns; 
-    public GameObject[] gunPrefabs; // Ã¿ÖÖÇ¹¶ÔÓ¦µÄ Prefab£¨ÓÃÓÚµôÂä£©
+    public Gun[] guns;
+    public GameObject[] gunPrefabs; // Ã¿ï¿½ï¿½Ç¹ï¿½ï¿½Ó¦ï¿½ï¿½ Prefabï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ä£©
     public int currentGunIndex = 0;
 
     void Awake() => instance = this;
@@ -50,6 +54,7 @@ public class PlayerController : MonoBehaviour
         charCon = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
+        UpdateWeaponUI();
     }
 
     void Update()
@@ -109,7 +114,7 @@ public class PlayerController : MonoBehaviour
             moveState = PlayerMoveState.Run;
         }
 
-        // Ö»ÓĞ×´Ì¬ÕæµÄ±ä»¯²Åµ÷ÓÃ
+        // Ö»ï¿½ï¿½×´Ì¬ï¿½ï¿½Ä±ä»¯ï¿½Åµï¿½ï¿½ï¿½
         if (moveState != lastMoveState)
         {
             CrosshairController.instance?.SetSpreadState(moveState);
@@ -121,16 +126,16 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseSensitivity;
 
-        transform.Rotate(Vector3.up * mouseInput.x); // ×óÓÒ×ªÉíÌå
+        transform.Rotate(Vector3.up * mouseInput.x); // ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½
 
         verticalRotation -= mouseInput.y;
-        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); // ÏŞÖÆÉÏÏÂ½Ç¶È
+        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½Ç¶ï¿½
 
-        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // ÉãÏñ»úÌ§Í·µÍÍ·
+        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // ï¿½ï¿½ï¿½ï¿½ï¿½Ì§Í·ï¿½ï¿½Í·
 
         if (gunHolder != null)
         {
-            gunHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // Ç¹Ò²¸ú×ÅÌ§Í·µÍÍ·
+            gunHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // Ç¹Ò²ï¿½ï¿½ï¿½ï¿½Ì§Í·ï¿½ï¿½Í·
         }
     }
     private void HandleShooting()
@@ -160,16 +165,19 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        if (activeGun != null && !activeGun.isReloading && AmmoController.instance.currentAmmo>0)
+        if (activeGun != null && !activeGun.isReloading && AmmoController.instance.currentAmmo > 0)
         {
             Debug.Log("Firing shot22");
-            AmmoController.instance.currentAmmo--;
+            AmmoController.instance.currentAmmo--; // å‡å°‘å¼¹è¯
+
+            // æ·»åŠ UIæ›´æ–°è°ƒç”¨
+            AmmoController.instance.UpdateAmmoUI();
+
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
             activeGun.fireCounter = activeGun.firerate;
             CrosshairController.instance?.TriggerFireKick();
         }
     }
-
     public void HandleAnimation()
     {
         Vector3 flatMove = new Vector3(charCon.velocity.x, 0, charCon.velocity.z);
@@ -197,8 +205,8 @@ public class PlayerController : MonoBehaviour
     {
         if (newAnimator == null) return;
 
-        bool isRunning = false; // ÄãÒª¸ù¾İ×Ô¼ºÒÑÓĞ±äÁ¿Ìæ»»ÕâÀï
-        bool isWalking = false; // ÄãÒª¸ù¾İ×Ô¼ºÒÑÓĞ±äÁ¿Ìæ»»ÕâÀï
+        bool isRunning = false; // ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½æ»»ï¿½ï¿½ï¿½ï¿½
+        bool isWalking = false; // ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½æ»»ï¿½ï¿½ï¿½ï¿½
         bool isFiring = false;
 
         newAnimator.SetBool("isRunning", isRunning);
@@ -212,20 +220,28 @@ public class PlayerController : MonoBehaviour
     {
         if (gunIndex < 0 || gunIndex >= guns.Length) return;
 
-        if (gunIndex == currentGunIndex) return; // ÒÑÊÇµ±Ç°ÎäÆ÷£¬Ìø¹ı
+        if (gunIndex == currentGunIndex) return; // ï¿½ï¿½ï¿½Çµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         //SyncGunAnimatorState(GunAnim);
 
-        // ¹Ø±Õµ±Ç°ÎäÆ÷
+        // ï¿½Ø±Õµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
         if (activeGun != null)
         {
             activeGun.gameObject.SetActive(false);
         }
 
-        // ÆôÓÃĞÂÎäÆ÷
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         activeGun = guns[gunIndex];
         activeGun.gameObject.SetActive(true);
         currentGunIndex = gunIndex;
+        UpdateWeaponUI();
     }
-
+    private void UpdateWeaponUI()
+    {
+        // ç›´æ¥æ›¿æ¢ä¸ºå½“å‰æ­¦å™¨çš„å›¾æ ‡
+        if (weaponIcon != null && weaponSprites.Length > currentGunIndex)
+        {
+            weaponIcon.sprite = weaponSprites[currentGunIndex];
+        }
+    }
 }
