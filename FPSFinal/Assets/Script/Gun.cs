@@ -2,45 +2,43 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public GameObject bulletPrefab;
 
-    public GameObject bulletPrefab; // Prefab for the bullet
+    public bool canAutoFire = false;
+    public float firerate = 0.5f;
+    public bool isReloading = false;
 
-    public bool canAutoFire = false; // Whether the gun can auto-fire
+    public int maxAmmo = 30;
+    public int currentAmmo = 30;
 
-    public float firerate = 0.5f; // Rate of fire in seconds
-    public bool isReloading = false; // Whether the gun is currently reloading
+    public float reloadTime = 1.5f; // 每把枪自己的换弹时间
 
     [HideInInspector]
-    public float fireCounter; // Counter to track time since last fire
+    public float fireCounter;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-
-        if(Input.GetKeyDown(KeyCode.R))
-        {             // Start reloading when the R key is pressed
-            isReloading = true;
-
-            // Here you can add logic to play reload animation or sound
-        }
-
-        if (isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
         {
-            AmmoController.instance.Reload(); // Call the Reload method from AmmoController
-            isReloading = false; // Set to false after reloading
+            isReloading = true;
+            StartCoroutine(ReloadGun());
         }
-
 
         if (fireCounter > 0)
         {
-            fireCounter -= Time.deltaTime; // Decrease the fire counter by the time since last frame
+            fireCounter -= Time.deltaTime;
         }
+    }
+
+    private System.Collections.IEnumerator ReloadGun()
+    {
+        Debug.Log($"Reloading {gameObject.name} for {reloadTime} seconds");
+
+        // 可加动画或音效
+        yield return new WaitForSeconds(reloadTime);
+
+        currentAmmo = maxAmmo;
+        isReloading = false;
+        Debug.Log($"Reloaded {gameObject.name}. Ammo: {currentAmmo}/{maxAmmo}");
     }
 }

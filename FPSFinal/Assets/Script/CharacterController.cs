@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public float jumpPower = 8f;
     public int maxJumpCount = 2;
 
-    private bool isReloading = false; // 是否正在换弹 
 
     private int jumpCount = 0;
     private Vector3 moveInput;
@@ -40,7 +39,6 @@ public class PlayerController : MonoBehaviour
     private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // 放在类里
 
     public Gun[] guns; 
-    public GameObject[] gunPrefabs; // 每种枪对应的 Prefab（用于掉落）
     public int currentGunIndex = 0;
 
     public bool gun1Unlocked = true;  // 默认第一把解锁
@@ -141,7 +139,7 @@ public class PlayerController : MonoBehaviour
     private void HandleShooting()
     {
 
-        if (Input.GetMouseButton(0) && activeGun.canAutoFire)
+        if (Input.GetMouseButton(0) && activeGun.canAutoFire )
         {
 
             if (activeGun.fireCounter <= 0f && AmmoController.instance.currentAmmo > 0)
@@ -165,15 +163,18 @@ public class PlayerController : MonoBehaviour
 
     private void FireShot()
     {
-        if (activeGun != null && !activeGun.isReloading && AmmoController.instance.currentAmmo>0)
+        if (activeGun != null && !activeGun.isReloading && activeGun.currentAmmo > 0)
         {
-            Debug.Log("Firing shot22");
-            AmmoController.instance.currentAmmo--;
+            Debug.Log("Firing shot");
+
+            activeGun.currentAmmo--; // 当前枪扣弹
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
             activeGun.fireCounter = activeGun.firerate;
+
             CrosshairController.instance?.TriggerFireKick();
         }
     }
+
 
     public void HandleAnimation()
     {

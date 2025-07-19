@@ -16,15 +16,19 @@ public class WeaponPickupTrigger : MonoBehaviour
             {
                 case 0:
                     pc.gun1Unlocked = true;
+                    PlayerController.instance.SwitchGun(0); // 自动切换到第一把枪
                     break;
                 case 1:
                     pc.gun2Unlocked = true;
+                    PlayerController.instance.SwitchGun(1); // 自动切换到第一把枪
                     break;
                 case 2:
                     pc.gun3Unlocked = true;
+                    PlayerController.instance.SwitchGun(2); // 自动切换到第一把枪
                     break;
                 case 3:
                     pc.gun4Unlocked = true;
+                    PlayerController.instance.SwitchGun(3); // 自动切换到第一把枪
                     break;
                 default:
                     Debug.LogWarning("未知枪索引：" + gunIndexInAllGuns);
