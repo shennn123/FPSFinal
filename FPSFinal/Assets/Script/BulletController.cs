@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,7 +9,7 @@ public class BulletController : MonoBehaviour
     private Rigidbody rb; // Reference to the Rigidbody component
     public float lifeTime = 2f; // Time before the bullet is destroyed  
     public GameObject laserImpct; // Reference to the laser impact effect
-    public int Damage = 1; // Damage dealt by the bullet   
+    public int Damage = 10; // Damage dealt by the bullet   
 
     //public bool dmageEnemy = false; // Flag to check if the bullet should damage the enemy
     //public bool dmagePlayer = false;
@@ -34,18 +35,12 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
-        IDamageable damageable = other.GetComponent<IDamageable>(); // Get the IDamageable component from the collided object
-        if (damageable != null) // Check if the collided object has an IDamageable component
+  
+        if (other.CompareTag("Monster"))
         {
-            damageable.TakeDamage(Damage, attactplayer); // Call the TakeDamage method on the IDamageable component with the bullet's damage and attack player flag
+            other.gameObject.GetComponent<MonsterHealth>()?.TakeDamage(10); // Call TakeDamage on the MonsterController if it exists
         }
-
-
-        float offset = 0.7f;
-        Vector3 newPosition = transform.position + transform.forward * offset; // Calculate the new position for the laser impact effect
-        Instantiate(laserImpct, transform.position, transform.rotation); // Instantiate the laser impact effect at the bullet's position and rotation
-        Destroy(gameObject); // Destroy the bullet when it collides with another object
     }
+
 
 }
