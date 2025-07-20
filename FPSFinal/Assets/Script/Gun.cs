@@ -8,8 +8,9 @@ public class Gun : MonoBehaviour
     public float firerate = 0.5f;
     public bool isReloading = false;
 
-    public int maxAmmo = 30;
+    public int maxAmmo = 60;
     public int currentAmmo = 30;
+    public int ammoPerReload = 30; // 每次换弹补充的弹药数量
 
     public float reloadTime = 1.5f; // ÿ��ǹ�Լ��Ļ���ʱ��
 
@@ -18,7 +19,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             isReloading = true;
             StartCoroutine(ReloadGun());
@@ -30,15 +31,23 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator ReloadGun()
+    public System.Collections.IEnumerator ReloadGun()
     {
+        isReloading = true;
         Debug.Log($"Reloading {gameObject.name} for {reloadTime} seconds");
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo = maxAmmo;
-        
+        int bulletsNeeded = ammoPerReload - currentAmmo;
+        int bulletsToReload = Mathf.Min(bulletsNeeded, maxAmmo); // 防止 maxAmmo 不够
+
+        currentAmmo += bulletsToReload;
+        maxAmmo -= bulletsToReload;
+
+        UIController.instance.UpdateAmmoUI();
         isReloading = false;
+
         Debug.Log($"Reloaded {gameObject.name}. Ammo: {currentAmmo}/{maxAmmo}");
     }
+
 }

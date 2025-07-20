@@ -43,8 +43,7 @@ public class UIController : PanelBase
         // 确保UI引用不为空
         if (ammoText != null)
         {
-            Debug.Log("Debug");
-            Debug.Log("CurrentAmmo = " + PlayerController.instance.activeGun.currentAmmo);
+            Debug.Log("Max = " + PlayerController.instance.activeGun.maxAmmo);
             // 更新弹药UI文本（格式："当前弹药/最大容量"）
             ammoText.text = (PlayerController.instance.activeGun.currentAmmo + "/" + PlayerController.instance.activeGun.maxAmmo);
               // $"{PlayerController.instance.activeGun.currentAmmo}/{PlayerController.instance.activeGun.maxAmmo}";

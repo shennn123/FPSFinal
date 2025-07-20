@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class AKAnimationController: MonoBehaviour
+public class AKAnimationController : MonoBehaviour
 {
     public static AKAnimationController instance;
+
     [Header("Animators")]
-    public Animator handAnimator;  // �����ֲ�
-    public Animator gunAnimator;   // ����ǹе
+    public Animator handAnimator;  // 手部动画
+    public Animator gunAnimator;   // 枪械动画
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -13,7 +14,7 @@ public class AKAnimationController: MonoBehaviour
     public AudioClip fireSound;
 
     [Header("Fire Settings")]
-    public float fireRate = 0.2f; // ÿ0.2�뷢һǹ
+    public float fireRate = 0.2f; // 每0.2秒开一枪
     private float fireCooldown = 0f;
 
     public bool isReloading = false;
@@ -32,25 +33,36 @@ public class AKAnimationController: MonoBehaviour
 
     void Update()
     {
-        // ����
+        // 手动换弹
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             StartReload();
+            return;
         }
 
-        // ���𣺳������
+        // 左键按下尝试开火
         if (Input.GetMouseButton(0) && !isReloading)
         {
-            TryFire();
+            int currentAmmo = PlayerController.instance.activeGun.currentAmmo;
+
+            if (currentAmmo > 0)
+            {
+                TryFire();
+            }
+            else
+            {
+                // 没子弹自动换弹
+                StartReload();
+            }
         }
 
-        // �ɿ�������ʱֹͣ�������
+        // 松开鼠标左键时停止开火动画
         if (Input.GetMouseButtonUp(0))
         {
             StopFire();
         }
 
-        // ��ȴ��ʱ
+        // 冷却时间更新
         if (fireCooldown > 0f)
         {
             fireCooldown -= Time.deltaTime;
@@ -72,12 +84,13 @@ public class AKAnimationController: MonoBehaviour
             audioSource.PlayOneShot(reloadSound);
         }
 
-        Invoke(nameof(ResetReload), 2.3f); // �뻻������ʱ��һ��
+        Invoke(nameof(ResetReload), 2.3f); // 替换成实际的换弹动画时长
     }
 
     private void ResetReload()
     {
         isReloading = false;
+
     }
 
     private void TryFire()
@@ -86,6 +99,7 @@ public class AKAnimationController: MonoBehaviour
         {
             TriggerFire();
             fireCooldown = fireRate;
+
         }
     }
 

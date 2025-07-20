@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerHealthController : MonoBehaviour, IDamageable
 {
     public static PlayerHealthController instance; // Static instance for singleton pattern
-    public int maxHealth = 5; // Maximum health of the player
+    public int maxHealth = 100; // Maximum health of the player
     public int currentHealth = 5; // Current health of the player
 
     public float invLength = 1f; // Invincibility duration after taking damage
@@ -11,6 +11,12 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
 
     public bool hasArmor = false;
     public float damageReduction; // ��ʰȡ���趨
+
+    public float remainingArmorAbsorb = 0f; // 护甲剩余可吸收伤害值
+    public float maxArmorAbsorb = 50f;      // 最大护甲吸收值（可通过拾取设置）
+
+
+    public int HealthBoxAmount = 0; // Amount of health restored by a health box 
 
     private void Awake()
     {
@@ -25,11 +31,48 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            if (currentHealth > 0 && HealthBoxAmount > 0)
+            {
+                Debug.Log("Current Health: " + currentHealth); // Log the current health
+                IncreaseHealth(); // Call the method to increase health box amount when pressing Alpha1 key
+            }
+        }
 
     }
 
-    // �ܵ��˺�ʱ���ô˷���
+
+     private void IncreaseHealth()
+
+    { 
+        if (HealthBoxAmount > 0)
+        {
+            HealthBoxAmount--;
+            HealPlayer(50); // Heal the player by 1 health point
+            // Decrease the health box amount by 1
+            Debug.Log("Health Box Amount decreased to: " + HealthBoxAmount); // Log the decrease
+        }
+        else
+        {
+            Debug.Log("No Health Boxes left!"); // Log if no health boxes are left
+        }
+    }
+
+    public void IncreaseHealthBox()
+    {
+
+        if (HealthBoxAmount < 5)
+        {
+            HealthBoxAmount++; // Increase the health box amount by 1
+            Debug.Log("Health Box Amount increased to: " + HealthBoxAmount); // Log the increase
+        }
+        else
+        {
+            Debug.Log("Health Box Amount is already at maximum!"); // Log if already at maximum
+        }
+    }
+
     public void DamagePlayer(int damage)
     {
         Debug.Log("Player took damage: " + damage); // Log the damage taken
@@ -46,27 +89,47 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, bool attackplayer)
     {
-        if (attackplayer)
+        if (!attackplayer) return;
+
+        if (invCounter <= 0)
         {
-            if (invCounter <= 0)
+            int finalDamage = damage;
+
+            if (hasArmor && remainingArmorAbsorb > 0f)
             {
-                if (hasArmor)
-                    damage = Mathf.CeilToInt(damage * (1f - damageReduction));
+                // 计算护甲本应吸收的伤害量
+                float absorbable = damage * damageReduction;
 
-                currentHealth -= damage;
+                // 实际吸收不能超过剩余可吸收值
+                float absorbed = Mathf.Min(absorbable, remainingArmorAbsorb);
 
-                if (currentHealth <= 0)
+                finalDamage = Mathf.CeilToInt(damage - absorbed);
+                remainingArmorAbsorb -= absorbed;
+
+                Debug.Log($"Armor absorbed {absorbed} damage. Remaining armor: {remainingArmorAbsorb}");
+
+                // 护甲吸收完毕
+                if (remainingArmorAbsorb <= 0f)
                 {
-
-                    currentHealth = 0; // Ensure current health does not go below zero
-                    Debug.Log("Player is dead!"); // Log player death
-                    transform.parent.gameObject.SetActive(false); // Deactivate the player game object
-                    GameManager.instance.PlayerDied(); // Call the PlayerDied method in GameManager 
-
+                    hasArmor = false;
+                    damageReduction = 0f;
+                    Debug.Log("Armor broken!");
                 }
-                invCounter = invLength; // Reset the invincibility timer
-                UIController.instance.HealthSlider.value = currentHealth; // Set the initial value of the health slider
             }
+
+            // 扣血
+            currentHealth -= finalDamage;
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                Debug.Log("Player is dead!");
+                transform.parent.gameObject.SetActive(false);
+                GameManager.instance.PlayerDied();
+            }
+
+            // 更新血量UI & 无敌帧
+            invCounter = invLength;
+            UIController.instance.HealthSlider.value = currentHealth;
         }
     }
 
@@ -76,6 +139,5 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
 
-        UIController.instance.HealthSlider.value = currentHealth;
     }
 }

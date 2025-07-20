@@ -139,45 +139,61 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleShooting()
     {
-
-        if (Input.GetMouseButton(0) && activeGun.canAutoFire )
+        // 自动射击武器
+        if (Input.GetMouseButton(0) && activeGun.canAutoFire)
         {
-
-            if (activeGun.fireCounter <= 0f && activeGun.currentAmmo > 0)
+            if (activeGun.fireCounter <= 0f)
             {
-                Debug.Log("Firing shot");
+                if (activeGun.currentAmmo > 0)
+                {
+                    FireShot();
+                }
+                else if (!activeGun.isReloading)
+                {
+                    StartCoroutine(activeGun.ReloadGun());
+                }
+            }
+        }
+
+        // 单发武器
+        if (Input.GetMouseButtonDown(0) && !activeGun.canAutoFire)
+        {
+            if (activeGun.currentAmmo > 0)
+            {
                 FireShot();
             }
-
-
-        }
-        if (Input.GetMouseButtonDown(0) && !activeGun.canAutoFire && activeGun.currentAmmo > 0)
-        {
-
-            if (AmmoController.instance.currentAmmo > 0)
+            else if (!activeGun.isReloading)
             {
-                Debug.Log("Firing shot");
-                FireShot();
+                StartCoroutine(activeGun.ReloadGun());
             }
         }
     }
 
     private void FireShot()
     {
-        if (activeGun != null && !activeGun.isReloading && activeGun.currentAmmo > 0)
+        if (activeGun != null && !activeGun.isReloading)
         {
-            Debug.Log("Firing shot");
+            if (activeGun.currentAmmo > 0)
+            {
+                activeGun.currentAmmo--;
+                UIController.instance.UpdateAmmoUI();
+                Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
+                activeGun.fireCounter = activeGun.firerate;
 
-            activeGun.currentAmmo--;
-            UIController.instance.UpdateAmmoUI();
-            Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
-            activeGun.fireCounter = activeGun.firerate;
-
-            CrosshairController.instance?.TriggerFireKick();
-
+                CrosshairController.instance?.TriggerFireKick();
+            }
+            else
+            {
+                // 开枪时发现没子弹也触发自动换弹（保险）
+                if (!activeGun.isReloading)
+                {
+                    StartCoroutine(activeGun.ReloadGun());
+                }
+            }
         }
     }
-  
+
+
     public void HandleAnimation()
     {
         Vector3 flatMove = new Vector3(charCon.velocity.x, 0, charCon.velocity.z);
@@ -200,20 +216,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*void SyncGunAnimatorState(Animator newAnimator)
-    {
-        if (newAnimator == null) return;
-
-        bool isRunning = false; // ��Ҫ�����Լ����б����滻����
-        bool isWalking = false; // ��Ҫ�����Լ����б����滻����
-        bool isFiring = false;
-
-        newAnimator.SetBool("isRunning", isRunning);
-        newAnimator.SetBool("isWalking", isWalking);
-        newAnimator.SetBool("isFiring", isFiring);
-
-    }
-    */
 
     public void SwitchGun(int gunIndex)
     {
@@ -232,6 +234,8 @@ public class PlayerController : MonoBehaviour
         // ����������
         activeGun = guns[gunIndex];
         activeGun.gameObject.SetActive(true);
+        UIController.instance.UpdateAmmoUI();
+        UIController.instance.UpdateWeaponUI();
         currentGunIndex = gunIndex;
     }
     
