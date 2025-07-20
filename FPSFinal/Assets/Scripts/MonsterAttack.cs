@@ -51,7 +51,6 @@ public class MonsterAttack : MonoBehaviour
             {
                 lastAttackTime = Time.time;
                 PerformRangedAttack();
-                Debug.Log("✅ 发射投射物");
             }
         }
     }
@@ -72,13 +71,10 @@ public class MonsterAttack : MonoBehaviour
             //生成投射物
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-            Debug.Log("✅ 生成了投射物：" + projectile.name + "，位置：" + projectile.transform.position);
-
             //投射物的伤害
             MonsterProjectile p = projectile.GetComponent<MonsterProjectile>();
             p.damage = this.damage;
             p.SetDirection(direction);  // 发射前锁定方向
-            Debug.Log("怪物向玩家发射了远程攻击");
         }
     }
 
@@ -97,7 +93,7 @@ public class MonsterAttack : MonoBehaviour
             //if (player != null)
             {
                 //player.TakeDamage(damage);
-                hasDealtDamage = true; // 本轮攻击只触发一次
+                //hasDealtDamage = true; // 本轮攻击只触发一次
                 Debug.Log("对玩家造成了伤害：" + damage);
             }
         }

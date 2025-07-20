@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 4829449729669432079}
   m_Layer: 0
   m_Name: FrozenWretch
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c27ec0a06dd7884b8a6bc6d82606140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 80
 --- !u!1 &2369566059155094995
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +817,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12156a2f5393714383a148e5449f1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackType: 0
   damage: 10
+  projectilePrefab: {fileID: 0}
+  firePoint: {fileID: 0}
 --- !u!65 &2189629747864218499
 BoxCollider:
   m_ObjectHideFlags: 0
