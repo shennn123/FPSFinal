@@ -10,7 +10,7 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
     private float invCounter; // Timer for invincibility duration
 
     public bool hasArmor = false;
-    public float damageReduction; // ÓÉÊ°È¡ÎïÉè¶¨
+    public float damageReduction; // ï¿½ï¿½Ê°È¡ï¿½ï¿½ï¿½è¶¨
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
 
     }
 
-    // ÊÜµ½ÉËº¦Ê±µ÷ÓÃ´Ë·½·¨
+    // ï¿½Üµï¿½ï¿½Ëºï¿½Ê±ï¿½ï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½
     public void DamagePlayer(int damage)
     {
         Debug.Log("Player took damage: " + damage); // Log the damage taken
@@ -65,8 +65,7 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
 
                 }
                 invCounter = invLength; // Reset the invincibility timer
-                UIController.instance.healthSlider.value = currentHealth; // Set the initial value of the health slider
-                UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth; // Set the initial health text
+                UIController.instance.HealthSlider.value = currentHealth; // Set the initial value of the health slider
             }
         }
     }
@@ -77,7 +76,6 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
 
-        UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+        UIController.instance.HealthSlider.value = currentHealth;
     }
 }

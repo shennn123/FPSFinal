@@ -4,8 +4,8 @@ public class AKAnimationController: MonoBehaviour
 {
     public static AKAnimationController instance;
     [Header("Animators")]
-    public Animator handAnimator;  // ¿ØÖÆÊÖ²¿
-    public Animator gunAnimator;   // ¿ØÖÆÇ¹Ðµ
+    public Animator handAnimator;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½
+    public Animator gunAnimator;   // ï¿½ï¿½ï¿½ï¿½Ç¹Ðµ
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -13,7 +13,7 @@ public class AKAnimationController: MonoBehaviour
     public AudioClip fireSound;
 
     [Header("Fire Settings")]
-    public float fireRate = 0.2f; // Ã¿0.2Ãë·¢Ò»Ç¹
+    public float fireRate = 0.2f; // Ã¿0.2ï¿½ë·¢Ò»Ç¹
     private float fireCooldown = 0f;
 
     public bool isReloading = false;
@@ -32,25 +32,25 @@ public class AKAnimationController: MonoBehaviour
 
     void Update()
     {
-        // »»µ¯
+        // ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             StartReload();
         }
 
-        // ¿ª»ð£º³¤°´×ó¼ü
+        // ï¿½ï¿½ï¿½ð£º³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetMouseButton(0) && !isReloading)
         {
             TryFire();
         }
 
-        // ËÉ¿ªÊó±ê×ó¼üÊ±Í£Ö¹Éä»÷¶¯»­
+        // ï¿½É¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Í£Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetMouseButtonUp(0))
         {
             StopFire();
         }
 
-        // ÀäÈ´¼ÆÊ±
+        // ï¿½ï¿½È´ï¿½ï¿½Ê±
         if (fireCooldown > 0f)
         {
             fireCooldown -= Time.deltaTime;
@@ -72,7 +72,7 @@ public class AKAnimationController: MonoBehaviour
             audioSource.PlayOneShot(reloadSound);
         }
 
-        Invoke(nameof(ResetReload), 2.3f); // Óë»»µ¯¶¯»­Ê±³¤Ò»ÖÂ
+        Invoke(nameof(ResetReload), 2.3f); // ï¿½ë»»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ò»ï¿½ï¿½
     }
 
     private void ResetReload()

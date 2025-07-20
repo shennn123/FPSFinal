@@ -48,19 +48,12 @@ public class PlayerController : MonoBehaviour
 
     void Awake() => instance = this;
 
-    [Header("UI Reference")]
-    public TMPro.TextMeshProUGUI ammoText;
-    public int MaxAmmo = 60;
-    [Header("Weapon UI")]
-    public Image weaponIcon; // 显示当前武器图标的Image组件
-    public Sprite[] weaponSprites; // 4种武器的图标（按顺序对应）
-
+ 
     void Start()
     {
         charCon = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
-        UpdateWeaponUI();
     }
 
     void Update()
@@ -69,7 +62,6 @@ public class PlayerController : MonoBehaviour
         HandleMouseLook();
         HandleShooting();
         HandleAnimation();
-        UpdateAmmoUI();
         if (Input.GetKeyDown(KeyCode.Alpha1) && gun1Unlocked) SwitchGun(0);
         if (Input.GetKeyDown(KeyCode.Alpha2) && gun2Unlocked) SwitchGun(1);
         if (Input.GetKeyDown(KeyCode.Alpha3) && gun3Unlocked) SwitchGun(2);
@@ -176,7 +168,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Firing shot");
 
-            activeGun.currentAmmo--; 
+            activeGun.currentAmmo--;
+            UIController.instance.UpdateAmmoUI();
             Instantiate(activeGun.bulletPrefab, FirePoint.position, FirePoint.rotation);
             activeGun.fireCounter = activeGun.firerate;
 
@@ -184,23 +177,7 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    public void UpdateAmmoUI()
-    {
-        // 确保UI引用不为空
-        if (ammoText != null)
-        {
-            // 更新弹药UI文本（格式："当前弹药/最大容量"）
-            ammoText.text = $"{PlayerController.instance.activeGun.currentAmmo}/{MaxAmmo}";
-        }
-    }
-    private void UpdateWeaponUI()
-    {
-        // 直接替换为当前武器的图标
-        if (weaponIcon != null && weaponSprites.Length > currentGunIndex)
-        {
-            weaponIcon.sprite = weaponSprites[currentGunIndex];
-        }
-    }
+  
     public void HandleAnimation()
     {
         Vector3 flatMove = new Vector3(charCon.velocity.x, 0, charCon.velocity.z);
@@ -217,8 +194,7 @@ public class PlayerController : MonoBehaviour
 
             health.currentHealth = Mathf.Min(health.currentHealth + 1, health.maxHealth);
 
-            UIController.instance.healthSlider.value = health.currentHealth;
-            UIController.instance.healthText.text = $"Health: {health.currentHealth}/{health.maxHealth}";
+            UIController.instance.HealthSlider.value = health.currentHealth;
 
             Destroy(other.gameObject);
         }
@@ -257,7 +233,6 @@ public class PlayerController : MonoBehaviour
         activeGun = guns[gunIndex];
         activeGun.gameObject.SetActive(true);
         currentGunIndex = gunIndex;
-        UpdateWeaponUI();
     }
     
 }

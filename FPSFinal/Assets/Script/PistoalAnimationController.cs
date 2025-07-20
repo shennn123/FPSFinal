@@ -4,8 +4,8 @@ public class PistolAnimatorController : MonoBehaviour
 {
     public static PistolAnimatorController instance;
     [Header("Animators")]
-    public Animator handAnimator;  // ¿ØÖÆÊÖ²¿
-    public Animator gunAnimator;   // ¿ØÖÆÇ¹Ðµ
+    public Animator handAnimator;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½
+    public Animator gunAnimator;   // ï¿½ï¿½ï¿½ï¿½Ç¹Ðµ
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -13,7 +13,7 @@ public class PistolAnimatorController : MonoBehaviour
     public AudioClip fireSound;
 
     [Header("Fire Settings")]
-    public float fireRate = 0.2f; // Ã¿0.2Ãë·¢Ò»Ç¹
+    public float fireRate = 0.2f; // Ã¿0.2ï¿½ë·¢Ò»Ç¹
     private float fireCooldown = 0.3f;
 
     public bool isReloading = false;
@@ -32,19 +32,19 @@ public class PistolAnimatorController : MonoBehaviour
 
     void Update()
     {
-        // »»µ¯
+        // ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             StartReload();
         }
 
-        // µ¥µãÉä»÷£ºÖ»ÔÚµã»÷Ë²¼ä´¥·¢
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Úµï¿½ï¿½Ë²ï¿½ä´¥ï¿½ï¿½
         if (Input.GetMouseButtonDown(0) && !isReloading)
         {
             TryFire();
         }
 
-        // ÀäÈ´¼ÆÊ±
+        // ï¿½ï¿½È´ï¿½ï¿½Ê±
         if (fireCooldown > 0f)
         {
             fireCooldown -= Time.deltaTime;
@@ -67,7 +67,7 @@ public class PistolAnimatorController : MonoBehaviour
             audioSource.PlayOneShot(reloadSound);
         }
 
-        Invoke(nameof(ResetReload), 2.35f); // Óë»»µ¯¶¯»­Ê±³¤Ò»ÖÂ
+        Invoke(nameof(ResetReload), 2.35f); // ï¿½ë»»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ò»ï¿½ï¿½
     }
 
     private void ResetReload()

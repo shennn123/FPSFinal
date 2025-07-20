@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : PanelBase
 {
     public static UIController instance; // Singleton instance of UIController
-    public Slider healthSlider; // Reference to the health slider UI element 
-    public Text healthText; // Reference to the health text UI element
-    public Text ammoText; // Reference to the ammo text UI element
+    public Slider HealthSlider;
+    [Header("UI Reference")]
+    public TMPro.TextMeshProUGUI ammoText;
+    [Header("Weapon UI")]
+    public Image weaponIcon; // 显示当前武器图标的Image组件
+    public Sprite[] weaponSprites; // 4种武器的图标（按顺序对应）
 
 
 
@@ -22,14 +25,42 @@ public class UIController : MonoBehaviour
             Destroy(gameObject); // Destroy duplicate instances
         }
     }
-    void Start()
-    {
 
+    protected override void Init()
+    {
+        UIManager.Show("InGameUI");
     }
+
 
     // Update is called once per frame
     void Update()
     {
 
     }
+
+    public void UpdateAmmoUI()
+    {
+        // 确保UI引用不为空
+        if (ammoText != null)
+        {
+            Debug.Log("Debug");
+            Debug.Log("CurrentAmmo = " + PlayerController.instance.activeGun.currentAmmo);
+            // 更新弹药UI文本（格式："当前弹药/最大容量"）
+            ammoText.text = (PlayerController.instance.activeGun.currentAmmo + "/" + PlayerController.instance.activeGun.maxAmmo);
+              // $"{PlayerController.instance.activeGun.currentAmmo}/{PlayerController.instance.activeGun.maxAmmo}";
+        }
+        else
+        {
+            Debug.LogWarning("PlayerController or activeGun is null, cannot update ammo UI.");
+        }
+    }
+    public void UpdateWeaponUI()
+    {
+        // 直接替换为当前武器的图标
+        if (weaponIcon != null && weaponSprites.Length > PlayerController.instance.currentGunIndex)
+        {
+            weaponIcon.sprite = weaponSprites[PlayerController.instance.currentGunIndex];
+        }
+    }
+
 }

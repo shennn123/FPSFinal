@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     public int maxAmmo = 30;
     public int currentAmmo = 30;
 
-    public float reloadTime = 1.5f; // Ã¿°ÑÇ¹×Ô¼ºµÄ»»µ¯Ê±¼ä
+    public float reloadTime = 1.5f; // Ã¿ï¿½ï¿½Ç¹ï¿½Ô¼ï¿½ï¿½Ä»ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
     [HideInInspector]
     public float fireCounter;
@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour
     {
         Debug.Log($"Reloading {gameObject.name} for {reloadTime} seconds");
 
-        // ¿É¼Ó¶¯»­»òÒôÐ§
+        // ï¿½É¼Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
         yield return new WaitForSeconds(reloadTime);
 
         currentAmmo = maxAmmo;
