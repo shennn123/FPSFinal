@@ -39,14 +39,9 @@ public class DrakeAnimationController : MonoBehaviour
         }
 
         // 单点射击：只在点击瞬间触发
-        if (Input.GetMouseButtonDown(0) && !isReloading && PlayerController.instance.activeGun.currentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && !isReloading)
         {
             TryFire();
-        }
-
-        if (PlayerController.instance.activeGun.currentAmmo <= 0 && !isReloading)
-        {
-            StartReload();
         }
 
         // 冷却计时

@@ -18,13 +18,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && maxAmmo>0)
-        {
-            isReloading = true;
-            StartCoroutine(ReloadGun());
-        }
-
-        if(currentAmmo <= 0 && !isReloading && maxAmmo > 0)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
         {
             isReloading = true;
             StartCoroutine(ReloadGun());
@@ -42,7 +36,7 @@ public class Gun : MonoBehaviour
 
         // 可加动画或音效
         yield return new WaitForSeconds(reloadTime);
-        maxAmmo = Mathf.Max(maxAmmo, 0); // 确保最大弹药不小于0
+
         currentAmmo = maxAmmo;
         isReloading = false;
         Debug.Log($"Reloaded {gameObject.name}. Ammo: {currentAmmo}/{maxAmmo}");

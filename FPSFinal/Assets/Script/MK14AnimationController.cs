@@ -39,16 +39,11 @@ public class MK14AnimationController: MonoBehaviour
         }
 
         // 开火：长按左键
-        if (Input.GetMouseButton(0) && !isReloading && PlayerController.instance.activeGun.currentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && !isReloading)
         {
             TryFire();
         }
 
-
-        if (PlayerController.instance.activeGun.currentAmmo <= 0 && !isReloading)
-        {
-            StartReload();
-        }
 
         // 冷却计时
         if (fireCooldown > 0f)
@@ -56,8 +51,6 @@ public class MK14AnimationController: MonoBehaviour
             fireCooldown -= Time.deltaTime;
         }
     }
-
-
 
     private void StartReload()
     {
