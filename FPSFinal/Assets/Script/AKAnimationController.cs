@@ -39,9 +39,14 @@ public class AKAnimationController: MonoBehaviour
         }
 
         // ¿ª»ð£º³¤°´×ó¼ü
-        if (Input.GetMouseButton(0) && !isReloading)
+        if (Input.GetMouseButton(0) && !isReloading && PlayerController.instance.activeGun.currentAmmo > 0)
         {
             TryFire();
+        }
+
+        if (PlayerController.instance.activeGun.currentAmmo <= 0 && !isReloading)
+        {
+            StartReload();
         }
 
         // ËÉ¿ªÊó±ê×ó¼üÊ±Í£Ö¹Éä»÷¶¯»­
@@ -93,8 +98,8 @@ public class AKAnimationController: MonoBehaviour
     {
         if (handAnimator && gunAnimator)
         {
-            handAnimator.SetBool("IsFiring", true);
-            gunAnimator.SetBool("IsFiring", true);
+            handAnimator.SetTrigger("IsFiring");
+            gunAnimator.SetTrigger("IsFiring");
         }
 
         if (fireSound != null && audioSource != null)

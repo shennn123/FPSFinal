@@ -39,9 +39,14 @@ public class MP5AnimationController : MonoBehaviour
         }
 
         // ¿ª»ð£º³¤°´×ó¼ü
-        if (Input.GetMouseButton(0) && !isReloading)
+        if (Input.GetMouseButton(0) && !isReloading && PlayerController.instance.activeGun.currentAmmo>0)
         {
             TryFire();
+        }
+
+        if (PlayerController.instance.activeGun.currentAmmo <= 0 && !isReloading)
+        {
+            StartReload();
         }
 
         // ËÉ¿ªÊó±ê×ó¼üÊ±Í£Ö¹Éä»÷¶¯»­
