@@ -34,9 +34,9 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed = 0;
 
     [Header("Gun Aiming")]
-    public Transform gunHolder; // ���������������߽�ɫ�϶���
+    public Transform gunHolder;
 
-    private PlayerMoveState lastMoveState = PlayerMoveState.Idle; // ��������
+    private PlayerMoveState lastMoveState = PlayerMoveState.Idle; 
 
     public Gun[] guns; 
     public int currentGunIndex = 0;
@@ -125,16 +125,16 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseSensitivity;
 
-        transform.Rotate(Vector3.up * mouseInput.x); // ����ת����
+        transform.Rotate(Vector3.up * mouseInput.x); 
 
         verticalRotation -= mouseInput.y;
-        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); // �������½Ƕ�
+        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f); 
 
-        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // �����̧ͷ��ͷ
+        camTrans.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
 
         if (gunHolder != null)
         {
-            gunHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); // ǹҲ����̧ͷ��ͷ
+            gunHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f); 
         }
     }
     private void HandleShooting()

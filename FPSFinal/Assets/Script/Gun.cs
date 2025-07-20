@@ -34,10 +34,10 @@ public class Gun : MonoBehaviour
     {
         Debug.Log($"Reloading {gameObject.name} for {reloadTime} seconds");
 
-        // �ɼӶ�������Ч
         yield return new WaitForSeconds(reloadTime);
 
         currentAmmo = maxAmmo;
+        
         isReloading = false;
         Debug.Log($"Reloaded {gameObject.name}. Ammo: {currentAmmo}/{maxAmmo}");
     }

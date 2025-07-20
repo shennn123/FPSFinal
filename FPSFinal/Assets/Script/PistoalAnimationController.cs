@@ -67,7 +67,7 @@ public class PistolAnimatorController : MonoBehaviour
             audioSource.PlayOneShot(reloadSound);
         }
 
-        Invoke(nameof(ResetReload), 2.35f); // �뻻������ʱ��һ��
+        Invoke(nameof(ResetReload), 2.35f); 
     }
 
     private void ResetReload()

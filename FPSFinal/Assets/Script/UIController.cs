@@ -28,7 +28,7 @@ public class UIController : PanelBase
 
     protected override void Init()
     {
-        UIManager.Show("InGameUI");
+      
     }
 
 

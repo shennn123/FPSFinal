@@ -17,6 +17,11 @@ public class MonsterManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private void Start()
+    {
+       UIManager.Show("InGameUI");
+    }
+
     //该函数用来注册怪物
     public void RegisterMonster(int id, MonsterData data)
     {
