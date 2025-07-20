@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public Gun[] guns; 
     public int currentGunIndex = 0;
 
-    public bool gun1Unlocked = true;  // Ĭ�ϵ�һ�ѽ���
+    public bool gun1Unlocked = true;  
     public bool gun2Unlocked = false;
     public bool gun3Unlocked = false;
     public bool gun4Unlocked = false;
