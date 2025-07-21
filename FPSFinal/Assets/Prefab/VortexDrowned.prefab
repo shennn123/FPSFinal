@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7664387188794903066}
   - component: {fileID: 3356993168759411652}
   - component: {fileID: 4175112193090231125}
+  - component: {fileID: 2260507799184158652}
   - component: {fileID: 2556946638207754675}
   m_Layer: 0
   m_Name: VortexDrowned
@@ -99,6 +100,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterId: 0
+  animator: {fileID: 0}
+--- !u!114 &2260507799184158652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4334427246635011443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0515ed1184c8844b35655f6033e920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp: 100
 --- !u!54 &2556946638207754675
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -232,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
-  damage: 10
+  damage: 30
   projectilePrefab: {fileID: 0}
   firePoint: {fileID: 0}
 --- !u!4 &1099571977304541048 stripped

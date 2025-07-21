@@ -41,10 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7049891901208457570}
   - component: {fileID: 7663510897688603623}
-  - component: {fileID: 2732786154707537593}
   - component: {fileID: 7387233572752308655}
   - component: {fileID: 6009708220315721242}
   - component: {fileID: 6350205516088466479}
+  - component: {fileID: 6439176887606588861}
+  - component: {fileID: 2732786154707537593}
   m_Layer: 0
   m_Name: FrostboundWizard
   m_TagString: Monster
@@ -90,33 +91,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &2732786154707537593
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5843113208459258323}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &7387233572752308655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55cbc31ec9a06343ad2843ce00317fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 20
+  chaseRange: 30
   attackRange: 15
 --- !u!114 &6009708220315721242
 MonoBehaviour:
@@ -157,6 +131,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterId: 0
+  animator: {fileID: 0}
+--- !u!114 &6439176887606588861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843113208459258323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0515ed1184c8844b35655f6033e920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp: 40
+--- !u!54 &2732786154707537593
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843113208459258323}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &6292668806195802014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 1
-  damage: 10
+  damage: 15
   projectilePrefab: {fileID: 7538291151217991452, guid: e7ac911a7414e8b489bc992ef7cef036, type: 3}
   firePoint: {fileID: 5620116583043050501}
 --- !u!4 &6292668806195934510 stripped

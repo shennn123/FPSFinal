@@ -261,10 +261,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3040116069366598262}
   - component: {fileID: 484614385347132199}
-  - component: {fileID: 7853302647442923765}
   - component: {fileID: 9014873878004955456}
   - component: {fileID: 2541459579346050516}
   - component: {fileID: 4829449729669432079}
+  - component: {fileID: 7380928492487979494}
+  - component: {fileID: 7853302647442923765}
   m_Layer: 0
   m_Name: FrozenWretch
   m_TagString: Monster
@@ -310,6 +311,60 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &9014873878004955456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293997052184419658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55cbc31ec9a06343ad2843ce00317fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRange: 30
+  attackRange: 2
+--- !u!114 &2541459579346050516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293997052184419658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84707ef664258e6489896fd5c642083d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterId: 0
+  animator: {fileID: 0}
+--- !u!114 &4829449729669432079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293997052184419658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c27ec0a06dd7884b8a6bc6d82606140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 80
+--- !u!114 &7380928492487979494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293997052184419658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0515ed1184c8844b35655f6033e920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp: 10
 --- !u!54 &7853302647442923765
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -337,46 +392,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9014873878004955456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2293997052184419658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55cbc31ec9a06343ad2843ce00317fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseRange: 10
-  attackRange: 2
---- !u!114 &2541459579346050516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2293997052184419658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84707ef664258e6489896fd5c642083d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterId: 0
---- !u!114 &4829449729669432079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2293997052184419658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c27ec0a06dd7884b8a6bc6d82606140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 80
 --- !u!1 &2369566059155094995
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
-  damage: 10
+  damage: 5
   projectilePrefab: {fileID: 0}
   firePoint: {fileID: 0}
 --- !u!65 &2189629747864218499

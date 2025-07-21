@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7935600659061755306}
   - component: {fileID: 7515669405580707702}
   - component: {fileID: 6482743959465596353}
+  - component: {fileID: 5268074116420228432}
   - component: {fileID: 4152581046187416896}
   m_Layer: 0
   m_Name: ChillAbomination
@@ -71,8 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55cbc31ec9a06343ad2843ce00317fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 10
-  attackRange: 4
+  chaseRange: 30
+  attackRange: 5
 --- !u!114 &7515669405580707702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +100,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterId: 0
+  animator: {fileID: 0}
+--- !u!114 &5268074116420228432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908402904456340110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0515ed1184c8844b35655f6033e920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp: 100
 --- !u!54 &4152581046187416896
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -237,6 +252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
-  damage: 10
+  damage: 30
   projectilePrefab: {fileID: 0}
   firePoint: {fileID: 0}

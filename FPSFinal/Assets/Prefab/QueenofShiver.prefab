@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 590704432029681216}
   - component: {fileID: 4624235375969909781}
   - component: {fileID: 7098015673729400691}
+  - component: {fileID: 3659856615712227994}
   - component: {fileID: 6804699059850523121}
   m_Layer: 0
   m_Name: QueenofShiver
@@ -102,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55cbc31ec9a06343ad2843ce00317fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 10
-  attackRange: 3
+  chaseRange: 100
+  attackRange: 50
 --- !u!114 &4624235375969909781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterId: 0
+  animator: {fileID: 0}
+--- !u!114 &3659856615712227994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959201527233358837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0515ed1184c8844b35655f6033e920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp: 500
 --- !u!54 &6804699059850523121
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -256,6 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 1
-  damage: 10
+  damage: 50
   projectilePrefab: {fileID: 1529925921473171159, guid: b40aae34eb627104683f62119cebc77c, type: 3}
   firePoint: {fileID: 3012023985593720879}
