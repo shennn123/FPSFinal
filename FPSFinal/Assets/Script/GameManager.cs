@@ -26,7 +26,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center of the screen
+        if(SceneManager.GetActiveScene().name != "1")
+        {
+            Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center of the screen
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None; // Unlock the cursor when not in the game scene
+            Cursor.visible = true; // Make the cursor visible
+        }
+
+        UIManager.Show("MainMenu");
     }
 
     // Update is called once per frame

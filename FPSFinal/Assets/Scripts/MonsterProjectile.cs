@@ -34,7 +34,7 @@ public class MonsterProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-          other.gameObject.GetComponent<PlayerHealthController>()?.DamagePlayer(damage); // 调用玩家的受伤方法
+          other.gameObject.GetComponent<PlayerHealthController>()?.DamagePlayer(damage,true); // 调用玩家的受伤方法
             Debug.Log("远程攻击命中了玩家，造成了伤害：" + damage);
             Destroy(this.gameObject); // 命中后销毁
         }

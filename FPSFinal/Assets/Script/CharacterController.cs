@@ -204,16 +204,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("IncreaseHealth"))
-        {
-            var health = PlayerHealthController.instance;
 
-            health.currentHealth = Mathf.Min(health.currentHealth + 1, health.maxHealth);
-
-            UIController.instance.HealthSlider.value = health.currentHealth;
-
-            Destroy(other.gameObject);
-        }
     }
 
 
@@ -221,7 +212,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gunIndex < 0 || gunIndex >= guns.Length) return;
 
-        if (gunIndex == currentGunIndex) return; // ���ǵ�ǰ����������
+        if (gunIndex == currentGunIndex) return; 
 
         //SyncGunAnimatorState(GunAnim);
 
@@ -233,10 +224,11 @@ public class PlayerController : MonoBehaviour
 
         // ����������
         activeGun = guns[gunIndex];
+        currentGunIndex = gunIndex;
         activeGun.gameObject.SetActive(true);
         UIController.instance.UpdateAmmoUI();
         UIController.instance.UpdateWeaponUI();
-        currentGunIndex = gunIndex;
+ 
     }
     
 }

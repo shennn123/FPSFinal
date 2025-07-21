@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,11 +6,14 @@ public class UIController : PanelBase
 {
     public static UIController instance; // Singleton instance of UIController
     public Slider HealthSlider;
+    public Slider AmrorSlider; // Armor slider to show remaining armor
     [Header("UI Reference")]
     public TMPro.TextMeshProUGUI ammoText;
     [Header("Weapon UI")]
     public Image weaponIcon; // 显示当前武器图标的Image组件
     public Sprite[] weaponSprites; // 4种武器的图标（按顺序对应）
+
+    public TMPro.TextMeshProUGUI HealthPackText; // 显示当前武器名称的Text组件
 
 
 
@@ -28,8 +32,11 @@ public class UIController : PanelBase
 
     protected override void Init()
     {
-      
+        HealthSlider.value = (float)PlayerHealthController.instance.currentHealth / PlayerHealthController.instance.maxHealth;
+        AmrorSlider.value = (float)PlayerHealthController.instance.remainingArmorAbsorb / PlayerHealthController.instance.maxArmorAbsorb;
+        HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
     }
+
 
 
     // Update is called once per frame
@@ -56,10 +63,15 @@ public class UIController : PanelBase
     public void UpdateWeaponUI()
     {
         // 直接替换为当前武器的图标
-        if (weaponIcon != null && weaponSprites.Length > PlayerController.instance.currentGunIndex)
+        if (weaponIcon != null)
         {
             weaponIcon.sprite = weaponSprites[PlayerController.instance.currentGunIndex];
         }
+    }
+
+    public void UpdateHealthPack()
+    {
+        HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
     }
 
 }

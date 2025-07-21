@@ -1024,7 +1024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2838640bfac254180d8bd28c3227ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 0}
+  HealthSlider: {fileID: 4299533145542364307}
+  AmrorSlider: {fileID: 6644848491171282697}
   ammoText: {fileID: 9150235704095446145}
   weaponIcon: {fileID: 7265945782162752483}
   weaponSprites:
@@ -1032,6 +1033,7 @@ MonoBehaviour:
   - {fileID: 21300022, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   - {fileID: 21300030, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   - {fileID: 21300016, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
+  HealthPackText: {fileID: 9011350611054045722}
 --- !u!1 &2424391037738041984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,7 +1791,7 @@ GameObject:
   - component: {fileID: 1871236410264341993}
   - component: {fileID: 9011350611054045722}
   m_Layer: 5
-  m_Name: num (2)
+  m_Name: HealthPackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -89,7 +89,7 @@ public class MonsterAttack : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerHealthController>()?.DamagePlayer(damage); // Call TakeDamage on the MonsterController if it exists
+            other.gameObject.GetComponent<PlayerHealthController>()?.DamagePlayer(damage, true); // Call TakeDamage on the MonsterController if it exists
         }
     }
 }

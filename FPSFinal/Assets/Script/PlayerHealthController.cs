@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerHealthController : MonoBehaviour, IDamageable
+public class PlayerHealthController : MonoBehaviour
 {
     public static PlayerHealthController instance; // Static instance for singleton pattern
     public int maxHealth = 100; // Maximum health of the player
@@ -18,6 +19,7 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
 
     public int HealthBoxAmount = 0; // Amount of health restored by a health box 
 
+
     private void Awake()
     {
         instance = this; // Set the static instance to this instance of PlayerHealthController
@@ -25,7 +27,6 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
     void Start()
     {
 
-        currentHealth = maxHealth; // Initialize current health to maximum health
     }
 
     // Update is called once per frame
@@ -40,8 +41,10 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
             }
         }
 
+        invCounter -= Time.deltaTime; 
     }
 
+   
 
      private void IncreaseHealth()
 
@@ -49,6 +52,7 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
         if (HealthBoxAmount > 0)
         {
             HealthBoxAmount--;
+            UIController.instance.UpdateHealthPack( );
             HealPlayer(50); // Heal the player by 1 health point
             // Decrease the health box amount by 1
             Debug.Log("Health Box Amount decreased to: " + HealthBoxAmount); // Log the decrease
@@ -59,12 +63,14 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
         }
     }
 
+
     public void IncreaseHealthBox()
     {
 
         if (HealthBoxAmount < 5)
         {
             HealthBoxAmount++; // Increase the health box amount by 1
+            UIController.instance.UpdateHealthPack();
             Debug.Log("Health Box Amount increased to: " + HealthBoxAmount); // Log the increase
         }
         else
@@ -73,21 +79,7 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
         }
     }
 
-    public void DamagePlayer(int damage)
-    {
-        Debug.Log("Player took damage: " + damage); // Log the damage taken
-        currentHealth -= damage; // Reduce current health by damage amount
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0; // Ensure current health does not go below zero
-            Debug.Log("Player is dead!"); // Log player death
-            Destroy(gameObject); // Destroy the player game object
-            GameManager.instance.PlayerDied(); // Call the PlayerDied method in GameManager 
-        }
-
-    }
-
-    public void TakeDamage(int damage, bool attackplayer)
+    public void DamagePlayer(int damage, bool attackplayer)
     {
         if (!attackplayer) return;
 
@@ -106,7 +98,6 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
                 finalDamage = Mathf.CeilToInt(damage - absorbed);
                 remainingArmorAbsorb -= absorbed;
 
-                Debug.Log($"Armor absorbed {absorbed} damage. Remaining armor: {remainingArmorAbsorb}");
 
                 // 护甲吸收完毕
                 if (remainingArmorAbsorb <= 0f)
@@ -119,6 +110,8 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
 
             // 扣血
             currentHealth -= finalDamage;
+            UIController.instance.HealthSlider.value = (float)currentHealth / maxHealth;
+            UIController.instance.AmrorSlider.value = (float)remainingArmorAbsorb / maxArmorAbsorb;
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
@@ -129,9 +122,18 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
 
             // 更新血量UI & 无敌帧
             invCounter = invLength;
-            UIController.instance.HealthSlider.value = currentHealth;
         }
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0; // Ensure current health does not go below zero
+            Debug.Log("Player is dead!"); // Log player death
+            Destroy(gameObject); // Destroy the player game object
+            GameManager.instance.PlayerDied(); // Call the PlayerDied method in GameManager 
+        }
+
     }
+
 
     public void HealPlayer(int amount)
     {
@@ -139,5 +141,8 @@ public class PlayerHealthController : MonoBehaviour, IDamageable
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
 
+        // 更新 UI 血条
+        UIController.instance.HealthSlider.value = (float)currentHealth / maxHealth;
     }
+
 }
