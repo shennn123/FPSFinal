@@ -7,6 +7,8 @@ public class UIController : PanelBase
     public static UIController instance; // Singleton instance of UIController
     public Slider HealthSlider;
     public Slider AmrorSlider; // Armor slider to show remaining armor
+    
+  
     [Header("UI Reference")]
     public TMPro.TextMeshProUGUI ammoText;
     [Header("Weapon UI")]
@@ -35,6 +37,7 @@ public class UIController : PanelBase
         HealthSlider.value = (float)PlayerHealthController.instance.currentHealth / PlayerHealthController.instance.maxHealth;
         AmrorSlider.value = (float)PlayerHealthController.instance.remainingArmorAbsorb / PlayerHealthController.instance.maxArmorAbsorb;
         HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
+
     }
 
 
@@ -73,5 +76,5 @@ public class UIController : PanelBase
     {
         HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
     }
-
+    
 }
