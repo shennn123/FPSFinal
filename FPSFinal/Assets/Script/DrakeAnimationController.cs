@@ -32,19 +32,30 @@ public class DrakeAnimationController : MonoBehaviour
 
     void Update()
     {
-        // 换弹
+
+        // 手动换弹
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             StartReload();
+            return; // 防止继续开火逻辑
         }
 
-        // 单点射击：只在点击瞬间触发
+        // 左键按下尝试开火（或判断是否需要自动换弹）
         if (Input.GetMouseButtonDown(0) && !isReloading)
         {
-            TryFire();
+            int currentAmmo = PlayerController.instance.activeGun.currentAmmo;
+
+            if (currentAmmo > 0)
+            {
+                TryFire();
+            }
+            else
+            {
+                StartReload(); // 没子弹自动换弹
+            }
         }
 
-        // 冷却计时
+        // 冷却时间更新
         if (fireCooldown > 0f)
         {
             fireCooldown -= Time.deltaTime;

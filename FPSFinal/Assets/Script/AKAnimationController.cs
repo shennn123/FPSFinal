@@ -37,10 +37,10 @@ public class AKAnimationController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             StartReload();
-            return;
+            return; // 防止继续开火逻辑
         }
 
-        // 左键按下尝试开火
+        // 左键按下尝试开火（或判断是否需要自动换弹）
         if (Input.GetMouseButton(0) && !isReloading)
         {
             int currentAmmo = PlayerController.instance.activeGun.currentAmmo;
@@ -51,15 +51,13 @@ public class AKAnimationController : MonoBehaviour
             }
             else
             {
-                // 没子弹自动换弹
-                StartReload();
+                StartReload(); // 没子弹自动换弹
+                StopFire();
             }
         }
-
-        // 松开鼠标左键时停止开火动画
         if (Input.GetMouseButtonUp(0))
         {
-            StopFire();
+            StopFire(); // 松开鼠标左键停止开火动画
         }
 
         // 冷却时间更新
@@ -68,6 +66,7 @@ public class AKAnimationController : MonoBehaviour
             fireCooldown -= Time.deltaTime;
         }
     }
+
 
     private void StartReload()
     {

@@ -32,19 +32,30 @@ public class PistolAnimatorController : MonoBehaviour
 
     void Update()
     {
-        // ����
+
+        // 手动换弹
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             StartReload();
+            return; // 防止继续开火逻辑
         }
 
-        // ���������ֻ�ڵ��˲�䴥��
+        // 左键按下尝试开火（或判断是否需要自动换弹）
         if (Input.GetMouseButtonDown(0) && !isReloading)
         {
-            TryFire();
+            int currentAmmo = PlayerController.instance.activeGun.currentAmmo;
+
+            if (currentAmmo > 0)
+            {
+                TryFire();
+            }
+            else
+            {
+                StartReload(); // 没子弹自动换弹
+            }
         }
 
-        // ��ȴ��ʱ
+        // 冷却时间更新
         if (fireCooldown > 0f)
         {
             fireCooldown -= Time.deltaTime;
@@ -70,7 +81,7 @@ public class PistolAnimatorController : MonoBehaviour
         Invoke(nameof(ResetReload), 2.35f); 
     }
 
-    private void ResetReload()
+    public void ResetReload()
     {
         isReloading = false;
     }
