@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6350205516088466479}
   - component: {fileID: 6439176887606588861}
   - component: {fileID: 2732786154707537593}
+  - component: {fileID: 3367024031192089564}
   m_Layer: 0
   m_Name: FrostboundWizard
   m_TagString: Monster
@@ -172,6 +173,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &3367024031192089564
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843113208459258323}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.61
+  m_Height: 2.08
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.89, z: 0}
 --- !u!1001 &6292668806195802014
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -35,10 +35,11 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-  
+
         if (other.CompareTag("Monster"))
         {
             other.gameObject.GetComponent<MonsterHealth>()?.TakeDamage(10); // Call TakeDamage on the MonsterController if it exists
+            Debug.Log("子弹触发到怪物了！");
         }
     }
 

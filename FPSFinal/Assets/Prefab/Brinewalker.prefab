@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 9196164708634526833}
   - component: {fileID: 5451045875037571468}
   - component: {fileID: 8304155234375477809}
+  - component: {fileID: 8755509748586504793}
   m_Layer: 0
   m_Name: Brinewalker
   m_TagString: Monster
@@ -119,8 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 120
-  MonsterHPUI: {fileID: 0}
-  hpPosition: {fileID: 6824991916922269618}
 --- !u!114 &9196164708634526833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +174,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &8755509748586504793
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803441185270398552}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.34, z: 0}
 --- !u!1001 &4449436040180892035
 PrefabInstance:
   m_ObjectHideFlags: 0

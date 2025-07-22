@@ -74,9 +74,14 @@ public class MonsterController : MonoBehaviour
     public void OnDeath()
     {
         Debug.Log("Monster " + monsterId + " has died.");
+
+        //动画播放死亡动画
         animator.SetTrigger("Dead");
-        //怪物死亡时，必须释放它占用的资源（物体 + 状态数据）。
+
+        //销毁数据
         MonsterManager.Instance.RemoveMonster(monsterId);
-        Destroy(gameObject,10f);// 数字表示 延迟销毁给死亡动画时间播放
+
+        //销毁物体
+        Destroy(gameObject, 2f);//数字表示 延迟销毁给死亡动画时间播放,目前2秒最合适
     }
 }

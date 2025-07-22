@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7098015673729400691}
   - component: {fileID: 3659856615712227994}
   - component: {fileID: 6804699059850523121}
+  - component: {fileID: 1240553909916898788}
   m_Layer: 0
   m_Name: QueenofShiver
   m_TagString: Monster
@@ -172,6 +173,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1240553909916898788
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959201527233358837}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.2
+  m_Height: 10.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.68, z: 0}
 --- !u!1001 &7992767269307815812
 PrefabInstance:
   m_ObjectHideFlags: 0
