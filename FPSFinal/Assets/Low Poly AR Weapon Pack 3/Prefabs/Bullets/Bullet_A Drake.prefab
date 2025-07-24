@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7590948606249549172}
   - component: {fileID: 530275993657541998}
   - component: {fileID: 7589710395001676457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet_A_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: -3628546525825301441}
   - component: {fileID: 1238243075915680984}
   - component: {fileID: 5202711589771246637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet_A Drake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
