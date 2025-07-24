@@ -20,6 +20,7 @@ public class MonsterManager : MonoBehaviour
     private void Start()
     {
        UIManager.Show("InGameUI");
+       UIManager.Show("Map");
     }
 
     //该函数用来注册怪物
