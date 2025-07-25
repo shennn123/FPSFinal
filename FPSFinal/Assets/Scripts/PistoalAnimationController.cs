@@ -34,14 +34,14 @@ public class PistolAnimatorController : MonoBehaviour
     {
 
         // 手动换弹
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !PlayerController.instance.activeGun.isReloading)
         {
             StartReload();
             return; // 防止继续开火逻辑
         }
 
         // 左键按下尝试开火（或判断是否需要自动换弹）
-        if (Input.GetMouseButtonDown(0) && !isReloading)
+        if (Input.GetMouseButtonDown(0) && !isReloading && !PlayerController.instance.activeGun.isReloading)
         {
             int currentAmmo = PlayerController.instance.activeGun.currentAmmo;
 

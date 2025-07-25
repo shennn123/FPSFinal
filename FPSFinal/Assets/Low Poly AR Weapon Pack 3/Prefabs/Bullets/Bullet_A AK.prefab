@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fd677553fff934ab93e76bd6212be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 200
+  moveSpeed: 150
   lifeTime: 2
   laserImpct: {fileID: 8195523956524795456, guid: a51c67f6b6050ec469cbaeea7baca665, type: 3}
   Damage: 35

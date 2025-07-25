@@ -216,13 +216,13 @@ public class PlayerController : MonoBehaviour
 
         //SyncGunAnimatorState(GunAnim);
 
-        // �رյ�ǰ����
+
         if (activeGun != null)
         {
             activeGun.gameObject.SetActive(false);
         }
 
-        // ����������
+
         activeGun = guns[gunIndex];
         currentGunIndex = gunIndex;
         activeGun.gameObject.SetActive(true);
