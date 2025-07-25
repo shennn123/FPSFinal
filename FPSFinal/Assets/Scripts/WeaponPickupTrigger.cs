@@ -34,6 +34,23 @@ public class WeaponPickupTrigger : MonoBehaviour
                     PlayerController.instance.SwitchGun(3); // 自动切换到第一把枪
                     UIPickupPrompt.instance?.Hide();
                     break;
+                case 4:
+                    Debug.Log("准备解锁 gun5");
+
+                    if (!pc.gun5Unlocked)
+                    {
+                        pc.gun5Unlocked = true;
+                        Debug.Log("gun5Unlocked 设置为 true");
+                    }
+                    else
+                    {
+                        Debug.Log("gun5 已经是解锁状态！");
+                    }
+
+                    PlayerController.instance.SwitchGun(4);
+                    UIPickupPrompt.instance?.Hide();
+                    break;
+
                 default:
                     Debug.LogWarning("未知枪索引：" + gunIndexInAllGuns);
                     break;

@@ -34,7 +34,7 @@ public class MK14AnimationController: MonoBehaviour
     {
 
         // 手动换弹
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && PlayerController.instance.activeGun.maxAmmo != 0)
         {
             StartReload();
             return; // 防止继续开火逻辑
@@ -51,7 +51,14 @@ public class MK14AnimationController: MonoBehaviour
             }
             else
             {
-                StartReload(); // 没子弹自动换弹
+                if(PlayerController.instance.activeGun.maxAmmo > 0)
+                {
+                    StartReload(); // 没子弹自动换弹
+                }
+                else
+                {
+                    Debug.Log("No ammo left and no reload available.");
+                }
             }
         }
 

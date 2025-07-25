@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public bool gun2Unlocked = false;
     public bool gun3Unlocked = false;
     public bool gun4Unlocked = false;
+    public bool gun5Unlocked = false;
 
     void Awake() => instance = this;
 
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && gun2Unlocked) SwitchGun(1);
         if (Input.GetKeyDown(KeyCode.Alpha3) && gun3Unlocked) SwitchGun(2);
         if (Input.GetKeyDown(KeyCode.Alpha4) && gun4Unlocked) SwitchGun(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5) && gun5Unlocked) SwitchGun(4);
 
     }
 
