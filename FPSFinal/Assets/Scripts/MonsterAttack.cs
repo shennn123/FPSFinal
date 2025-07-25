@@ -29,17 +29,21 @@ public class MonsterAttack : MonoBehaviour
     private float lastAttackTime = -999f;
     private float attackCooldown = 0.5f; // 半秒内只允许一次攻击
 
-
+    //引用怪物血量模组
+    private MonsterHealth mh;
 
     //攻击动画开始的时刻调用
     void Start()
     {
-        //因为脚本需要挂在攻击部位上，所以动画机得往上找
+        //因为脚本需要挂在攻击部位上，所以动画机和其他模组都得往上找--败笔，但懒得改了
         animator = GetComponentInParent<Animator>();
+        mh = GetComponentInParent<MonsterHealth>();
     }
 
     void Update()
     {
+        if (mh.isMonsterDead) return; // 死亡后停止攻击
+
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         //如果当前动画状态是攻击

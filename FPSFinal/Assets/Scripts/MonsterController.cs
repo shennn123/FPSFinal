@@ -1,5 +1,9 @@
 using UnityEngine;
 
+//用于协程函数
+using System.Collections;
+
+
 //串联AI、生命值、攻击、状态同步模块
 public class MonsterController : MonoBehaviour
 {
@@ -25,7 +29,7 @@ public class MonsterController : MonoBehaviour
         ai = GetComponent<MonsterAI>();
         health = GetComponent<MonsterHealth>();
         attack = GetComponent<MonsterAttack>();
-        
+
         //动画机在子物体上
         animator = GetComponentInChildren<Animator>();
 
@@ -51,7 +55,7 @@ public class MonsterController : MonoBehaviour
 
         // 播放对应动画
         if (animator != null)
-        {    
+        {
             if (newState != currentState && animator != null)
             {
                 Debug.Log("Changing animation state from " + currentState + " to " + newState);
@@ -76,12 +80,32 @@ public class MonsterController : MonoBehaviour
         Debug.Log("Monster " + monsterId + " has died.");
 
         //动画播放死亡动画
+        animator.ResetTrigger("GetHit"); // 清除受击触发器,确保死亡触发时不会是受击中动作
         animator.SetTrigger("Dead");
 
         //销毁数据
         MonsterManager.Instance.RemoveMonster(monsterId);
 
-        //销毁物体
-        Destroy(gameObject, 2f);//数字表示 延迟销毁给死亡动画时间播放,目前2秒最合适
+        // 启动延迟销毁协程（自动获取死亡动画长度）
+        StartCoroutine(DestroyAfterDeathAnimation());
+    }
+
+
+    //销毁协程
+    private IEnumerator DestroyAfterDeathAnimation()
+    {
+        // 等待 1 帧，确保 Animator 切换到 Dead 状态
+        yield return null;
+
+        // 获取当前动画状态
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        // 等待当前动画长度播放完成（可以加减毫秒来微调，默认为0）
+        float waitTime = stateInfo.length - 0.0f;
+        yield return new WaitForSeconds(waitTime);
+
+        Destroy(gameObject);
     }
 }
+
+
