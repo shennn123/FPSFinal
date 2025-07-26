@@ -1,19 +1,22 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // For scene management
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // For working with UI
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is create
     public static GameManager instance;
 
     public int playerScore = 0; // Player's score
-    public CanvasGroup deathCanvasGroup;      // 淡入面板
-    public Transform respawnPoint;            // 复活位置
-    public GameObject player;                 // 玩家对象
-    public int deathCount = 5;                // 剩余复活次数
-    public TMPro.TextMeshProUGUI deathCountText; // UI 显示剩余次数
-    public GameObject gameOverPanel;          // 当死亡次数用尽时显示
+    public CanvasGroup deathCanvasGroup;      // Fade-in panel
+    public Transform respawnPoint;            // Respawn position
+    public GameObject player;                 // Player object
+    public int deathCount = 5;                // Remaining respawns
+    public GameObject gameOverPanel;          // Panel to show when the game is over
+
+    public List<Image> heartsUI;              // List of heart icons in UI
+    private bool bossDefeated = false;        // Flag to check if the boss is defeated
 
     void Awake()
     {
@@ -28,40 +31,44 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); // Keep GameManager persistent across scenes
     }
 
-
-
     void Start()
     {
-        if(SceneManager.GetActiveScene().name != "1")
+        if (SceneManager.GetActiveScene().name != "1")
         {
             Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center of the screen
+            if (UIController.instance != null)
+            {
+                UIController.instance.UpdateHeartsUI(deathCount);
+            }
         }
         else
         {
             Cursor.lockState = CursorLockMode.None; // Unlock the cursor when not in the game scene
+            UIManager.Show("MainMenu");
             Cursor.visible = true; // Make the cursor visible
         }
 
-        UIManager.Show("MainMenu");
+        
+        UpdateHeartsUI(); // Initialize hearts UI on start
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        // Optionally, add any game-related updates here
     }
+
     public void PlayerDied()
     {
-        Debug.Log("Player has died!"); // Log player death
-        StartCoroutine(PlayerDiedCo()); // Start the coroutine to handle player death
+        Debug.Log("Player has died!");
+        StartCoroutine(PlayerDiedCo());
     }
 
     public IEnumerator PlayerDiedCo()
     {
+        // Fade in death panel
         if (deathCanvasGroup != null)
         {
             deathCanvasGroup.gameObject.SetActive(true);
-
             float duration = 1f;
             float t = 0f;
             while (t < duration)
@@ -72,16 +79,16 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // 更新死亡次数
+        // Decrease remaining death count
         deathCount--;
-        UpdateDeathCountUI();
+        UIController.instance.UpdateHeartsUI(deathCount); // Update the heart UI to reflect remaining lives
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         if (deathCount > 0)
         {
             RespawnPlayer();
-            // 淡出面板
+            // Fade out death panel
             if (deathCanvasGroup != null)
             {
                 float t = 0f;
@@ -96,37 +103,62 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("死亡次数用尽，Game Over！");
+            Debug.Log("No more respawns, Game Over!");
             if (gameOverPanel != null)
             {
                 gameOverPanel.SetActive(true);
             }
-           
+
             SceneManager.LoadScene("MainMenu");
         }
-        void RespawnPlayer()
-        {
-            if (player != null && respawnPoint != null)
-            {
-                player.transform.position = respawnPoint.position;
-                player.transform.rotation = respawnPoint.rotation;//重置玩家位置
+    }
 
-                // 若玩家有 Rigidbody 则清除速度
-                Rigidbody rb = player.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.linearVelocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                }                                                       //这个我代码先放这了___ywx,不是很懂我们死亡系统是啥样的.
+    void RespawnPlayer()
+    {
+        if (player != null && respawnPoint != null)
+        {
+            player.transform.position = respawnPoint.position;
+            player.transform.rotation = respawnPoint.rotation; // Reset player position
+
+            // Reset player Rigidbody velocity and angular velocity
+            Rigidbody rb = player.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                // Option: Temporarily disable physics (sleep)
+                rb.Sleep(); // This stops the Rigidbody from moving temporarily
             }
         }
+    }
 
-        void UpdateDeathCountUI()
+
+    // Update hearts UI based on remaining deathCount
+    void UpdateHeartsUI()
+    {
+        for (int i = 0; i < heartsUI.Count; i++)
         {
-            if (deathCountText != null)
+            if (i < deathCount)
             {
-                deathCountText.text = "x " + deathCount;
+                heartsUI[i].enabled = true;  // Enable heart (visible)
+            }
+            else
+            {
+                heartsUI[i].enabled = false; // Disable heart (hidden)
             }
         }
+    }
+
+    // Boss defeat logic
+    public void BossDefeated()
+    {
+        bossDefeated = true;
+        Debug.Log("Boss defeated! Proceeding to next level...");
+        // Logic to load next level
+        LoadNextLevel();
+    }
+
+    void LoadNextLevel()
+    {
+        string nextLevel = "Level" + (int.Parse(SceneManager.GetActiveScene().name.Replace("Level", "")) + 1);
+        SceneManager.LoadScene(nextLevel);
     }
 }

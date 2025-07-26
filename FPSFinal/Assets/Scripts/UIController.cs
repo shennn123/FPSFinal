@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,13 @@ public class UIController : PanelBase
 
     public TMPro.TextMeshProUGUI HealthPackText; // 显示当前武器名称的Text组件
 
+    [Header("Death UI")]
+    public CanvasGroup deathCanvasGroup;
+    public GameObject gameOverPanel;
+    public List<Image> heartsUI;
+
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,6 +37,15 @@ public class UIController : PanelBase
         else
         {
             Destroy(gameObject); // Destroy duplicate instances
+        }
+        if (deathCanvasGroup != null)
+        {
+            deathCanvasGroup.gameObject.SetActive(false);
+        }
+
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
         }
     }
 
@@ -76,5 +93,16 @@ public class UIController : PanelBase
     {
         HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
     }
-    
+    public void UpdateHeartsUI(int deathCount)
+    {
+        if (heartsUI == null) return;
+
+        for (int i = 0; i < heartsUI.Count; i++)
+        {
+            if (heartsUI[i] != null)
+                heartsUI[i].enabled = i < deathCount;
+        }
+    }
+
+
 }
