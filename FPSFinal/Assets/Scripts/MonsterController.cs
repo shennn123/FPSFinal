@@ -58,7 +58,6 @@ public class MonsterController : MonoBehaviour
         {
             if (newState != currentState && animator != null)
             {
-                Debug.Log("Changing animation state from " + currentState + " to " + newState);
                 // 清除旧的触发器，防止冲突
                 animator.ResetTrigger("Idle");
                 animator.ResetTrigger("Chasing");
@@ -70,7 +69,6 @@ public class MonsterController : MonoBehaviour
                 // 更新当前状态
                 currentState = newState;
 
-                Debug.Log("Set animation state: " + newState);
             }
         }
     }

@@ -94,6 +94,7 @@ public class MonsterAttack : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerHealthController>()?.DamagePlayer(damage, true); // Call TakeDamage on the MonsterController if it exists
+            Debug.Log("近战攻击命中了玩家，造成了伤害：" + damage);
         }
     }
 }

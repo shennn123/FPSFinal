@@ -118,17 +118,29 @@ public class GameManager : MonoBehaviour
         if (player != null && respawnPoint != null)
         {
             player.transform.position = respawnPoint.position;
-            player.transform.rotation = respawnPoint.rotation; // Reset player position
+            player.transform.rotation = respawnPoint.rotation;
+            player.SetActive(true);
 
-            // Reset player Rigidbody velocity and angular velocity
             Rigidbody rb = player.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                // Option: Temporarily disable physics (sleep)
-                rb.Sleep(); // This stops the Rigidbody from moving temporarily
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.Sleep();
             }
+
+      
+            // ? ������ã�����Ѫ�������׵�
+            PlayerHealthController ph = player.GetComponent<PlayerHealthController>();
+            if (ph != null)
+            {
+                ph.ResetHealthStats();
+            }
+
+            Debug.Log("Player respawned with full stats.");
         }
     }
+
 
 
     // Update hearts UI based on remaining deathCount

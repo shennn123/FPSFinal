@@ -11,7 +11,7 @@ public class PlayerHealthController : MonoBehaviour
     private float invCounter; // Timer for invincibility duration
 
     public bool hasArmor = false;
-    public float damageReduction; // ��ʰȡ���趨
+    public float damageReduction; 
 
     public float remainingArmorAbsorb = 0f; // 护甲剩余可吸收伤害值
     public float maxArmorAbsorb = 50f;      // 最大护甲吸收值（可通过拾取设置）
@@ -44,7 +44,6 @@ public class PlayerHealthController : MonoBehaviour
         invCounter -= Time.deltaTime; 
     }
 
-   
 
      private void IncreaseHealth()
 
@@ -110,28 +109,22 @@ public class PlayerHealthController : MonoBehaviour
 
             // 扣血
             currentHealth -= finalDamage;
+            Debug.Log($"Player took {finalDamage} damage. Current Health: {currentHealth}, Remaining Armor Absorb: {remainingArmorAbsorb}");
             UIController.instance.HealthSlider.value = (float)currentHealth / maxHealth;
             UIController.instance.AmrorSlider.value = (float)remainingArmorAbsorb / maxArmorAbsorb;
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
                 Debug.Log("Player is dead!");
-                transform.parent.gameObject.SetActive(false);
+                transform.gameObject.SetActive(false);
                 GameManager.instance.PlayerDied();
+ 
+         
             }
 
             // 更新血量UI & 无敌帧
             invCounter = invLength;
         }
-
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0; // Ensure current health does not go below zero
-            Debug.Log("Player is dead!"); // Log player death
-            Destroy(gameObject); // Destroy the player game object
-            GameManager.instance.PlayerDied(); // Call the PlayerDied method in GameManager 
-        }
-
     }
 
 
@@ -143,6 +136,28 @@ public class PlayerHealthController : MonoBehaviour
 
         // 更新 UI 血条
         UIController.instance.HealthSlider.value = (float)currentHealth / maxHealth;
+    }
+
+    public void ResetHealthStats()
+    {
+        // 血量回满
+        currentHealth = maxHealth;
+        UIController.instance.HealthSlider.value = 1f;
+
+        // 血包回满（看你需求可以不回满）
+        HealthBoxAmount = 1; // 或者你想设置 0、5 都可以
+        UIController.instance.UpdateHealthPack();
+
+        // 护甲回满（如果你希望复活时带护甲）
+        hasArmor = true;
+        remainingArmorAbsorb = maxArmorAbsorb;
+        damageReduction = 0.5f; // 可配置：你实际用的值是多少就写多少
+        UIController.instance.AmrorSlider.value = 1f;
+
+        // 清除无敌时间（可选）
+        invCounter = 0f;
+
+        Debug.Log("Player health & armor reset.");
     }
 
 }
