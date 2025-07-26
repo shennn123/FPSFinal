@@ -18,7 +18,7 @@ public class BulletController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to the bullet 
+        rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to the bullet   
     }
 
     // Update is called once per frame
@@ -35,8 +35,9 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Monster"))
-        {      
+        {
             other.gameObject.GetComponent<MonsterHealth>()?.TakeDamage(10); // Call TakeDamage on the MonsterController if it exists
             Debug.Log("子弹触发到怪物了！");
         }
