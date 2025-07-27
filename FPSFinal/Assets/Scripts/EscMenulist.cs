@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class EscMenulist : PanelBase
 {
 
-    public AudioSource musicSource;   // ÍÏÈë Audio Source
-    public Slider volumeSlider;       // ÍÏÈë Slider
+    public AudioSource musicSource;   // ï¿½ï¿½ï¿½ï¿½ Audio Source
+    public Slider volumeSlider;       // ï¿½ï¿½ï¿½ï¿½ Slider
     public GameObject menulist;//menu list
 
     [SerializeField] private bool menuKeys = true;
@@ -30,7 +30,7 @@ public class EscMenulist : PanelBase
             {
                 menulist.SetActive(true);
                 menuKeys = false;
-                Time.timeScale = 0;//Ê±¼äÔÝÍ£
+                Time.timeScale = 0;//Ê±ï¿½ï¿½ï¿½ï¿½Í£
 
                 UnityEngine.Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
@@ -41,14 +41,16 @@ public class EscMenulist : PanelBase
         {
             menulist.SetActive(false);
             menuKeys = true;
-            Time.timeScale = 1;//Ê±¼äÁ÷¶¯
+            Time.timeScale = 1;//Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            UnityEngine.Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
     public void Return()
     {
         menulist.SetActive(false);
         menuKeys = true;
-        Time.timeScale = 1;//Ê±¼äÁ÷¶¯
+        Time.timeScale = 1;//Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
     public void Restart()
     {

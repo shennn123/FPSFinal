@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int playerScore = 0; // Player's score
+
     public CanvasGroup deathCanvasGroup;      // Fade-in panel
     public Transform respawnPoint;            // Respawn position
     public GameObject player;                 // Player object
@@ -66,17 +66,9 @@ public class GameManager : MonoBehaviour
     public IEnumerator PlayerDiedCo()
     {
         // Fade in death panel
-        if (deathCanvasGroup != null)
+        if (UIController.instance != null)
         {
-            deathCanvasGroup.gameObject.SetActive(true);
-            float duration = 1f;
-            float t = 0f;
-            while (t < duration)
-            {
-                t += Time.deltaTime;
-                deathCanvasGroup.alpha = Mathf.Lerp(0, 1, t / duration);
-                yield return null;
-            }
+            yield return UIController.instance.ShowDeathPanel();
         }
 
         // Decrease remaining death count
@@ -89,26 +81,16 @@ public class GameManager : MonoBehaviour
         {
             RespawnPlayer();
             // Fade out death panel
-            if (deathCanvasGroup != null)
+            if (UIController.instance != null)
             {
-                float t = 0f;
-                while (t < 1f)
-                {
-                    t += Time.deltaTime;
-                    deathCanvasGroup.alpha = Mathf.Lerp(1, 0, t);
-                    yield return null;
-                }
-                deathCanvasGroup.gameObject.SetActive(false);
+                yield return UIController.instance.HideDeathPanel();
             }
         }
         else
         {
             Debug.Log("No more respawns, Game Over!");
-            if (gameOverPanel != null)
-            {
-                gameOverPanel.SetActive(true);
-            }
-
+            UIController.instance?.ShowGameOverPanel();
+            yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("MainMenu");
         }
     }
@@ -172,5 +154,21 @@ public class GameManager : MonoBehaviour
     {
         string nextLevel = "Level" + (int.Parse(SceneManager.GetActiveScene().name.Replace("Level", "")) + 1);
         SceneManager.LoadScene(nextLevel);
+    }
+    public void ResetGameState()
+    {
+        // 重置玩家状态
+        deathCount = 5; // 重置死亡次数
+   
+
+        // 重置玩家生命值
+        PlayerHealthController ph = player.GetComponent<PlayerHealthController>();
+        if (ph != null)
+        {
+            ph.ResetHealthStats();
+        }
+
+        // 更新UI
+        UIController.instance?.UpdateHeartsUI(deathCount);
     }
 }

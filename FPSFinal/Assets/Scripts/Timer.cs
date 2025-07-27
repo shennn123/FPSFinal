@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public float totalTime = 420f; // 7 ·ÖÖÓ = 420 Ãë
-    public Text timerText;         // UI Text À´ÏÔÊ¾µ¹¼ÆÊ±
+    public float totalTime = 420f; // 7 ï¿½ï¿½ï¿½ï¿½ = 420 ï¿½ï¿½
+    public TMPro.TextMeshProUGUI timerText;         // UI Text ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ê±
     private bool isRunning = true;
 
     void Update()
@@ -16,7 +16,7 @@ public class CountdownTimer : MonoBehaviour
             {
                 totalTime = 0f;
                 isRunning = false;
-                OnTimeOver(); // Ê±¼ä½áÊøÊ±µ÷ÓÃÊÂ¼þ£¨¿ÉÑ¡£©
+                OnTimeOver(); // Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
             }
 
             UpdateTimerDisplay();
@@ -32,8 +32,8 @@ public class CountdownTimer : MonoBehaviour
 
     void OnTimeOver()
     {
-        Debug.Log("Ê±¼äµ½£¡");
-        // Äã¿ÉÒÔÔÚÕâÀï´¥·¢ÓÎÏ·Ê§°Ü¡¢½áÊø³¡¾°µÈÂß¼­
+        Debug.Log("Ê±ï¿½äµ½ï¿½ï¿½");
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï´¥ï¿½ï¿½ï¿½ï¿½Ï·Ê§ï¿½Ü¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
     }
 
     public void ResetTimer(float newTime)
