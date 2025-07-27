@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 120
   MonsterHPUI: {fileID: 2059704718611258833}
+  isMonsterDead: 0
 --- !u!114 &9196164708634526833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &8755509748586504793
 CapsuleCollider:
@@ -618,7 +619,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9164578320920074573, guid: 75f057b43e0a449dae5f6549f5107474, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7336973159312583579}
+      addedObject: {fileID: 8569409343783209342}
   m_SourcePrefab: {fileID: 100100000, guid: 75f057b43e0a449dae5f6549f5107474, type: 3}
 --- !u!4 &1719128834942093239 stripped
 Transform:
@@ -630,7 +631,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9164578320920074573, guid: 75f057b43e0a449dae5f6549f5107474, type: 3}
   m_PrefabInstance: {fileID: 4449436040180892035}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7336973159312583579
+--- !u!65 &8569409343783209342
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -649,5 +650,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.42, y: 0.53, z: 0.43}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.56, y: 0.58, z: 0.57}
+  m_Center: {x: 0.03, y: -0.12, z: 0}

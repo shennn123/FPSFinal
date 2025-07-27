@@ -467,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 360
   MonsterHPUI: {fileID: 7229247509111150582}
+  isMonsterDead: 0
 --- !u!114 &7636797119453101453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +520,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &7144573906628716415
 CapsuleCollider:

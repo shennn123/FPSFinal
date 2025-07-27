@@ -205,8 +205,8 @@ GameObject:
   - component: {fileID: 7515669405580707702}
   - component: {fileID: 6482743959465596353}
   - component: {fileID: 5268074116420228432}
-  - component: {fileID: 4152581046187416896}
   - component: {fileID: 636510876030847997}
+  - component: {fileID: -1289640976618871906}
   m_Layer: 0
   m_Name: ChillAbomination
   m_TagString: Monster
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   MonsterHPUI: {fileID: 6079417711865030977}
+  isMonsterDead: 0
 --- !u!114 &6482743959465596353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +309,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: 100
---- !u!54 &4152581046187416896
+--- !u!136 &636510876030847997
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908402904456340110}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.25
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.41, z: 0.85}
+--- !u!54 &-1289640976618871906
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -333,31 +357,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &636510876030847997
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2908402904456340110}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.25
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.41, z: 0.85}
 --- !u!1 &6221870457786332882
 GameObject:
   m_ObjectHideFlags: 0
