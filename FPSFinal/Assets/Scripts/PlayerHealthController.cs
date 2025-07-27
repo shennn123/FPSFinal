@@ -131,6 +131,14 @@ public class PlayerHealthController : MonoBehaviour
         Debug.Log("Adrenaline boost ended.");
     }
 
+    public void IncreaseArmor(float amount = 30)
+    {
+        remainingArmorAbsorb += amount;
+        if (remainingArmorAbsorb > maxArmorAbsorb)
+            remainingArmorAbsorb = maxArmorAbsorb;
+        // 更新 UI 护甲条
+        UIController.instance.AmrorSlider.value = (float)remainingArmorAbsorb / maxArmorAbsorb;
+    }
 
 
     private void IncreaseHealth()
@@ -263,13 +271,4 @@ public class PlayerHealthController : MonoBehaviour
     }
 
 
-
-    public void IncreaseArmor(float amount)
-    {
-        remainingArmorAbsorb += amount;
-        if (remainingArmorAbsorb > maxArmorAbsorb)
-            remainingArmorAbsorb = maxArmorAbsorb;
-        // 更新 UI 护甲条
-        UIController.instance.AmrorSlider.value = (float)remainingArmorAbsorb / maxArmorAbsorb;
-    }
 }

@@ -32,7 +32,7 @@ public class PickupItem : MonoBehaviour
                     case PickupType.Armor:
                         if (!playerHealth.hasArmor)
                         {
-                                
+                            playerHealth.IncreaseArmor();
                             Debug.Log($"Picked up armor: -{armorReduction * 100f}% damage, up to {maxAbsorbAmount} total absorbed");
                         }
                         break;

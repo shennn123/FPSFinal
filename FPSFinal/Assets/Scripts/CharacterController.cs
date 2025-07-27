@@ -47,11 +47,22 @@ public class PlayerController : MonoBehaviour
     public bool gun4Unlocked = false;
     public bool gun5Unlocked = false;
 
-    void Awake() => instance = this;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // 已有实例就销毁新对象
+        }
+    }
 
- 
     void Start()
     {
+        // 你已有的 Start 代码：
         charCon = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -234,7 +245,7 @@ public class PlayerController : MonoBehaviour
  
     }
 
-  
+
 
 
 }
