@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,8 @@ public class PlayerHealthController : MonoBehaviour
     public float remainingArmorAbsorb = 0f; // 护甲剩余可吸收伤害值
     public float maxArmorAbsorb = 50f;      // 最大护甲吸收值（可通过拾取设置）
 
+    public int AmmunitionBoxAmount = 0; // Amount of ammunition restored by an ammunition box
+    public int AdrenalineBoxAmount = 0; // Amount of adrenaline restored by an adrenaline box
 
     public int HealthBoxAmount = 0; // Amount of health restored by a health box 
 
@@ -41,11 +44,96 @@ public class PlayerHealthController : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.Alpha6)) 
+        {
+            if(AdrenalineBoxAmount > 0 && currentHealth > 0)
+            {
+                IncreaseAdrenaline(); // Call the method to increase health box amount when pressing Alpha8 key
+                Debug.Log("Adrenaline Box Amount: " + AdrenalineBoxAmount); // Log the current adrenaline box amount
+            }
+            else
+            {
+                Debug.Log("No Adrenaline Boxes left!"); // Log if no adrenaline boxes are left
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            if (AmmunitionBoxAmount > 0 && currentHealth > 0)
+            {
+                IncreaseAmmo(); // Call the method to increase health box amount when pressing Alpha8 key
+            }
+        }
+
         invCounter -= Time.deltaTime; 
     }
 
 
-     private void IncreaseHealth()
+    public void IncreaseAmmo(int amount = 30)
+    {
+        if (PlayerController.instance.activeGun != null)
+        {
+            AmmunitionBoxAmount--; // 使用一盒子弹
+            UIController.instance.UpdateAmmunitionUI();
+            Debug.Log("Ammunition Box Amount: " + AmmunitionBoxAmount); // Log the current ammunition box amount
+            Gun gun = PlayerController.instance.activeGun;
+
+            gun.maxAmmo += amount;
+            if(gun.maxAmmo>99)
+            {
+                gun.maxAmmo = 99; // 限制最大弹药量为99
+            }
+            UIController.instance.UpdateAmmoUI();
+
+        }
+    }
+
+
+    private void IncreaseAdrenaline()
+    {
+        if (AdrenalineBoxAmount > 0)
+        {
+            AdrenalineBoxAmount--; // Decrease the adrenaline box amount by 1
+            UIController.instance.UpdateAdrenalineUI();
+            StartCoroutine(AdrenalineBoostCoroutine());
+        }
+    }
+    private IEnumerator AdrenalineBoostCoroutine()
+    {
+        // 提升值
+        float moveBoost = 5f;
+        float runBoost = 5f;
+        int damageBoost = 10;
+
+        // 获取引用
+        var player = PlayerController.instance;
+        BulletController bullet = player.activeGun.bulletPrefab.GetComponent<BulletController>();
+
+        // 保存原始值
+        float originalMoveSpeed = player.moveSpeed;
+        float originalRunSpeed = player.runSpeed;
+        int originalDamage = bullet.Damage;
+
+        // 应用提升
+        player.moveSpeed += moveBoost;
+        player.runSpeed += runBoost;
+        bullet.Damage += damageBoost;
+
+        // 等待 15 秒
+        yield return new WaitForSeconds(10f);
+
+        // 恢复原值
+        player.moveSpeed = originalMoveSpeed;
+        player.runSpeed = originalRunSpeed;
+        bullet.Damage = originalDamage;
+
+        Debug.Log("Adrenaline boost ended.");
+    }
+
+
+
+    private void IncreaseHealth()
 
     { 
         if (HealthBoxAmount > 0)
@@ -76,6 +164,20 @@ public class PlayerHealthController : MonoBehaviour
         {
             Debug.Log("Health Box Amount is already at maximum!"); // Log if already at maximum
         }
+    }
+
+    public void IncreaseAmmunitionBox()
+    {
+        AmmunitionBoxAmount++;
+        UIController.instance.UpdateAmmoBoxUI();
+        Debug.Log("Ammunition Box Amount increased to: " + AmmunitionBoxAmount);
+    }
+
+    public void IncreaseAdrenalineBox()
+    {
+        AdrenalineBoxAmount++;
+        UIController.instance.UpdateAdrenalineUI();
+        Debug.Log("Adrenaline Box Amount increased to: " + AdrenalineBoxAmount);
     }
 
     public void DamagePlayer(int damage, bool attackplayer)
@@ -160,4 +262,14 @@ public class PlayerHealthController : MonoBehaviour
         Debug.Log("Player health & armor reset.");
     }
 
+
+
+    public void IncreaseArmor(float amount)
+    {
+        remainingArmorAbsorb += amount;
+        if (remainingArmorAbsorb > maxArmorAbsorb)
+            remainingArmorAbsorb = maxArmorAbsorb;
+        // 更新 UI 护甲条
+        UIController.instance.AmrorSlider.value = (float)remainingArmorAbsorb / maxArmorAbsorb;
+    }
 }

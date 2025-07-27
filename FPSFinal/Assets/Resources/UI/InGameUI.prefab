@@ -984,6 +984,8 @@ MonoBehaviour:
   - {fileID: 21300030, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   - {fileID: 21300016, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   HealthPackText: {fileID: 9011350611054045722}
+  AdrenalineText: {fileID: 2924858708678776542}
+  AmmunitionBox: {fileID: 8105003466711279092}
   deathCanvasGroup: {fileID: 4329290961680022582}
   gameOverPanel: {fileID: 639186698748394037}
   heartsUI:
@@ -1007,8 +1009,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc3c8740772acf41bd6e458829fc801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 420
   timerText: {fileID: 9182039833803102996}
+  totalTime: 420
+  player: {fileID: 0}
+  bossSpawnPoint: {fileID: 0}
 --- !u!114 &306317315086012561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3760,7 +3764,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -4373,7 +4377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092229398101616521, guid: f879e39da5fb04045a806068ab0f95e8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.61001587
+      value: -0.60998535
       objectReference: {fileID: 0}
     - target: {fileID: 6092229398101616521, guid: f879e39da5fb04045a806068ab0f95e8, type: 3}
       propertyPath: m_AnchoredPosition.y

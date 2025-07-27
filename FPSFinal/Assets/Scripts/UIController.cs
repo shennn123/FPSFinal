@@ -19,6 +19,8 @@ public class UIController : PanelBase
     public Sprite[] weaponSprites; // 4种武器的图标（按顺序对应）
 
     public TMPro.TextMeshProUGUI HealthPackText; // 显示当前武器名称的Text组件
+    public TMPro .TextMeshProUGUI AdrenalineText; // 显示当前血包数量的Text组件
+    public TMPro.TextMeshProUGUI AmmunitionBox; // 显示当前血包数量的Text组件
 
     [Header("Death UI")]
     public CanvasGroup deathCanvasGroup;
@@ -67,6 +69,8 @@ public class UIController : PanelBase
         HealthSlider.value = (float)PlayerHealthController.instance.currentHealth / PlayerHealthController.instance.maxHealth;
         AmrorSlider.value = (float)PlayerHealthController.instance.remainingArmorAbsorb / PlayerHealthController.instance.maxArmorAbsorb;
         HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
+        AmmunitionBox.text = PlayerHealthController.instance.AmmunitionBoxAmount.ToString();
+        AdrenalineText.text = PlayerHealthController.instance.AdrenalineBoxAmount.ToString();
 
     }
 
@@ -76,6 +80,35 @@ public class UIController : PanelBase
     void Update()
     {
 
+    }
+
+
+    public void UpdateAmmoBoxUI()
+    {
+        // 确保UI引用不为空
+        if (AmmunitionBox != null)
+        {
+            // 更新弹药盒UI文本
+            AmmunitionBox.text = PlayerHealthController.instance.AmmunitionBoxAmount.ToString();
+        }
+        else
+        {
+            Debug.LogWarning("AmmunitionBox UI reference is null, cannot update ammo box UI.");
+        }
+    }
+
+    public void UpdateAdrenalineUI()
+    {
+        // 确保UI引用不为空
+        if (AdrenalineText != null)
+        {
+            // 更新肾上腺素UI文本
+            AdrenalineText.text = PlayerHealthController.instance.AdrenalineBoxAmount.ToString();
+        }
+        else
+        {
+            Debug.LogWarning("AdrenalineText UI reference is null, cannot update adrenaline UI.");
+        }
     }
 
     public void UpdateAmmoUI()
@@ -93,6 +126,15 @@ public class UIController : PanelBase
             Debug.LogWarning("PlayerController or activeGun is null, cannot update ammo UI.");
         }
     }
+
+    public void UpdateAmmunitionUI()
+    {
+        if (AmmunitionBox != null)
+        {
+            AmmunitionBox.text = PlayerHealthController.instance.AmmunitionBoxAmount.ToString();
+        }
+    }
+
     public void UpdateWeaponUI()
     {
         // 直接替换为当前武器的图标

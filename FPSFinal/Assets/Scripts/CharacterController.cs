@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
 
 
 
+
     private void HandleMovement()
     {
         float yStore = moveInput.y;
@@ -232,5 +233,8 @@ public class PlayerController : MonoBehaviour
         UIController.instance.UpdateWeaponUI();
  
     }
-    
+
+  
+
+
 }

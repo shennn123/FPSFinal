@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public enum PickupType { Health, Armor  , HealthBox }
+    public enum PickupType { Health, Armor  , HealthBox , AmmunitionBox , Adrenaline }
     public PickupType pickupType;
 
     [Header("Health Settings")]
@@ -32,9 +32,7 @@ public class PickupItem : MonoBehaviour
                     case PickupType.Armor:
                         if (!playerHealth.hasArmor)
                         {
-                            playerHealth.hasArmor = true;
-                            playerHealth.damageReduction = armorReduction;
-                            playerHealth.remainingArmorAbsorb = maxAbsorbAmount;
+                                
                             Debug.Log($"Picked up armor: -{armorReduction * 100f}% damage, up to {maxAbsorbAmount} total absorbed");
                         }
                         break;
@@ -45,6 +43,17 @@ public class PickupItem : MonoBehaviour
                             playerHealth.IncreaseHealthBox();
                             Debug.Log($"Picked up health box: +{healAmount} HP");
                         }
+                        break;
+
+                    case PickupType.AmmunitionBox:
+                        // 假设有一个方法可以增加弹药
+                        playerHealth.IncreaseAmmunitionBox();
+                        Debug.Log("Picked up ammunition box");
+                        break;
+
+                    case PickupType.Adrenaline:
+                        playerHealth.IncreaseAdrenalineBox();
+                        Debug.Log("Picked up adrenaline");
                         break;
 
                 }
