@@ -2,9 +2,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class Typewriter : MonoBehaviour
+public class TypewriterEffect : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public float typingSpeed = 0.05f;
@@ -13,10 +12,6 @@ public class Typewriter : MonoBehaviour
 
     [TextArea(3, 10)]
     public string[] pages;        // 多页文本数组
-
-    [Header("场景设置")]
-    public string sceneToLoad = "WinterScene"; // 默认加载WinterScene
-    public bool lockCursorAfterLoad = true; // 加载后是否锁定光标
 
     private int currentPage = 0;
     private bool isTyping = false;
@@ -72,26 +67,6 @@ public class Typewriter : MonoBehaviour
 
     void ClosePanel()
     {
-        if (isTyping)
-        {
-            Debug.Log("正在打字，无法关闭");
-            return;
-        }
-        // 加载指定的场景
-        if (!string.IsNullOrEmpty(sceneToLoad))
-        {
-            SceneManager.LoadScene(sceneToLoad);
-        }
-        else
-        {
-            Debug.LogError("没有指定要加载的场景！");
-        }
-
-        // 根据设置锁定光标
-        if (lockCursorAfterLoad)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        gameObject.SetActive(false); // 关闭整个对话框
     }
 }
