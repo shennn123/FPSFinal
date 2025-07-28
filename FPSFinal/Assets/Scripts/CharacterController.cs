@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -62,6 +61,17 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        camTrans = transform.Find("CamePoint");
+
+        if (camTrans != null)
+        {
+            Debug.Log("找到 CamePoint：" + camTrans.position);
+        }
+        else
+        {
+            Debug.LogWarning("未找到 CameraPoint 子物体！");
+        }
+
         // 你已有的 Start 代码：
         charCon = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -244,8 +254,5 @@ public class PlayerController : MonoBehaviour
         UIController.instance.UpdateWeaponUI();
  
     }
-
-
-
 
 }

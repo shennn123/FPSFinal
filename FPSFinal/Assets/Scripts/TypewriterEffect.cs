@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class Typewriter : MonoBehaviour
+public class Typewriter : PanelBase
 {
     public TextMeshProUGUI textComponent;
     public float typingSpeed = 0.05f;
@@ -21,8 +21,10 @@ public class Typewriter : MonoBehaviour
     private int currentPage = 0;
     private bool isTyping = false;
 
-    void Start()
+
+    protected override void Init()
     {
+        Cursor.lockState = CursorLockMode.None; // 确保光标解锁
         // 初始设置
         closeButton.gameObject.SetActive(false);
         nextButton.onClick.AddListener(GoToNextPage);
@@ -80,6 +82,7 @@ public class Typewriter : MonoBehaviour
         // 加载指定的场景
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
+            UIManager.Hide("Introduce2"); // 隐藏当前UI
             SceneManager.LoadScene(sceneToLoad);
         }
         else
@@ -94,4 +97,5 @@ public class Typewriter : MonoBehaviour
             Cursor.visible = false;
         }
     }
+
 }

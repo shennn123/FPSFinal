@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public enum PickupType { Health, Armor  , HealthBox , AmmunitionBox , Adrenaline }
+    public enum PickupType { Health, Armor  , HealthBox , AmmunitionBox , Adrenaline ,Hunt}
     public PickupType pickupType;
 
     [Header("Health Settings")]
@@ -54,6 +54,11 @@ public class PickupItem : MonoBehaviour
                     case PickupType.Adrenaline:
                         playerHealth.IncreaseAdrenalineBox();
                         Debug.Log("Picked up adrenaline");
+                        break;
+
+                    case PickupType.Hunt:
+                        BulletController bullet = PlayerController.instance.activeGun.bulletPrefab.GetComponent<BulletController>();
+                        bullet.Damage += 5;
                         break;
 
                 }

@@ -81,6 +81,7 @@ public class BoxTrigger : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "BeachScene")
         {
+            UIManager.Hide("InGameUI"); // 隐藏当前UI
             sceneName = "Story2";
         }
         else if (SceneManager.GetActiveScene().name == "3")
