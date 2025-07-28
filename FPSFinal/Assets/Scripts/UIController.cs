@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.Rendering.LookDev;
 
 public class UIController : PanelBase
 {
@@ -34,6 +35,13 @@ public class UIController : PanelBase
     public Button homeButton;       // 返回主菜单按钮
     public Button replayButton;     // 重新开始按钮
 
+    public AudioSource musicSource;   // ���� Audio Source
+    public Slider volumeSlider;       // ���� Slider
+    public GameObject menulist;//menu list
+    
+    [SerializeField] private GameObject ESCguidePanel;
+    [SerializeField] private Button ESCcloseGuideButton;
+
     private Coroutine currentFadeCoroutine;
     private bool isDeathPanelActive = false;
 
@@ -62,6 +70,7 @@ public class UIController : PanelBase
             gameOverPanel.SetActive(false);
             
         }
+        menulist.SetActive(false);
     }
 
     protected override void Init()
@@ -71,7 +80,21 @@ public class UIController : PanelBase
         HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
         AmmunitionBox.text = PlayerHealthController.instance.AmmunitionBoxAmount.ToString();
         AdrenalineText.text = PlayerHealthController.instance.AdrenalineBoxAmount.ToString();
+        if (volumeSlider != null && musicSource != null)
+        {
+            volumeSlider.value = musicSource.volume;
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+        }
+        if (ESCguidePanel != null)
+        {
+            ESCguidePanel.SetActive(false);
+        }
 
+        // 设置关闭按钮事件
+        if (ESCcloseGuideButton != null)
+        {
+            ESCcloseGuideButton.onClick.AddListener(CloseGuidePanel);
+        }
     }
 
 
@@ -79,9 +102,85 @@ public class UIController : PanelBase
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!menulist.activeSelf)
+            {
+                OpenMenu();
+            }
+            else
+            {
+                CloseMenu();
+            }
+        }
+    }
+    private void OpenMenu()
+    {
+        menulist.SetActive(true);
+        Time.timeScale = 0;
 
+        // 显示鼠标并解锁
+        UnityEngine.Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        // 确保按钮可交互
+        exitButton.interactable = true;
+        homeButton.interactable = true;
+        replayButton.interactable = true;
+        volumeSlider.interactable = true;
+
+        // 设置默认选中按钮（解决键盘导航问题）
+        if (exitButton != null)
+        {
+            exitButton.Select();
+            exitButton.OnSelect(null); // 触发高亮状态
+        }
     }
 
+    private void CloseMenu()
+    {
+        menulist.SetActive(false);
+        Time.timeScale = 1;
+
+        // 隐藏鼠标并锁定
+        UnityEngine.Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Return()
+    {
+        CloseMenu();
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
+    public void Exit()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+    }
+
+    void SetVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+    public void OpenGuidePanel()
+    {
+        if (ESCguidePanel != null)
+        {
+            ESCguidePanel.SetActive(true);
+        }
+    }
+
+    public void CloseGuidePanel()
+    {
+        if (ESCguidePanel != null && ESCguidePanel.activeSelf)
+        {
+            ESCguidePanel.SetActive(false);
+        }
+    }
 
     public void UpdateAmmoBoxUI()
     {

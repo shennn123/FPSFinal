@@ -2,21 +2,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class EscMenulist : PanelBase
+public class EscMenulist : MonoBehaviour
 {
 
     public AudioSource musicSource;   // ���� Audio Source
     public Slider volumeSlider;       // ���� Slider
     public GameObject menulist;//menu list
+    [SerializeField] private GameObject ESCguidePanel;
+    [SerializeField] private Button ESCcloseGuideButton;
 
     [SerializeField] private bool menuKeys = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected override void Init()
+    void Start()
     {
         if (volumeSlider != null && musicSource != null)
         {
             volumeSlider.value = musicSource.volume;
             volumeSlider.onValueChanged.AddListener(SetVolume);
+        }
+        if (ESCguidePanel != null)
+        {
+            ESCguidePanel.SetActive(false);
         }
 
     }
@@ -45,6 +51,7 @@ public class EscMenulist : PanelBase
             UnityEngine.Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+
     }
     public void Return()
     {
@@ -66,5 +73,20 @@ public class EscMenulist : PanelBase
     void SetVolume(float volume)
     {
         musicSource.volume = volume;
+    }
+    public void OpenGuidePanel()
+    {
+        if (ESCguidePanel != null)
+        {
+            ESCguidePanel.SetActive(true);
+        }
+    }
+
+    public void CloseGuidePanel()
+    {
+        if (ESCguidePanel != null && ESCguidePanel.activeSelf)
+        {
+            ESCguidePanel.SetActive(false);
+        }
     }
 }
