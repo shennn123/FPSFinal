@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 8472519877631999798}
-  typingSpeed: 0.05
+  typingSpeed: 0.02
   nextButton: {fileID: 1588062701266272581}
   closeButton: {fileID: 7258113806439783742}
   pages:
@@ -143,7 +143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: -55}
+  m_AnchoredPosition: {x: 162, y: -59}
   m_SizeDelta: {x: 898.5647, y: 439.4812}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1156099610750391542

@@ -155,8 +155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 153, y: -46}
-  m_SizeDelta: {x: 898.5647, y: 439.4812}
+  m_AnchoredPosition: {x: 173.74, y: -73.286}
+  m_SizeDelta: {x: 940.81, y: 485.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4865102092237676983
 CanvasRenderer:
@@ -349,28 +349,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 3550242557957791044}
-  typingSpeed: 0.05
+  typingSpeed: 0.02
   nextButton: {fileID: 5158246512808945221}
   closeButton: {fileID: 8747200591250351028}
   pages:
-  - "    Light has never been so thin.\n\r\n    Once upon a time, it enveloped the
-    earth, warmed the four seasons, and sealed the nightmare.\n\r\n    But we forgot
-    the price, gave up watching, and let the crystal called \"Heart of Chasing Light\"
-    shatter and fall.\n\r\n    The world began to collapse. The climate froze, the
-    creatures were distorted, and the mind was out of order.\n\r\n    And you are
-    the last person who remembers its appearance."
+  - "    Light has never been so thin.\n    Once upon a time, it enveloped the earth,
+    warmed the four seasons, and sealed the nightmare.\n    But we forgot the price,
+    gave up watching, and let the crystal called \"Heart of Chasing Light\" shatter
+    and fall."
+  - "    The world began to collapse. The climate froze, the creatures were distorted,
+    and the mind was out of order.\n    And you are the last person who remembers
+    its appearance."
   - "    The \"Heart of Chasing Light\" is guarded by five guardians, each of which
     controls the energy cores of the three regions: Frost, Tide, and Mist.\r\n   
     It should not have been broken, but we used it, demanded too much, and finally
-    lost control.\r\n    The broken crystal awakened the dormant evil spirits buried
-    deep in the land. They are not monsters from another world, but the people of
-    the past.\r\n    When the Chasing Light is broken, all living beings fall into
-    the shadow. Only by gathering the memory cores of the three regions can the origin
-    be awakened and the glory be rekindled."
-  - "...Where is this?\n\r\n    The air is freezing cold, the ground is covered with
-    frost, the torches are out, and even the light seems to be escaping.\n\r\n   
-    I remember... the temple, the temperature of the light, and the moment it broke.\n\r\n   
-    But I don't remember... who I am.\n\r\n    What I know is that the crystal of
+    lost control.\r"
+  - "\r    The broken crystal awakened the dormant evil spirits buried deep in the
+    land. They are not monsters from another world, but the people of the past.\r\n   
+    When the Chasing Light is broken, all living beings fall into the shadow. Only
+    by gathering the memory cores of the three regions can the origin be awakened
+    and the glory be rekindled."
+  - "...Where is this?\n    The air is freezing cold, the ground is covered with
+    frost, the torches are out, and even the light seems to be escaping.\n    I remember...
+    the temple, the temperature of the light, and the moment it broke."
+  - "    But I don't remember... who I am.\n    What I know is that the crystal of
     light is waiting for me. It wants to recover, and it calls me to find it."
   sceneToLoad: WinterScene
   lockCursorAfterLoad: 1

@@ -213,39 +213,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 6190579708315482801}
-  typingSpeed: 0.05
+  typingSpeed: 0.02
   nextButton: {fileID: 3979943252139307835}
   closeButton: {fileID: 4395902918594410457}
   pages:
   - "    At first, I didn't know why I was going.\r\n    Some people say that in
     the depths of the fog at the end of the world, an ancient crystal sleeps -\r\n   
     It's called \"The Heart of the Light.\"\r\n     Legend has it that it can awaken
-    true peace and hope in the world.\r\n\r    But I don't believe in legends.\r\n   
-    I was just......\r\n    On that cold morning, I woke up with nothing to remember.\r\n   
-    There is no name, no hometown, not even a past.\r\n    Only a vague voice remained
-    in my heart: go find it.\r\n\r    I don't know what it is,"
+    true peace and hope in the world.\r\n\r    But I don't believe in legends.\r"
+  - "\r    I was just......\r\n    On that cold morning, I woke up with nothing to
+    remember.\r\n    There is no name, no hometown, not even a past.\r\n    Only
+    a vague voice remained in my heart: go find it.\r\n\r    I don't know what it
+    is,"
   - "\r    But I knew that if I didn't leave, I would completely forget who I was.\r\n\r   
     I climbed over the ice and snow and saw silent figures buried by the wind and
     snow.\r\n    I crossed the island, and in my ears was the oath of being swallowed
-    by the tide.\r\n    I stepped into the fog, lost my way, and even began to wonder
-    if it all made sense.\r\n\r    Every journey is like a death.\r\n    And with
-    each death, I wake up again.\r\n    With new scars, new questions, and ......
-    The obsession that refuses to be extinguished:\r\n    \"I'll try again.\""
+    by the tide.\r"
+  - "\r    I stepped into the fog, lost my way, and even began to wonder if it all
+    made sense.\r\n\r    Every journey is like a death.\r                                                  
+    And with each death, I wake up again.\r\n    With new scars, new questions, and
+    ...... The obsession that refuses to be extinguished :\r                      
+    \"I'll try again.\""
   - "    To this day, I have finally collected all the fragments of memory.\r\n   
     Put them together in the shape of that crystal.\r\n    But at the moment of crystal
     synthesis, I finally understood-\r\nThe heart of chasing light is never some
-    kind of external miracle.\r\n\r    It is the reason why I still choose to stand
-    up after falling countless times.\r\n    It is every failure, hesitation, and
-    pain that I have,\r\n    With wounds and beliefs, it is condensed little by little.\r\n   
-    I pursued it to remember:\r\n    \"Why didn't I give up in the first place.\""
+    kind of external miracle.\r"
+  - "\r    It is the reason why I still choose to stand up after falling countless
+    times.\r\n    It is every failure, hesitation, and pain that I have,\r\n    With
+    wounds and beliefs, it is condensed little by little.\r\n    I pursued it to
+    remember:\r\n    \"Why didn't I give up in the first place.\""
   - "    Not to be a hero,\r                                 Not to save the world.\r\n   
     Just because, if even I give up,\r\n    No one in this world will ever believe
     that light can be recovered.\r\n\r    The snow has stopped, the fog has dispersed,
-    and the sea has returned to calm.\r\n    I stood in the light and finally understood:\r\n   
-    I am not the chosen one of fate.\r\n    I just\u2014\r             Among the
-    thousands of fallen selves,\r            \n    The only one who didn't give up
-    completely.\r\n    So I didn't become the light,.\r\n    Because - I am who I
-    am."
+    and the sea has returned to calm.\r"
+  - "\r    I stood in the light and finally understood:\r\n    I am not the chosen
+    one of fate.\r                                                       I just Among
+    the thousands of fallen selves,\r            \n    The only one who didn't give
+    up completely.\r\n    So I didn't become the light.\r                                                  
+    Because - I am who I am."
   sceneToLoad: 1
   lockCursorAfterLoad: 1
 --- !u!1 &7321926695705863566
@@ -539,8 +544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 142, y: -43}
-  m_SizeDelta: {x: 898.5647, y: 445.0576}
+  m_AnchoredPosition: {x: 148.62, y: -47.922}
+  m_SizeDelta: {x: 885.32, y: 435.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7085128643493734471
 CanvasRenderer:
