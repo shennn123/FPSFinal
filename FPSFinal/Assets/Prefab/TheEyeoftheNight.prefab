@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c27ec0a06dd7884b8a6bc6d82606140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterType: 0
   maxHealth: 6000
   MonsterHPUI: {fileID: 578512670113819755}
   isMonsterDead: 0

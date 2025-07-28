@@ -3,57 +3,74 @@ using UnityEngine.SceneManagement;
 
 public class BoxTrigger : MonoBehaviour
 {
-    public GameObject boss; // Boss ¶ÔÏó
-    public float bossHealth = 100f;
-    private bool bossDead = false; // ÓÃÓÚ¼ì²é Boss ÊÇ·ñËÀÍö
+    //å› ä¸ºæ˜¯å…¨å±€ç®¡ç†å™¨ï¼Œæ‰€ä»¥å¯ä»¥è®¾ç½®ä¸ºå•ä¾‹ï¼Œä¾¿äºå…¶ä»–ç‰©ä½“ä¸Šçš„ä»£ç å¼•ç”¨ï¼Œæ³¨æ„ï¼šåœºæ™¯ä¸­åªèƒ½å­˜åœ¨ä¸€ä¸ªç‰©ä½“æŒ‚è¿™ä¸ªä»£ç 
+    public static BoxTrigger Instance;
 
-    public GameObject targetBlock; // ·½¿é¶ÔÏó£¬ÓÃÀ´´¥·¢½øÈë¹ÊÊÂ
+    public int bossHealth = 100; //é»˜è®¤è¡€é‡æ•°å€¼ä¸å°äºç­‰äº0å°±è¡Œ
+
+    //è¿™ä¸ªæ­»äº¡ä¿¡å·æˆ‘ä¸çŸ¥é“ä½ æœ‰æ²¡æœ‰ç”¨ï¼Œæ„Ÿè§‰è·Ÿè¡€é‡æ¸…é›¶ä¸€ä¸ªæ„æ€ï¼Œæˆ‘å…ˆæ³¨é‡Šæ‰äº†
+    //private bool bossDead = false; // ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ Boss ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+
+    public GameObject targetBlock; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+    //å•ä¾‹çš„åˆå§‹åŒ–
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     void Start()
     {
-        // È·±£·½¿é³õÊ¼Ê±²»¿É¼û
+        // È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Ê±ï¿½ï¿½ï¿½É¼ï¿½
         if (targetBlock != null)
         {
             targetBlock.SetActive(false);
         }
         else
         {
-            Debug.LogWarning("ÕÒ²»µ½·½¿é¶ÔÏó£¬ÇëÈ·±£ÒÑ·ÖÅä 'targetBlock'¡£");
+            Debug.LogWarning("ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ 'targetBlock'ï¿½ï¿½");
         }
     }
 
     void Update()
     {
-        // ¼ì²é Boss ÊÇ·ñËÀÍö£¨ÓÉÑªÁ¿¾ö¶¨£©
-        if (bossHealth <= 0f && !bossDead)
+        // ï¿½ï¿½ï¿½ Boss ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (bossHealth <= 0 /*&& !bossDead*/)
         {
-            bossDead = true;
+            //bossDead = true;
             OnBossDefeated();
         }
     }
 
-    // Boss ËÀÍöÊ±ÆôÓÃ·½¿é
+    //å¼•ç”¨bossè¡€é‡çš„å‡½æ•°ï¼Œåœ¨MonsterHealthä»£ç é‡Œï¼Œåªæœ‰å½“bossç±»çš„æ€ªç‰©å—åˆ°ä¼¤å®³æ—¶æ‰ä¼šè°ƒç”¨è¿™ä¸ªå‡½æ•°
+    public void SetBossHealth(int bossCurrentHealth)
+    {
+        bossHealth = bossCurrentHealth;
+    }
+
+    // Boss ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
     void OnBossDefeated()
     {
         Debug.Log("Boss Defeated!");
 
-        // ÆôÓÃ·½¿é
+        // ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
         if (targetBlock != null)
         {
-            targetBlock.SetActive(true); // ÆôÓÃ·½¿é
+            targetBlock.SetActive(true); // ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
         }
     }
 
-    // Íæ¼ÒÅöµ½·½¿éÊ±½øÈë¶ÔÓ¦µÄ¹ÊÊÂ³¡¾°
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä¹ï¿½ï¿½Â³ï¿½ï¿½ï¿½
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && bossDead)
+        if (other.CompareTag("Player") /*&& bossDead*/)
         {
             LoadStoryScene();
         }
     }
 
-    // ¼ÓÔØ¶ÔÓ¦µÄ¹ÊÊÂ³¡¾°
+    // ï¿½ï¿½ï¿½Ø¶ï¿½Ó¦ï¿½Ä¹ï¿½ï¿½Â³ï¿½ï¿½ï¿½
     void LoadStoryScene()
     {
         string sceneName = "";
@@ -77,7 +94,7 @@ public class BoxTrigger : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Ã»ÓĞÕÒµ½¶ÔÓ¦µÄ¹ÊÊÂ³¡¾°£¡");
+            Debug.LogWarning("Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½Ä¹ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
     }
 }

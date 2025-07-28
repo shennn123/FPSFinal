@@ -3,10 +3,21 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
+//两种怪物类型：boss和小怪
+public enum MonsterType
+{
+    Boss,
+    Minion
+}
 
 //管理怪物的生命值逻辑，比如受伤、死亡
 public class MonsterHealth : MonoBehaviour
 {
+    // 在 Inspector 中选择怪物类型
+    public MonsterType monsterType = MonsterType.Minion;
+
     //设置怪物默认血量上限
     public int maxHealth = 100;
 
@@ -37,18 +48,17 @@ public class MonsterHealth : MonoBehaviour
         controller = GetComponent<MonsterController>();
         agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
-
+        
         //初始化血条的数值和相机
         UpdateMonsterHealthBar(currentHealth, maxHealth);
 
-        //如果有prefab可以用这个来获取血条
-        //GetComponentInChildren<Slider>()
     }
 
     public void Update()
     {
         //血条始终面向主相机
         MonsterHPUI.transform.rotation = Quaternion.LookRotation(MonsterHPUI.transform.position - mainCamera.transform.position);
+
     }
 
     //让其他对象可以通过调用这个方法来“打”怪物。
@@ -82,6 +92,13 @@ public class MonsterHealth : MonoBehaviour
 
         //受伤时立刻更新血条
         UpdateMonsterHealthBar(currentHealth, maxHealth);
+
+        //如果怪物是boss就传输血量的变化数据到场景管理器里
+        if (monsterType != MonsterType.Minion)
+        {
+            BoxTrigger.Instance.SetBossHealth(currentHealth); //引用Scene Manager的设置boss血量的函数(注意：目前该代码的类的名字叫BoxTrigger)
+        }
+        
     }
 
     //血条值的计算
@@ -94,7 +111,7 @@ public class MonsterHealth : MonoBehaviour
 
     }
 
-    //携程僵直
+    //协程僵直
     private IEnumerator FreezeMovementDuringHit()
     {
         if (agent != null)
@@ -110,4 +127,5 @@ public class MonsterHealth : MonoBehaviour
             agent.isStopped = false; // 恢复移动
         }
     }
+
 }
