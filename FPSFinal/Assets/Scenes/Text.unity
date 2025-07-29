@@ -1533,10 +1533,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inroduce2
       objectReference: {fileID: 0}
-    - target: {fileID: 2897250876063279324, guid: bc4db20676863494183def7993324fe3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
