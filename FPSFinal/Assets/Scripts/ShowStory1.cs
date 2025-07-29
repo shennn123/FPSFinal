@@ -6,13 +6,15 @@ public class ShowStory1 : MonoBehaviour
     {
         UIManager.Show("Introduce1");
         UIManager.Hide("MainMenu");
+        AudioManager.AddMusic("smile-booth-305345");
     }
 
     void OnDestroy()
     {
         UIManager.Hide("Introduce1");
-        AudioManager.EndMusic("my-comfortable-home-297586");
+        AudioManager.EndMusic("smile-booth-305345");
     }
+
 
     void Update()
     {

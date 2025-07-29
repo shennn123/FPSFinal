@@ -6,6 +6,7 @@ public class FirstStoryUI : MonoBehaviour
     void Start()
     {
         UIManager.Show("Introduce0");
+        AudioManager.AddMusic("smile-booth-305345");
     }
 
 
@@ -13,6 +14,7 @@ public class FirstStoryUI : MonoBehaviour
     {
         // ÔÚÏú»ÙÊ±Òþ²Ø UI
         UIManager.Hide("Introduce0");
+        AudioManager.EndMusic("smile-booth-305345");
     }
 }
 

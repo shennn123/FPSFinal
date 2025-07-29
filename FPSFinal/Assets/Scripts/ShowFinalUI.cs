@@ -6,12 +6,14 @@ public class ShowFinalUI : MonoBehaviour
     void Start()
     {
         UIManager.Show("Final");
+        AudioManager.AddMusic("my-comfortable-home-297586"); // Ìí¼Ó±³¾°ÒôÀÖ
     }
 
     void OnDestroy()
     {
         // È·±£ÔÚÏú»ÙÊ±Òş²ØUI
         UIManager.Hide("Final");
+        AudioManager.EndMusic("my-comfortable-home-297586"); // Í£Ö¹±³¾°ÒôÀÖ
     }
 
     // Update is called once per frame
