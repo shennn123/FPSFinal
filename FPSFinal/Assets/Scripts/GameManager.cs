@@ -103,6 +103,12 @@ public class GameManager : MonoBehaviour
             player.transform.position = respawnPoint.position;
             player.transform.rotation = respawnPoint.rotation;
             player.SetActive(true);
+            PlayerController.instance.activeGun.isReloading = false; // Reset reloading state
+            PlayerController.instance.activeGun.GetComponent<AKAnimationController>().isReloading = false; // Reset reloading state in animation controller
+            PlayerController.instance.activeGun.GetComponent<PistolAnimatorController>().isReloading = false; // Reset reloading state in animation controller
+            PlayerController.instance.activeGun.GetComponent<MP5AnimationController>().isReloading = false; // Reset reloading state in animation controller
+            PlayerController.instance.activeGun.GetComponent<DrakeAnimationController>().isReloading = false; // Reset reloading state in animation controller
+            PlayerController.instance.activeGun.GetComponent<MK14AnimationController>().isReloading = false; // Reset reloading state in animation controller
 
             Rigidbody rb = player.GetComponent<Rigidbody>();
             if (rb != null)
