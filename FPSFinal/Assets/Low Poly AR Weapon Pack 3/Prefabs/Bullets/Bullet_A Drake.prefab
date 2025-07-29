@@ -192,7 +192,7 @@ MonoBehaviour:
   moveSpeed: 200
   lifeTime: 2
   laserImpct: {fileID: 8195523956524795456, guid: a51c67f6b6050ec469cbaeea7baca665, type: 3}
-  Damage: 110
+  Damage: 90
   attactplayer: 0
 --- !u!96 &-3628546525825301441
 TrailRenderer:
