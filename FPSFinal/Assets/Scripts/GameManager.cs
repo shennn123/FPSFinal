@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("No more respawns, Game Over!");
+            Cursor.lockState = CursorLockMode.None; // Unlock the cursor when game is over
             UIController.instance?.ShowGameOverPanel();
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("MainMenu");

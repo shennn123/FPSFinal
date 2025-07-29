@@ -77,14 +77,18 @@ public class RealTimer : MonoBehaviour
         //根据对应场景在指定位置生成对应boss
         if (SceneManager.GetActiveScene().name == "WinterScene")
         {
+            GameManager.instance.respawnPoint = bossSpawnPoint; // 设置重生点为Boss生成点
+
             Instantiate(BossPrefab1, bossSpawnPoint.position, Quaternion.identity);
         }
         else if (SceneManager.GetActiveScene().name == "BeachScene")
         {
+            GameManager.instance.respawnPoint = bossSpawnPoint; // 设置重生点为Boss生成点
             Instantiate(BossPrefab2, bossSpawnPoint.position, Quaternion.identity);
         }
         else if (SceneManager.GetActiveScene().name == "3")
         {
+            GameManager.instance.respawnPoint = bossSpawnPoint; // 设置重生点为Boss生成点
             Instantiate(BossPrefab3, bossSpawnPoint.position, Quaternion.identity);
         }
 
