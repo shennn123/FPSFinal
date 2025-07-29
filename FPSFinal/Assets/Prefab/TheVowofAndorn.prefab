@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 7601247374417655831}
   - component: {fileID: 2673572831708446190}
   m_Layer: 0
-  m_Name: TheVowofAndorn
+  m_Name: TheVowOfAndorn
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

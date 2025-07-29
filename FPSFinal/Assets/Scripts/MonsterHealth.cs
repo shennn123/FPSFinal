@@ -48,10 +48,9 @@ public class MonsterHealth : MonoBehaviour
         controller = GetComponent<MonsterController>();
         agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
-        
+
         //初始化血条的数值和相机
         UpdateMonsterHealthBar(currentHealth, maxHealth);
-
     }
 
     public void Update()

@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 6804699059850523121}
   - component: {fileID: 1240553909916898788}
   m_Layer: 0
-  m_Name: QueenofShiver
+  m_Name: QueenOfShiver
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4791478767825907372}
   - component: {fileID: 5090253327121493923}
   m_Layer: 0
-  m_Name: TheEyeoftheNight
+  m_Name: TheEyeOfTheNight
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

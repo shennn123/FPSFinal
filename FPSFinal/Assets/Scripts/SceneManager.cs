@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class BoxTrigger : MonoBehaviour
 {
@@ -8,10 +9,9 @@ public class BoxTrigger : MonoBehaviour
 
     public int bossHealth = 100; //默认血量数值不小于等于0就行
 
-    //这个死亡信号我不知道你有没有用，感觉跟血量清零一个意思，我先注释掉了
-    //private bool bossDead = false; // ���ڼ�� Boss �Ƿ�����
+    public GameObject Portal; 
 
-    public GameObject targetBlock; // ����������������������
+    public Transform bossSpawnPoint;
 
     //单例的初始化
     private void Awake()
@@ -22,24 +22,38 @@ public class BoxTrigger : MonoBehaviour
 
     void Start()
     {
-        // ȷ�������ʼʱ���ɼ�
-        if (targetBlock != null)
+        if (Portal != null)
         {
-            targetBlock.SetActive(false);
+            Portal.SetActive(false);
         }
         else
         {
-            Debug.LogWarning("�Ҳ������������ȷ���ѷ��� 'targetBlock'��");
+            Debug.LogWarning("找不到Portal");
+        }
+
+        if (bossSpawnPoint == null)
+        {
+            GameObject bossPoint = GameObject.Find("bossSpawnPoint");
+            if (bossPoint != null)
+            {
+                bossSpawnPoint = bossPoint.transform;
+            }
+            else
+            {
+                Debug.LogWarning("找不到名为 'bossSpawnPoint' 的物体！");
+            }
         }
     }
 
     void Update()
     {
-        // ��� Boss �Ƿ���������Ѫ��������
-        if (bossHealth <= 0 /*&& !bossDead*/)
+
+        Debug.Log("bossHealth2 is "+bossHealth);
+        // Boss血量小于0
+        if (bossHealth <= 0)
         {
-            //bossDead = true;
             OnBossDefeated();
+            Debug.Log("bossHealth is " + bossHealth);
         }
     }
 
@@ -47,31 +61,26 @@ public class BoxTrigger : MonoBehaviour
     public void SetBossHealth(int bossCurrentHealth)
     {
         bossHealth = bossCurrentHealth;
+        Debug.Log("set bossHealth is "+bossHealth);
     }
 
-    // Boss ����ʱ���÷���
+    // 
     void OnBossDefeated()
     {
         Debug.Log("Boss Defeated!");
 
-        // ���÷���
-        if (targetBlock != null)
+        // 
+        if (Portal != null)
         {
-            targetBlock.SetActive(true); // ���÷���
+            Portal.SetActive(true); 
+            Portal.transform.position = bossSpawnPoint.position;
         }
+
     }
 
-    // �����������ʱ�����Ӧ�Ĺ��³���
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") /*&& bossDead*/)
-        {
-            LoadStoryScene();
-        }
-    }
-
-    // ���ض�Ӧ�Ĺ��³���
-    void LoadStoryScene()
+    //Portal 代码里引用LoadStoryScene
+    // 
+    public void LoadStoryScene()
     {
         string sceneName = "";
 

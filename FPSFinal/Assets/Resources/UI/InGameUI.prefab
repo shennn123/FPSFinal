@@ -787,9 +787,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 9182039833803102996}
-  totalTime: 420
+  totalTime: 40
   player: {fileID: 0}
   bossSpawnPoint: {fileID: 0}
+  BossPrefab1: {fileID: 3959201527233358837, guid: 74cae529aa12af04bb4e684758d90e99, type: 3}
+  BossPrefab2: {fileID: 7397470615028955442, guid: c8f7d261cd30b1b40867ac04aea1ac6d, type: 3}
+  BossPrefab3: {fileID: 1202421832393596976, guid: a88181125815bd541ab21843cd90124d, type: 3}
 --- !u!114 &306317315086012561
 MonoBehaviour:
   m_ObjectHideFlags: 0
