@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class MainMenuUIManager : PanelBase
@@ -12,6 +13,7 @@ public class MainMenuUIManager : PanelBase
 
     protected override void Init()
     {
+        AudioManager.AddMusic("my-comfortable-home-297586");
         if (guidePanel != null)
         {
             guidePanel.SetActive(false);
@@ -23,6 +25,12 @@ public class MainMenuUIManager : PanelBase
             closeGuideButton.onClick.AddListener(CloseGuidePanel);
         }
     }
+    protected internal override void WhenHide()
+    {
+        // 显示主菜单时播放背景音乐
+        AudioManager.EndMusic("my-comfortable-home-297586");
+    }
+
     void Update()
     {
         // ESC键关闭指南面板

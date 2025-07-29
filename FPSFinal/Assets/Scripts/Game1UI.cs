@@ -7,6 +7,7 @@ public class Game1UI : MonoBehaviour
     {
         UIManager.Show("InGameUI");
         UIManager.Show("Map");
+        AudioManager.EndMusic("my-comfortable-home-297586");
     }
 
     // Update is called once per frame

@@ -12,6 +12,11 @@ public class PickupItem : MonoBehaviour
     public float armorReduction = 0.4f; // 减伤比例
     public float maxAbsorbAmount = 50f; // 最大可吸收伤害值
 
+    private void Start()
+    {
+        UIController.instance.UpdateDamageUI();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -59,6 +64,8 @@ public class PickupItem : MonoBehaviour
                     case PickupType.Hunt:
                         BulletController bullet = PlayerController.instance.activeGun.bulletPrefab.GetComponent<BulletController>();
                         bullet.Damage += 5;
+                        Debug.Log("Picked up Hunt: +5 Damage");
+                        UIController.instance.UpdateDamageUI();
                         break;
 
                 }

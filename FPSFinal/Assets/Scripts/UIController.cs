@@ -22,6 +22,7 @@ public class UIController : PanelBase
     public TMPro.TextMeshProUGUI HealthPackText; // 显示当前武器名称的Text组件
     public TMPro .TextMeshProUGUI AdrenalineText; // 显示当前血包数量的Text组件
     public TMPro.TextMeshProUGUI AmmunitionBox; // 显示当前血包数量的Text组件
+    public TMPro.TextMeshProUGUI GunDamage; // 显示当前弹药盒数量的Text组件
 
     [Header("Death UI")]
     public CanvasGroup deathCanvasGroup;
@@ -80,6 +81,9 @@ public class UIController : PanelBase
         HealthPackText.text = PlayerHealthController.instance.HealthBoxAmount.ToString();
         AmmunitionBox.text = PlayerHealthController.instance.AmmunitionBoxAmount.ToString();
         AdrenalineText.text = PlayerHealthController.instance.AdrenalineBoxAmount.ToString();
+        BulletController bullet = PlayerController.instance.activeGun.bulletPrefab.GetComponent<BulletController>();
+        GunDamage.text = bullet.Damage.ToString();
+
         if (volumeSlider != null && musicSource != null)
         {
             volumeSlider.value = musicSource.volume;
@@ -99,6 +103,8 @@ public class UIController : PanelBase
 
 
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -114,6 +120,20 @@ public class UIController : PanelBase
             }
         }
     }
+
+    public void UpdateDamageUI()
+    {
+        if (GunDamage != null)
+        {
+            BulletController bullet = PlayerController.instance.activeGun.bulletPrefab.GetComponent<BulletController>();
+            GunDamage.text = "Damage: " + bullet.Damage;
+        }
+        else
+        {
+            Debug.LogWarning("GunDamage UI reference is null, cannot update damage UI.");
+        }
+    }
+
     private void OpenMenu()
     {
         menulist.SetActive(true);

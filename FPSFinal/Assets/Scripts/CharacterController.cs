@@ -252,7 +252,8 @@ public class PlayerController : MonoBehaviour
         activeGun.gameObject.SetActive(true);
         UIController.instance.UpdateAmmoUI();
         UIController.instance.UpdateWeaponUI();
- 
+        UIController.instance.UpdateDamageUI();
+
     }
 
 }
