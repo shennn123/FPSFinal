@@ -552,6 +552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 289054827229062321, guid: c20a9ca498ccb5242ae4bedf1891ed55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7715949951714839600, guid: c20a9ca498ccb5242ae4bedf1891ed55, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -645,10 +649,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1864797986}
     m_Modifications:
-    - target: {fileID: 925443258912596611, guid: ab45ea905cb08c241b1ca343e3b238dc, type: 3}
-      propertyPath: GunDamage
-      value: 
-      objectReference: {fileID: 667386611124229349}
     - target: {fileID: 2358017186723224869, guid: ab45ea905cb08c241b1ca343e3b238dc, type: 3}
       propertyPath: m_Name
       value: Ingameui
@@ -753,6 +753,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7189356628217924324, guid: ab45ea905cb08c241b1ca343e3b238dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189356628217924324, guid: ab45ea905cb08c241b1ca343e3b238dc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189356628217924324, guid: ab45ea905cb08c241b1ca343e3b238dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 23.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189356628217924324, guid: ab45ea905cb08c241b1ca343e3b238dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 27.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -767,17 +783,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa2838640bfac254180d8bd28c3227ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &667386611124229349 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6296729146262873274, guid: ab45ea905cb08c241b1ca343e3b238dc, type: 3}
-  m_PrefabInstance: {fileID: 667386611124229347}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &795903348569313480

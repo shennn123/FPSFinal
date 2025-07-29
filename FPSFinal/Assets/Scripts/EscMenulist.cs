@@ -66,8 +66,8 @@ public class EscMenulist : MonoBehaviour
     }
     public void Exit()
     {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1;
+        Debug.Log("Quit Game");
+        Application.Quit();
     }
 
     void SetVolume(float volume)
