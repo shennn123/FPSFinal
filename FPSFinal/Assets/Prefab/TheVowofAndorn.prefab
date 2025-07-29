@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 7601247374417655831}
   - component: {fileID: 2673572831708446190}
   m_Layer: 0
-  m_Name: TheVowOfAndorn
+  m_Name: TheVowofAndorn
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterType: 0
-  maxHealth: 4500
+  maxHealth: 3500
   MonsterHPUI: {fileID: 1002573511844470514}
   isMonsterDead: 0
 --- !u!114 &4032442266227929782

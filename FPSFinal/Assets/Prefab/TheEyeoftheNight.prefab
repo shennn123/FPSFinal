@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4791478767825907372}
   - component: {fileID: 5090253327121493923}
   m_Layer: 0
-  m_Name: TheEyeOfTheNight
+  m_Name: TheEyeoftheNight
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterType: 0
-  maxHealth: 6000
+  maxHealth: 4000
   MonsterHPUI: {fileID: 578512670113819755}
   isMonsterDead: 0
 --- !u!114 &7436952194550608687
