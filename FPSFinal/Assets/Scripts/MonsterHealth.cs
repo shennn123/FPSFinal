@@ -56,7 +56,7 @@ public class MonsterHealth : MonoBehaviour
     public void Update()
     {
         //血条始终面向主相机
-        MonsterHPUI.transform.rotation = Quaternion.LookRotation(MonsterHPUI.transform.position - mainCamera.transform.position);
+
 
     }
 
